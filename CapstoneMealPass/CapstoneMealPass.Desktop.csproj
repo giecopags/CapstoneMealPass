@@ -60,14 +60,22 @@
       <HintPath>..\packages\Dapper.2.1.66\lib\net461\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v23.2" />
+    <Reference Include="DevExpress.Charts.v23.2.Core, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.Desktop.v23.2" />
     <Reference Include="DevExpress.Data.v23.2" />
     <Reference Include="DevExpress.Printing.v23.2.Core" />
     <Reference Include="DevExpress.Utils.v23.2" />
+    <Reference Include="DevExpress.Utils.v23.2.UI, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v23.2" />
     <Reference Include="DevExpress.Sparkline.v23.2.Core" />
+    <Reference Include="DevExpress.XtraCharts.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v23.2.UI, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v23.2.Wizard, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v23.2" />
     <Reference Include="DevExpress.Drawing.v23.2" />
+    <Reference Include="DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.1\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -95,47 +103,77 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Admin\AddEmployeeRibbonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\Admin\AddEmployeeRibbonForm.Designer.cs">
+      <DependentUpon>AddEmployeeRibbonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\AddEmployeeForm.cs">
+    <Compile Include="Forms\Admin\AddProductRibbonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\AddEmployeeForm.Designer.cs">
-      <DependentUpon>AddEmployeeForm.cs</DependentUpon>
+    <Compile Include="Forms\Admin\AddProductRibbonForm.Designer.cs">
+      <DependentUpon>AddProductRibbonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\AddProductForm.cs">
+    <Compile Include="Forms\Admin\EditEmployeeRibbonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\AddProductForm.Designer.cs">
-      <DependentUpon>AddProductForm.cs</DependentUpon>
+    <Compile Include="Forms\Admin\EditEmployeeRibbonForm.Designer.cs">
+      <DependentUpon>EditEmployeeRibbonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\EditEmployeeForm.cs">
+    <Compile Include="Forms\Admin\EditPasswordRibbonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\EditEmployeeForm.Designer.cs">
-      <DependentUpon>EditEmployeeForm.cs</DependentUpon>
+    <Compile Include="Forms\Admin\EditPasswordRibbonForm.Designer.cs">
+      <DependentUpon>EditPasswordRibbonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\EditPasswordForm.cs">
+    <Compile Include="Forms\Admin\EditProductRibbonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\EditPasswordForm.Designer.cs">
-      <DependentUpon>EditPasswordForm.cs</DependentUpon>
+    <Compile Include="Forms\Admin\EditProductRibbonForm.Designer.cs">
+      <DependentUpon>EditProductRibbonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\EditProductForm.cs">
+    <Compile Include="Forms\Admin\EmployeeLogsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\EmployeeLogsUserControl.Designer.cs">
+      <DependentUpon>EmployeeLogsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\EmployeesUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\EmployeesUserControl.Designer.cs">
+      <DependentUpon>EmployeesUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\MainRibbonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\EditProductForm.Designer.cs">
-      <DependentUpon>EditProductForm.cs</DependentUpon>
+    <Compile Include="Forms\Admin\MainRibbonForm.Designer.cs">
+      <DependentUpon>MainRibbonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\MainForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Forms\Admin\ProductsUserControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Forms\Admin\ProductsUserControl.Designer.cs">
+      <DependentUpon>ProductsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\PurchaseHistoryUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\PurchaseHistoryUserControl.Designer.cs">
+      <DependentUpon>PurchaseHistoryUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\SalesUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\SalesUserControl.Designer.cs">
+      <DependentUpon>SalesUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\TopUpHistoryUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\TopUpHistoryUserControl.Designer.cs">
+      <DependentUpon>TopUpHistoryUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
@@ -143,19 +181,103 @@
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Staff\CashOptionXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Staff\CashOptionXtraForm.Designer.cs">
+      <DependentUpon>CashOptionXtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Staff\PaymentOptionXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Staff\PaymentOptionXtraForm.Designer.cs">
+      <DependentUpon>PaymentOptionXtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Staff\POSUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Staff\POSUserControl.Designer.cs">
+      <DependentUpon>POSUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Staff\ScanRFIDXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Staff\ScanRFIDXtraForm.Designer.cs">
+      <DependentUpon>ScanRFIDXtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Staff\StaffMainRibbonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Staff\StaffMainRibbonForm.Designer.cs">
+      <DependentUpon>StaffMainRibbonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Staff\TopUpXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Staff\TopUpXtraForm.Designer.cs">
+      <DependentUpon>TopUpXtraForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="Helpers\TextHelper.cs" />
     <Compile Include="Helpers\UserSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Admin\AddEmployeeRibbonForm.resx">
+      <DependentUpon>AddEmployeeRibbonForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin\AddEmployeeForm.resx">
-      <DependentUpon>AddEmployeeForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Admin\AddProductRibbonForm.resx">
+      <DependentUpon>AddProductRibbonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\EditEmployeeRibbonForm.resx">
+      <DependentUpon>EditEmployeeRibbonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\EditPasswordRibbonForm.resx">
+      <DependentUpon>EditPasswordRibbonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\EditProductRibbonForm.resx">
+      <DependentUpon>EditProductRibbonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\EmployeeLogsUserControl.resx">
+      <DependentUpon>EmployeeLogsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\EmployeesUserControl.resx">
+      <DependentUpon>EmployeesUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\MainRibbonForm.resx">
+      <DependentUpon>MainRibbonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\ProductsUserControl.resx">
+      <DependentUpon>ProductsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\PurchaseHistoryUserControl.resx">
+      <DependentUpon>PurchaseHistoryUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\SalesUserControl.resx">
+      <DependentUpon>SalesUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\TopUpHistoryUserControl.resx">
+      <DependentUpon>TopUpHistoryUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Staff\CashOptionXtraForm.resx">
+      <DependentUpon>CashOptionXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Staff\PaymentOptionXtraForm.resx">
+      <DependentUpon>PaymentOptionXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Staff\POSUserControl.resx">
+      <DependentUpon>POSUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Staff\ScanRFIDXtraForm.resx">
+      <DependentUpon>ScanRFIDXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Staff\StaffMainRibbonForm.resx">
+      <DependentUpon>StaffMainRibbonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Staff\TopUpXtraForm.resx">
+      <DependentUpon>TopUpXtraForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -179,9 +301,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Staff\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

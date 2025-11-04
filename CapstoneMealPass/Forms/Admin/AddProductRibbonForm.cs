@@ -5,13 +5,15 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 
-namespace CapstoneMealPass
+namespace CapstoneMealPass.Forms.Admin
 {
-    public partial class Form1 : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class AddProductRibbonForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public Form1()
+        public AddProductRibbonForm()
         {
             InitializeComponent();
         }

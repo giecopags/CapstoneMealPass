@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraBars;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace CapstoneMealPass.Forms.Admin
 {
-    public partial class EditEmployeeForm : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class TopUpHistoryUserControl : DevExpress.XtraEditors.XtraUserControl
     {
-        public EditEmployeeForm()
+        public TopUpHistoryUserControl()
         {
             InitializeComponent();
         }
