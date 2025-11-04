@@ -1,4 +1,5 @@
-﻿using DevExpress.Skins;
+﻿using CapstoneMealPass.Forms;
+using DevExpress.Skins;
 using DevExpress.UserSkins;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace CapstoneMealPass
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new LoginForm());
         }
     }
 }
