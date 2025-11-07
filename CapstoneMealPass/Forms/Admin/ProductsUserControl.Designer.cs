@@ -105,6 +105,8 @@
             // 
             // gvProducts
             // 
+            this.gvProducts.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.gvProducts.Appearance.HeaderPanel.Options.UseFont = true;
             this.gvProducts.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.ProductID,
             this.gridColumn1,
@@ -121,19 +123,20 @@
             this.gvProducts.OptionsView.RowAutoHeight = true;
             this.gvProducts.OptionsView.ShowGroupPanel = false;
             this.gvProducts.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvProducts_RowClick);
+            this.gvProducts.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvProducts_RowCellStyle);
             // 
             // ProductID
             // 
             this.ProductID.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ProductID.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.ProductID.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.ProductID.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ProductID.AppearanceCell.Options.UseBackColor = true;
             this.ProductID.AppearanceCell.Options.UseFont = true;
             this.ProductID.AppearanceCell.Options.UseForeColor = true;
             this.ProductID.AppearanceCell.Options.UseTextOptions = true;
-            this.ProductID.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.ProductID.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ProductID.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.ProductID.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ProductID.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.ProductID.AppearanceHeader.ForeColor = System.Drawing.Color.White;
             this.ProductID.AppearanceHeader.Options.UseBackColor = true;
             this.ProductID.AppearanceHeader.Options.UseFont = true;
@@ -149,18 +152,18 @@
             this.ProductID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.ProductID.Visible = true;
             this.ProductID.VisibleIndex = 0;
-            this.ProductID.Width = 101;
+            this.ProductID.Width = 93;
             // 
             // gridColumn1
             // 
             this.gridColumn1.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.gridColumn1.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn1.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn1.AppearanceCell.Options.UseFont = true;
             this.gridColumn1.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn1.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.White;
             this.gridColumn1.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn1.AppearanceHeader.Options.UseFont = true;
@@ -176,12 +179,12 @@
             this.gridColumn1.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 493;
+            this.gridColumn1.Width = 405;
             // 
             // Category
             // 
             this.Category.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Category.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.Category.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.Category.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Category.AppearanceCell.Options.UseBackColor = true;
             this.Category.AppearanceCell.Options.UseFont = true;
@@ -189,7 +192,7 @@
             this.Category.AppearanceCell.Options.UseTextOptions = true;
             this.Category.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.Category.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.Category.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Category.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.Category.AppearanceHeader.ForeColor = System.Drawing.Color.White;
             this.Category.AppearanceHeader.Options.UseBackColor = true;
             this.Category.AppearanceHeader.Options.UseFont = true;
@@ -205,12 +208,12 @@
             this.Category.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Category.Visible = true;
             this.Category.VisibleIndex = 2;
-            this.Category.Width = 130;
+            this.Category.Width = 170;
             // 
             // Stocks
             // 
             this.Stocks.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Stocks.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.Stocks.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.Stocks.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Stocks.AppearanceCell.Options.UseBackColor = true;
             this.Stocks.AppearanceCell.Options.UseFont = true;
@@ -218,7 +221,7 @@
             this.Stocks.AppearanceCell.Options.UseTextOptions = true;
             this.Stocks.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.Stocks.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.Stocks.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Stocks.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.Stocks.AppearanceHeader.ForeColor = System.Drawing.Color.White;
             this.Stocks.AppearanceHeader.Options.UseBackColor = true;
             this.Stocks.AppearanceHeader.Options.UseFont = true;
@@ -234,20 +237,20 @@
             this.Stocks.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Stocks.Visible = true;
             this.Stocks.VisibleIndex = 3;
-            this.Stocks.Width = 252;
+            this.Stocks.Width = 230;
             // 
             // StockStatus
             // 
             this.StockStatus.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.StockStatus.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.StockStatus.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.StockStatus.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.StockStatus.AppearanceCell.Options.UseBackColor = true;
             this.StockStatus.AppearanceCell.Options.UseFont = true;
             this.StockStatus.AppearanceCell.Options.UseForeColor = true;
             this.StockStatus.AppearanceCell.Options.UseTextOptions = true;
-            this.StockStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.StockStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.StockStatus.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.StockStatus.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.StockStatus.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.StockStatus.AppearanceHeader.ForeColor = System.Drawing.Color.White;
             this.StockStatus.AppearanceHeader.Options.UseBackColor = true;
             this.StockStatus.AppearanceHeader.Options.UseFont = true;
@@ -263,12 +266,12 @@
             this.StockStatus.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.StockStatus.Visible = true;
             this.StockStatus.VisibleIndex = 4;
-            this.StockStatus.Width = 313;
+            this.StockStatus.Width = 286;
             // 
             // Price
             // 
             this.Price.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Price.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.Price.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.Price.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Price.AppearanceCell.Options.UseBackColor = true;
             this.Price.AppearanceCell.Options.UseFont = true;
@@ -276,7 +279,7 @@
             this.Price.AppearanceCell.Options.UseTextOptions = true;
             this.Price.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.Price.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.Price.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Price.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.Price.AppearanceHeader.ForeColor = System.Drawing.Color.White;
             this.Price.AppearanceHeader.Options.UseBackColor = true;
             this.Price.AppearanceHeader.Options.UseFont = true;
@@ -292,12 +295,12 @@
             this.Price.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Price.Visible = true;
             this.Price.VisibleIndex = 5;
-            this.Price.Width = 228;
+            this.Price.Width = 208;
             // 
             // gridColumn4
             // 
             this.gridColumn4.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridColumn4.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.gridColumn4.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.gridColumn4.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn4.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn4.AppearanceCell.Options.UseFont = true;
@@ -305,7 +308,7 @@
             this.gridColumn4.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn4.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn4.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.gridColumn4.AppearanceHeader.ForeColor = System.Drawing.Color.White;
             this.gridColumn4.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn4.AppearanceHeader.Options.UseFont = true;
@@ -319,7 +322,7 @@
             this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 6;
-            this.gridColumn4.Width = 172;
+            this.gridColumn4.Width = 167;
             // 
             // repositoryItemButtonEdit1
             // 

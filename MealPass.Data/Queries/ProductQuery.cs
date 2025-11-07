@@ -43,7 +43,8 @@ namespace MealPass.Data.Queries
                    p.Price
             FROM pro.Products p
             LEFT JOIN pro.Category c ON p.CategoryID = c.CategoryID
-            LEFT JOIN pro.StockStatus s ON p.StockStatusID = s.StockStatusID";
+            LEFT JOIN pro.StockStatus s ON p.StockStatusID = s.StockStatusID
+            ORDER BY p.StockStatusID DESC;";
 
         public const string GetByIdWithDetails = @"
             SELECT p.ProductID,

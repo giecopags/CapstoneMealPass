@@ -234,6 +234,7 @@
             "Snacks",
             "Drinks",
             "Meals"});
+            this.categoryCBE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.categoryCBE.Size = new System.Drawing.Size(362, 40);
             this.categoryCBE.TabIndex = 36;
             // 

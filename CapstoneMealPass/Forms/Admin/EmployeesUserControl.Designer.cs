@@ -224,6 +224,8 @@
             // 
             // gvEmployees
             // 
+            this.gvEmployees.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gvEmployees.Appearance.HeaderPanel.Options.UseFont = true;
             this.gvEmployees.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
@@ -246,6 +248,7 @@
             this.gvEmployees.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gvEmployees.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvEmployees_RowClick);
+            this.gvEmployees.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvEmployees_RowCellStyle);
             // 
             // gridColumn1
             // 
@@ -422,7 +425,7 @@
             // AccountStatus
             // 
             this.AccountStatus.AppearanceCell.BackColor = System.Drawing.Color.White;
-            this.AccountStatus.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AccountStatus.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountStatus.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.AccountStatus.AppearanceCell.Options.UseBackColor = true;
             this.AccountStatus.AppearanceCell.Options.UseFont = true;

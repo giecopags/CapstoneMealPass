@@ -32,15 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.directXFormContainerControl1 = new DevExpress.XtraEditors.DirectXFormContainerControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.showCE = new DevExpress.XtraEditors.CheckEdit();
             this.passwordTE = new DevExpress.XtraEditors.TextEdit();
             this.usernameTE = new DevExpress.XtraEditors.TextEdit();
+            this.showCE = new DevExpress.XtraEditors.CheckEdit();
             this.svgImageCollection1 = new DevExpress.Utils.SvgImageCollection(this.components);
             this.loginBTN = new DevExpress.XtraEditors.SimpleButton();
             this.directXFormContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.showCE.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.passwordTE.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usernameTE.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showCE.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,19 +67,6 @@
             this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "Let\'s get started!";
             // 
-            // showCE
-            // 
-            this.showCE.Location = new System.Drawing.Point(601, 419);
-            this.showCE.Name = "showCE";
-            this.showCE.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.showCE.Properties.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.showCE.Properties.Appearance.Options.UseFont = true;
-            this.showCE.Properties.Appearance.Options.UseForeColor = true;
-            this.showCE.Properties.Caption = "Show";
-            this.showCE.Size = new System.Drawing.Size(65, 22);
-            this.showCE.TabIndex = 2;
-            this.showCE.CheckedChanged += new System.EventHandler(this.showCE_CheckedChanged);
-            // 
             // passwordTE
             // 
             this.passwordTE.EditValue = "Password";
@@ -105,6 +92,19 @@
             this.usernameTE.Properties.AutoHeight = false;
             this.usernameTE.Size = new System.Drawing.Size(376, 36);
             this.usernameTE.TabIndex = 0;
+            // 
+            // showCE
+            // 
+            this.showCE.Location = new System.Drawing.Point(601, 419);
+            this.showCE.Name = "showCE";
+            this.showCE.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.showCE.Properties.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.showCE.Properties.Appearance.Options.UseFont = true;
+            this.showCE.Properties.Appearance.Options.UseForeColor = true;
+            this.showCE.Properties.Caption = "Show";
+            this.showCE.Size = new System.Drawing.Size(65, 22);
+            this.showCE.TabIndex = 2;
+            this.showCE.CheckedChanged += new System.EventHandler(this.showCE_CheckedChanged);
             // 
             // svgImageCollection1
             // 
@@ -141,9 +141,9 @@
             this.Text = "LoginForm";
             this.directXFormContainerControl1.ResumeLayout(false);
             this.directXFormContainerControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.showCE.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.passwordTE.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usernameTE.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showCE.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).EndInit();
             this.ResumeLayout(false);
 

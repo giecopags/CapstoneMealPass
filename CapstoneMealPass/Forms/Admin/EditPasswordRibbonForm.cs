@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapstoneMealPass.Helpers;
 using DevExpress.XtraBars;
 using MealPass.Core.GlobalSql;
+using MealPass.Data.Repositories;
 using Microsoft.Data.SqlClient;
 
 namespace CapstoneMealPass.Forms.Admin
@@ -96,9 +98,9 @@ namespace CapstoneMealPass.Forms.Admin
             string password = passwordBE.Text;
             string confirmPassword = confirmpassBE.Text;
 
-            if (string.IsNullOrWhiteSpace(confirmPassword))
+            if (string.IsNullOrEmpty(confirmPassword))
             {
-                lblConfirmPasswordCaption.Visible = false;
+                lblConfirmPasswordCaption.Text = string.Empty;
                 return;
             }
 
@@ -116,7 +118,7 @@ namespace CapstoneMealPass.Forms.Admin
             }
         }
 
-        private void saveBTN_Click(object sender, EventArgs e)
+        private async Task saveBTN_Click(object sender, EventArgs e)
         {
             string newPassword = passwordBE.Text;
             string confirmPassword = confirmpassBE.Text;
@@ -133,7 +135,6 @@ namespace CapstoneMealPass.Forms.Admin
                 return;
             }
 
-            // Password validation (you already validate live too)
             if (newPassword.Length < 8 ||
                 !newPassword.Any(char.IsUpper) ||
                 !newPassword.Any(char.IsLower) ||
@@ -144,7 +145,6 @@ namespace CapstoneMealPass.Forms.Admin
                 return;
             }
 
-            // Hash and update in DB
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newPassword);
 
             using (SqlConnection connection = new SqlConnection(SQLQuery.connectionString))
@@ -155,12 +155,12 @@ namespace CapstoneMealPass.Forms.Admin
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@password", hashedPassword);
-                    cmd.Parameters.AddWithValue("@username", _username); // use stored username
+                    cmd.Parameters.AddWithValue("@username", _username); 
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        //GlobalLogger.employeeLog("Edited employee password", _username);
+                        await GlobalLogger.EmployeeLogAsync($"{UserSession.Username} modified employee password.", UserSession.Username);
                         MessageBox.Show("Password updated successfully.");
                         this.Close();
                     }
