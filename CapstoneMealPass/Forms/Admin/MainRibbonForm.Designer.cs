@@ -66,6 +66,7 @@
             this.posACE.Name = "posACE";
             this.posACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.posACE.Text = "POS";
+            this.posACE.Click += new System.EventHandler(this.posACE_Click);
             // 
             // purchasehistoryACE
             // 
@@ -78,6 +79,7 @@
             this.purchasehistoryACE.Name = "purchasehistoryACE";
             this.purchasehistoryACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.purchasehistoryACE.Text = "Purchase History";
+            this.purchasehistoryACE.Click += new System.EventHandler(this.purchasehistoryACE_Click);
             // 
             // sidePanel5
             // 
@@ -164,6 +166,7 @@
             this.topuphistoryACE.Name = "topuphistoryACE";
             this.topuphistoryACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.topuphistoryACE.Text = "Top-Up History";
+            this.topuphistoryACE.Click += new System.EventHandler(this.topuphistoryACE_Click);
             // 
             // employeelogsACE
             // 
@@ -177,6 +180,7 @@
             this.employeelogsACE.Name = "employeelogsACE";
             this.employeelogsACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.employeelogsACE.Text = "Employee Logs";
+            this.employeelogsACE.Click += new System.EventHandler(this.employeelogsACE_Click);
             // 
             // salesreportACE
             // 
@@ -190,6 +194,7 @@
             this.salesreportACE.Name = "salesreportACE";
             this.salesreportACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.salesreportACE.Text = "Sales Report";
+            this.salesreportACE.Click += new System.EventHandler(this.salesreportACE_Click);
             // 
             // employeelistACE
             // 
@@ -209,6 +214,7 @@
             this.employeelistACE.Name = "employeelistACE";
             this.employeelistACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.employeelistACE.Text = "Employee List";
+            this.employeelistACE.Click += new System.EventHandler(this.employeelistACE_Click);
             // 
             // sidePanel2
             // 
@@ -244,6 +250,7 @@
             this.productsACE.Name = "productsACE";
             this.productsACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.productsACE.Text = "Products";
+            this.productsACE.Click += new System.EventHandler(this.productsACE_Click);
             // 
             // dashboardACE
             // 

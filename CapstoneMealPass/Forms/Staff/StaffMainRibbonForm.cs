@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapstoneMealPass.Helpers;
+using DevExpress.XtraBars;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraBars;
 
 namespace CapstoneMealPass.Forms.Staff
 {
@@ -16,6 +17,32 @@ namespace CapstoneMealPass.Forms.Staff
         public StaffMainRibbonForm()
         {
             InitializeComponent();
+            datetimeLBL.Text = DateTime.Now.ToString("F");
+        }
+
+        private async void posACE_Click(object sender, EventArgs e)
+        {
+            await FormHelper.LoadUserControlAsync(mainSPanel, () => new Staff.POSUserControl());
+        }
+
+        private async void productsACE_Click(object sender, EventArgs e)
+        {
+            await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.ProductsUserControl());
+        }
+
+        private async void salesreportACE_Click(object sender, EventArgs e)
+        {
+            await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.SalesUserControl());
+        }
+
+        private async void purchasehistoryACE_Click(object sender, EventArgs e)
+        {
+            await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.PurchaseHistoryUserControl());
+        }
+
+        private async void topuphistoryACE_Click(object sender, EventArgs e)
+        {
+            await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.TopUpHistoryUserControl());
         }
     }
 }

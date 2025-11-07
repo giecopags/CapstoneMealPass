@@ -170,10 +170,10 @@
     <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="addBTN.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="addproductBTN.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAA8tJREFUWEftWF2LjVEU9q2Rj8iFckUu/A01fwBJuRA3XPgFkx8gH5FRhEQiIiIZ
+        vAAADrwBlbxySQAAA8tJREFUWEftWF2LjVEU9q2Rj8iFckUu/A01fwBJuRA3XPgFkx8gH5FRhEQiIiIZ
         uZOPFBeKC+QPSAjlc2aeR8+e9RzrbO+Yc5yRaJ5a5+z3Y6317LXW3mufM23aFKbwD4NkmwAo4rHv/xWE
         85kkZ9REE8Hy3GT/KHJEAMhxvp5Ncj6ARSQXakxyehXJNp1JRTJcnIb0kVxH8jjJpyTfkHxP8gPJ1yQf
         ktxDck3SaUVT35OCZLwVAQBbSD5nhwBwm2R/imarLHpCQ3oWkLyefI+QHCY5GoIQjfXsW4yNfY5ezyQb

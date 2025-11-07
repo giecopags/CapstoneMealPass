@@ -28,24 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions7 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(POSUserControl));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject25 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject26 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject27 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject28 = new DevExpress.Utils.SerializableAppearanceObject();
             this.sidePanel5 = new DevExpress.XtraEditors.SidePanel();
+            this.cartGC = new DevExpress.XtraGrid.GridControl();
+            this.cartGV = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.No = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Product = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.ProductPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Total = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Cancel = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCancelBTN = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.sidePanel7 = new DevExpress.XtraEditors.SidePanel();
             this.grandtotalLBL = new DevExpress.XtraEditors.LabelControl();
             this.confirmBTN = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.sidePanel9 = new DevExpress.XtraEditors.SidePanel();
+            this.sidePanel15 = new DevExpress.XtraEditors.SidePanel();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.mealsBTN = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.drinksBTN = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.allBTN = new DevExpress.XtraEditors.SimpleButton();
-            this.drinksBTN = new DevExpress.XtraEditors.SimpleButton();
-            this.mealsBTN = new DevExpress.XtraEditors.SimpleButton();
+            this.sidePanel14 = new DevExpress.XtraEditors.SidePanel();
+            this.addtocartBTN = new DevExpress.XtraEditors.SimpleButton();
             this.sidePanel12 = new DevExpress.XtraEditors.SidePanel();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.findTE = new DevExpress.XtraEditors.TextEdit();
@@ -57,19 +70,6 @@
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel10 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel11 = new DevExpress.XtraEditors.SidePanel();
-            this.cartGC = new DevExpress.XtraGrid.GridControl();
-            this.cartGV = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.No = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Product = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
-            this.ProductPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Total = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Cancel = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCancelBTN = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.sidePanel14 = new DevExpress.XtraEditors.SidePanel();
-            this.addtocartBTN = new DevExpress.XtraEditors.SimpleButton();
-            this.sidePanel15 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel6 = new DevExpress.XtraEditors.SidePanel();
             this.productsGC = new DevExpress.XtraGrid.GridControl();
             this.productsGV = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -80,17 +80,17 @@
             this.Stocks = new DevExpress.XtraGrid.Columns.GridColumn();
             this.StockStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sidePanel5.SuspendLayout();
-            this.sidePanel7.SuspendLayout();
-            this.sidePanel9.SuspendLayout();
-            this.sidePanel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).BeginInit();
-            this.sidePanel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartGC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cartGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCancelBTN)).BeginInit();
-            this.sidePanel14.SuspendLayout();
+            this.sidePanel7.SuspendLayout();
+            this.sidePanel9.SuspendLayout();
             this.sidePanel15.SuspendLayout();
+            this.sidePanel14.SuspendLayout();
+            this.sidePanel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).BeginInit();
+            this.sidePanel11.SuspendLayout();
             this.sidePanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsGC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsGV)).BeginInit();
@@ -107,297 +107,6 @@
             this.sidePanel5.Size = new System.Drawing.Size(471, 669);
             this.sidePanel5.TabIndex = 16;
             this.sidePanel5.Text = "sidePanel5";
-            // 
-            // sidePanel7
-            // 
-            this.sidePanel7.Appearance.BackColor = System.Drawing.Color.SeaGreen;
-            this.sidePanel7.Appearance.BorderColor = System.Drawing.Color.Gray;
-            this.sidePanel7.Appearance.Options.UseBackColor = true;
-            this.sidePanel7.Appearance.Options.UseBorderColor = true;
-            this.sidePanel7.Controls.Add(this.grandtotalLBL);
-            this.sidePanel7.Controls.Add(this.confirmBTN);
-            this.sidePanel7.Controls.Add(this.labelControl2);
-            this.sidePanel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.sidePanel7.Location = new System.Drawing.Point(0, 559);
-            this.sidePanel7.Name = "sidePanel7";
-            this.sidePanel7.Size = new System.Drawing.Size(471, 110);
-            this.sidePanel7.TabIndex = 0;
-            this.sidePanel7.Text = "sidePanel7";
-            // 
-            // grandtotalLBL
-            // 
-            this.grandtotalLBL.Appearance.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grandtotalLBL.Appearance.ForeColor = System.Drawing.Color.GreenYellow;
-            this.grandtotalLBL.Appearance.Options.UseFont = true;
-            this.grandtotalLBL.Appearance.Options.UseForeColor = true;
-            this.grandtotalLBL.Location = new System.Drawing.Point(345, 28);
-            this.grandtotalLBL.Name = "grandtotalLBL";
-            this.grandtotalLBL.Size = new System.Drawing.Size(49, 23);
-            this.grandtotalLBL.TabIndex = 7;
-            this.grandtotalLBL.Text = "00.00";
-            // 
-            // confirmBTN
-            // 
-            this.confirmBTN.Appearance.BackColor = System.Drawing.Color.LightGreen;
-            this.confirmBTN.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmBTN.Appearance.ForeColor = System.Drawing.Color.ForestGreen;
-            this.confirmBTN.Appearance.Options.UseBackColor = true;
-            this.confirmBTN.Appearance.Options.UseFont = true;
-            this.confirmBTN.Appearance.Options.UseForeColor = true;
-            this.confirmBTN.Location = new System.Drawing.Point(345, 73);
-            this.confirmBTN.Name = "confirmBTN";
-            this.confirmBTN.Size = new System.Drawing.Size(120, 31);
-            this.confirmBTN.TabIndex = 6;
-            this.confirmBTN.Text = "Confirm";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Honeydew;
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(147, 23);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(142, 28);
-            this.labelControl2.TabIndex = 1;
-            this.labelControl2.Text = "Grand Total:";
-            // 
-            // sidePanel9
-            // 
-            this.sidePanel9.BorderThickness = 0;
-            this.sidePanel9.Controls.Add(this.sidePanel15);
-            this.sidePanel9.Controls.Add(this.sidePanel14);
-            this.sidePanel9.Controls.Add(this.sidePanel12);
-            this.sidePanel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sidePanel9.Location = new System.Drawing.Point(0, 0);
-            this.sidePanel9.Name = "sidePanel9";
-            this.sidePanel9.Size = new System.Drawing.Size(1065, 199);
-            this.sidePanel9.TabIndex = 2;
-            this.sidePanel9.Text = "sidePanel9";
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Appearance.Options.UseForeColor = true;
-            this.labelControl7.Location = new System.Drawing.Point(629, 131);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(18, 16);
-            this.labelControl7.TabIndex = 13;
-            this.labelControl7.Text = "All";
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(381, 131);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(40, 16);
-            this.labelControl6.TabIndex = 12;
-            this.labelControl6.Text = "Drinks";
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(154, 129);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(39, 16);
-            this.labelControl5.TabIndex = 11;
-            this.labelControl5.Text = "Meals";
-            // 
-            // allBTN
-            // 
-            this.allBTN.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.allBTN.AppearanceHovered.Options.UseBackColor = true;
-            this.allBTN.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.allBTN.AppearancePressed.Options.UseBackColor = true;
-            this.allBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("allBTN.ImageOptions.Image")));
-            this.allBTN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.allBTN.Location = new System.Drawing.Point(597, 48);
-            this.allBTN.Name = "allBTN";
-            this.allBTN.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.allBTN.Size = new System.Drawing.Size(81, 77);
-            this.allBTN.TabIndex = 10;
-            this.allBTN.Text = "simpleButton6";
-            // 
-            // drinksBTN
-            // 
-            this.drinksBTN.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.drinksBTN.AppearanceHovered.Options.UseBackColor = true;
-            this.drinksBTN.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.drinksBTN.AppearancePressed.Options.UseBackColor = true;
-            this.drinksBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("drinksBTN.ImageOptions.Image")));
-            this.drinksBTN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.drinksBTN.Location = new System.Drawing.Point(360, 49);
-            this.drinksBTN.Name = "drinksBTN";
-            this.drinksBTN.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.drinksBTN.Size = new System.Drawing.Size(81, 77);
-            this.drinksBTN.TabIndex = 9;
-            this.drinksBTN.Text = "simpleButton3";
-            // 
-            // mealsBTN
-            // 
-            this.mealsBTN.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.mealsBTN.AppearanceHovered.Options.UseBackColor = true;
-            this.mealsBTN.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.mealsBTN.AppearancePressed.Options.UseBackColor = true;
-            this.mealsBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("mealsBTN.ImageOptions.Image")));
-            this.mealsBTN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.mealsBTN.Location = new System.Drawing.Point(133, 48);
-            this.mealsBTN.Name = "mealsBTN";
-            this.mealsBTN.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.mealsBTN.Size = new System.Drawing.Size(81, 77);
-            this.mealsBTN.TabIndex = 8;
-            this.mealsBTN.Text = "simpleButton2";
-            // 
-            // sidePanel12
-            // 
-            this.sidePanel12.AllowResize = false;
-            this.sidePanel12.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.sidePanel12.Appearance.Options.UseBackColor = true;
-            this.sidePanel12.BorderThickness = 0;
-            this.sidePanel12.Controls.Add(this.labelControl4);
-            this.sidePanel12.Controls.Add(this.findTE);
-            this.sidePanel12.Controls.Add(this.labelControl1);
-            this.sidePanel12.Controls.Add(this.snacksBTN);
-            this.sidePanel12.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidePanel12.Location = new System.Drawing.Point(0, 0);
-            this.sidePanel12.Name = "sidePanel12";
-            this.sidePanel12.Size = new System.Drawing.Size(243, 199);
-            this.sidePanel12.TabIndex = 1;
-            this.sidePanel12.Text = "sidePanel12";
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(170, 129);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(46, 16);
-            this.labelControl4.TabIndex = 8;
-            this.labelControl4.Text = "Snacks";
-            // 
-            // findTE
-            // 
-            this.findTE.EditValue = "";
-            this.findTE.Location = new System.Drawing.Point(6, 164);
-            this.findTE.Name = "findTE";
-            this.findTE.Size = new System.Drawing.Size(190, 28);
-            this.findTE.TabIndex = 4;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(125)))), ((int)(((byte)(79)))));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(6, -8);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(156, 36);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Categories";
-            // 
-            // snacksBTN
-            // 
-            this.snacksBTN.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.snacksBTN.AppearanceHovered.Options.UseBackColor = true;
-            this.snacksBTN.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.snacksBTN.AppearancePressed.Options.UseBackColor = true;
-            this.snacksBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("snacksBTN.BackgroundImage")));
-            this.snacksBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.snacksBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("snacksBTN.ImageOptions.Image")));
-            this.snacksBTN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.snacksBTN.Location = new System.Drawing.Point(154, 48);
-            this.snacksBTN.Name = "snacksBTN";
-            this.snacksBTN.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.snacksBTN.Size = new System.Drawing.Size(81, 77);
-            this.snacksBTN.TabIndex = 7;
-            this.snacksBTN.Text = "simpleButton1";
-            // 
-            // sidePanel4
-            // 
-            this.sidePanel4.AllowResize = false;
-            this.sidePanel4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.sidePanel4.Appearance.Options.UseBackColor = true;
-            this.sidePanel4.BorderThickness = 0;
-            this.sidePanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.sidePanel4.Location = new System.Drawing.Point(39, 689);
-            this.sidePanel4.Name = "sidePanel4";
-            this.sidePanel4.Size = new System.Drawing.Size(1571, 33);
-            this.sidePanel4.TabIndex = 15;
-            this.sidePanel4.Text = "sidePanel4";
-            // 
-            // sidePanel3
-            // 
-            this.sidePanel3.AllowResize = false;
-            this.sidePanel3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.sidePanel3.Appearance.Options.UseBackColor = true;
-            this.sidePanel3.BorderThickness = 0;
-            this.sidePanel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sidePanel3.Location = new System.Drawing.Point(1610, 20);
-            this.sidePanel3.Name = "sidePanel3";
-            this.sidePanel3.Size = new System.Drawing.Size(35, 702);
-            this.sidePanel3.TabIndex = 14;
-            this.sidePanel3.Text = "sidePanel3";
-            // 
-            // sidePanel2
-            // 
-            this.sidePanel2.AllowResize = false;
-            this.sidePanel2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.sidePanel2.Appearance.Options.UseBackColor = true;
-            this.sidePanel2.BorderThickness = 0;
-            this.sidePanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidePanel2.Location = new System.Drawing.Point(0, 20);
-            this.sidePanel2.Name = "sidePanel2";
-            this.sidePanel2.Size = new System.Drawing.Size(39, 702);
-            this.sidePanel2.TabIndex = 13;
-            this.sidePanel2.Text = "sidePanel2";
-            // 
-            // sidePanel1
-            // 
-            this.sidePanel1.AllowResize = false;
-            this.sidePanel1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.sidePanel1.Appearance.Options.UseBackColor = true;
-            this.sidePanel1.BorderThickness = 0;
-            this.sidePanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sidePanel1.Location = new System.Drawing.Point(0, 0);
-            this.sidePanel1.Name = "sidePanel1";
-            this.sidePanel1.Size = new System.Drawing.Size(1645, 20);
-            this.sidePanel1.TabIndex = 12;
-            this.sidePanel1.Text = "sidePanel1";
-            // 
-            // sidePanel10
-            // 
-            this.sidePanel10.AllowResize = false;
-            this.sidePanel10.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.sidePanel10.Appearance.Options.UseBackColor = true;
-            this.sidePanel10.BorderThickness = 0;
-            this.sidePanel10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sidePanel10.Location = new System.Drawing.Point(1104, 20);
-            this.sidePanel10.Name = "sidePanel10";
-            this.sidePanel10.Size = new System.Drawing.Size(35, 669);
-            this.sidePanel10.TabIndex = 18;
-            this.sidePanel10.Text = "sidePanel10";
-            // 
-            // sidePanel11
-            // 
-            this.sidePanel11.BorderThickness = 0;
-            this.sidePanel11.Controls.Add(this.sidePanel6);
-            this.sidePanel11.Controls.Add(this.sidePanel9);
-            this.sidePanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sidePanel11.Location = new System.Drawing.Point(39, 20);
-            this.sidePanel11.Name = "sidePanel11";
-            this.sidePanel11.Size = new System.Drawing.Size(1065, 669);
-            this.sidePanel11.TabIndex = 19;
-            this.sidePanel11.Text = "sidePanel11";
             // 
             // cartGC
             // 
@@ -425,6 +134,7 @@
             this.cartGV.GridControl = this.cartGC;
             this.cartGV.Name = "cartGV";
             this.cartGV.OptionsView.ShowGroupPanel = false;
+            this.cartGV.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.cartGV_CellValueChanged);
             // 
             // No
             // 
@@ -574,11 +284,183 @@
             // 
             this.repositoryItemCancelBTN.AllowFocused = false;
             this.repositoryItemCancelBTN.AutoHeight = false;
-            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
+            editorButtonImageOptions7.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions7.SvgImage")));
             this.repositoryItemCancelBTN.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions7, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject25, serializableAppearanceObject26, serializableAppearanceObject27, serializableAppearanceObject28, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemCancelBTN.Name = "repositoryItemCancelBTN";
             this.repositoryItemCancelBTN.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemCancelBTN.Click += new System.EventHandler(this.repositoryItemCancelBTN_Click);
+            // 
+            // sidePanel7
+            // 
+            this.sidePanel7.Appearance.BackColor = System.Drawing.Color.SeaGreen;
+            this.sidePanel7.Appearance.BorderColor = System.Drawing.Color.Gray;
+            this.sidePanel7.Appearance.Options.UseBackColor = true;
+            this.sidePanel7.Appearance.Options.UseBorderColor = true;
+            this.sidePanel7.Controls.Add(this.grandtotalLBL);
+            this.sidePanel7.Controls.Add(this.confirmBTN);
+            this.sidePanel7.Controls.Add(this.labelControl2);
+            this.sidePanel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.sidePanel7.Location = new System.Drawing.Point(0, 559);
+            this.sidePanel7.Name = "sidePanel7";
+            this.sidePanel7.Size = new System.Drawing.Size(471, 110);
+            this.sidePanel7.TabIndex = 0;
+            this.sidePanel7.Text = "sidePanel7";
+            // 
+            // grandtotalLBL
+            // 
+            this.grandtotalLBL.Appearance.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grandtotalLBL.Appearance.ForeColor = System.Drawing.Color.GreenYellow;
+            this.grandtotalLBL.Appearance.Options.UseFont = true;
+            this.grandtotalLBL.Appearance.Options.UseForeColor = true;
+            this.grandtotalLBL.Location = new System.Drawing.Point(345, 28);
+            this.grandtotalLBL.Name = "grandtotalLBL";
+            this.grandtotalLBL.Size = new System.Drawing.Size(49, 23);
+            this.grandtotalLBL.TabIndex = 7;
+            this.grandtotalLBL.Text = "00.00";
+            // 
+            // confirmBTN
+            // 
+            this.confirmBTN.Appearance.BackColor = System.Drawing.Color.LightGreen;
+            this.confirmBTN.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmBTN.Appearance.ForeColor = System.Drawing.Color.ForestGreen;
+            this.confirmBTN.Appearance.Options.UseBackColor = true;
+            this.confirmBTN.Appearance.Options.UseFont = true;
+            this.confirmBTN.Appearance.Options.UseForeColor = true;
+            this.confirmBTN.Location = new System.Drawing.Point(345, 73);
+            this.confirmBTN.Name = "confirmBTN";
+            this.confirmBTN.Size = new System.Drawing.Size(120, 31);
+            this.confirmBTN.TabIndex = 6;
+            this.confirmBTN.Text = "Confirm";
+            this.confirmBTN.Click += new System.EventHandler(this.confirmBTN_Click);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Honeydew;
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Location = new System.Drawing.Point(147, 23);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(142, 28);
+            this.labelControl2.TabIndex = 1;
+            this.labelControl2.Text = "Grand Total:";
+            // 
+            // sidePanel9
+            // 
+            this.sidePanel9.BorderThickness = 0;
+            this.sidePanel9.Controls.Add(this.sidePanel15);
+            this.sidePanel9.Controls.Add(this.sidePanel14);
+            this.sidePanel9.Controls.Add(this.sidePanel12);
+            this.sidePanel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.sidePanel9.Location = new System.Drawing.Point(0, 0);
+            this.sidePanel9.Name = "sidePanel9";
+            this.sidePanel9.Size = new System.Drawing.Size(1065, 199);
+            this.sidePanel9.TabIndex = 2;
+            this.sidePanel9.Text = "sidePanel9";
+            // 
+            // sidePanel15
+            // 
+            this.sidePanel15.AllowResize = false;
+            this.sidePanel15.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.sidePanel15.Appearance.Options.UseBackColor = true;
+            this.sidePanel15.BorderThickness = 0;
+            this.sidePanel15.Controls.Add(this.labelControl7);
+            this.sidePanel15.Controls.Add(this.mealsBTN);
+            this.sidePanel15.Controls.Add(this.labelControl6);
+            this.sidePanel15.Controls.Add(this.drinksBTN);
+            this.sidePanel15.Controls.Add(this.labelControl5);
+            this.sidePanel15.Controls.Add(this.allBTN);
+            this.sidePanel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sidePanel15.Location = new System.Drawing.Point(243, 0);
+            this.sidePanel15.Name = "sidePanel15";
+            this.sidePanel15.Size = new System.Drawing.Size(707, 199);
+            this.sidePanel15.TabIndex = 4;
+            this.sidePanel15.Text = "sidePanel15";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Appearance.Options.UseForeColor = true;
+            this.labelControl7.Location = new System.Drawing.Point(629, 131);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(18, 16);
+            this.labelControl7.TabIndex = 13;
+            this.labelControl7.Text = "All";
+            // 
+            // mealsBTN
+            // 
+            this.mealsBTN.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.mealsBTN.AppearanceHovered.Options.UseBackColor = true;
+            this.mealsBTN.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.mealsBTN.AppearancePressed.Options.UseBackColor = true;
+            this.mealsBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("mealsBTN.ImageOptions.Image")));
+            this.mealsBTN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.mealsBTN.Location = new System.Drawing.Point(133, 48);
+            this.mealsBTN.Name = "mealsBTN";
+            this.mealsBTN.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.mealsBTN.Size = new System.Drawing.Size(81, 77);
+            this.mealsBTN.TabIndex = 8;
+            this.mealsBTN.Text = "simpleButton2";
+            this.mealsBTN.Click += new System.EventHandler(this.mealsBTN_Click);
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Appearance.Options.UseForeColor = true;
+            this.labelControl6.Location = new System.Drawing.Point(381, 131);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(40, 16);
+            this.labelControl6.TabIndex = 12;
+            this.labelControl6.Text = "Drinks";
+            // 
+            // drinksBTN
+            // 
+            this.drinksBTN.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.drinksBTN.AppearanceHovered.Options.UseBackColor = true;
+            this.drinksBTN.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.drinksBTN.AppearancePressed.Options.UseBackColor = true;
+            this.drinksBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("drinksBTN.ImageOptions.Image")));
+            this.drinksBTN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.drinksBTN.Location = new System.Drawing.Point(360, 49);
+            this.drinksBTN.Name = "drinksBTN";
+            this.drinksBTN.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.drinksBTN.Size = new System.Drawing.Size(81, 77);
+            this.drinksBTN.TabIndex = 9;
+            this.drinksBTN.Text = "simpleButton3";
+            this.drinksBTN.Click += new System.EventHandler(this.drinksBTN_Click);
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Appearance.Options.UseForeColor = true;
+            this.labelControl5.Location = new System.Drawing.Point(154, 129);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(39, 16);
+            this.labelControl5.TabIndex = 11;
+            this.labelControl5.Text = "Meals";
+            // 
+            // allBTN
+            // 
+            this.allBTN.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.allBTN.AppearanceHovered.Options.UseBackColor = true;
+            this.allBTN.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.allBTN.AppearancePressed.Options.UseBackColor = true;
+            this.allBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("allBTN.ImageOptions.Image")));
+            this.allBTN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.allBTN.Location = new System.Drawing.Point(597, 48);
+            this.allBTN.Name = "allBTN";
+            this.allBTN.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.allBTN.Size = new System.Drawing.Size(81, 77);
+            this.allBTN.TabIndex = 10;
+            this.allBTN.Text = "simpleButton6";
+            this.allBTN.Click += new System.EventHandler(this.allBTN_Click);
             // 
             // sidePanel14
             // 
@@ -609,25 +491,152 @@
             this.addtocartBTN.Size = new System.Drawing.Size(101, 32);
             this.addtocartBTN.TabIndex = 27;
             this.addtocartBTN.Text = "Add";
+            this.addtocartBTN.Click += new System.EventHandler(this.addtocartBTN_Click);
             // 
-            // sidePanel15
+            // sidePanel12
             // 
-            this.sidePanel15.AllowResize = false;
-            this.sidePanel15.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.sidePanel15.Appearance.Options.UseBackColor = true;
-            this.sidePanel15.BorderThickness = 0;
-            this.sidePanel15.Controls.Add(this.labelControl7);
-            this.sidePanel15.Controls.Add(this.mealsBTN);
-            this.sidePanel15.Controls.Add(this.labelControl6);
-            this.sidePanel15.Controls.Add(this.drinksBTN);
-            this.sidePanel15.Controls.Add(this.labelControl5);
-            this.sidePanel15.Controls.Add(this.allBTN);
-            this.sidePanel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sidePanel15.Location = new System.Drawing.Point(243, 0);
-            this.sidePanel15.Name = "sidePanel15";
-            this.sidePanel15.Size = new System.Drawing.Size(707, 199);
-            this.sidePanel15.TabIndex = 4;
-            this.sidePanel15.Text = "sidePanel15";
+            this.sidePanel12.AllowResize = false;
+            this.sidePanel12.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.sidePanel12.Appearance.Options.UseBackColor = true;
+            this.sidePanel12.BorderThickness = 0;
+            this.sidePanel12.Controls.Add(this.labelControl4);
+            this.sidePanel12.Controls.Add(this.findTE);
+            this.sidePanel12.Controls.Add(this.labelControl1);
+            this.sidePanel12.Controls.Add(this.snacksBTN);
+            this.sidePanel12.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidePanel12.Location = new System.Drawing.Point(0, 0);
+            this.sidePanel12.Name = "sidePanel12";
+            this.sidePanel12.Size = new System.Drawing.Size(243, 199);
+            this.sidePanel12.TabIndex = 1;
+            this.sidePanel12.Text = "sidePanel12";
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Appearance.Options.UseForeColor = true;
+            this.labelControl4.Location = new System.Drawing.Point(170, 129);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(46, 16);
+            this.labelControl4.TabIndex = 8;
+            this.labelControl4.Text = "Snacks";
+            // 
+            // findTE
+            // 
+            this.findTE.EditValue = "";
+            this.findTE.Location = new System.Drawing.Point(6, 164);
+            this.findTE.Name = "findTE";
+            this.findTE.Size = new System.Drawing.Size(190, 28);
+            this.findTE.TabIndex = 4;
+            this.findTE.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.findTE_EditValueChanging);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(125)))), ((int)(((byte)(79)))));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(6, -8);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(156, 36);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "Categories";
+            // 
+            // snacksBTN
+            // 
+            this.snacksBTN.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.snacksBTN.AppearanceHovered.Options.UseBackColor = true;
+            this.snacksBTN.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.snacksBTN.AppearancePressed.Options.UseBackColor = true;
+            this.snacksBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("snacksBTN.BackgroundImage")));
+            this.snacksBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.snacksBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("snacksBTN.ImageOptions.Image")));
+            this.snacksBTN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.snacksBTN.Location = new System.Drawing.Point(154, 48);
+            this.snacksBTN.Name = "snacksBTN";
+            this.snacksBTN.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.snacksBTN.Size = new System.Drawing.Size(81, 77);
+            this.snacksBTN.TabIndex = 7;
+            this.snacksBTN.Text = "simpleButton1";
+            this.snacksBTN.Click += new System.EventHandler(this.snacksBTN_Click);
+            // 
+            // sidePanel4
+            // 
+            this.sidePanel4.AllowResize = false;
+            this.sidePanel4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.sidePanel4.Appearance.Options.UseBackColor = true;
+            this.sidePanel4.BorderThickness = 0;
+            this.sidePanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.sidePanel4.Location = new System.Drawing.Point(39, 689);
+            this.sidePanel4.Name = "sidePanel4";
+            this.sidePanel4.Size = new System.Drawing.Size(1571, 33);
+            this.sidePanel4.TabIndex = 15;
+            this.sidePanel4.Text = "sidePanel4";
+            // 
+            // sidePanel3
+            // 
+            this.sidePanel3.AllowResize = false;
+            this.sidePanel3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.sidePanel3.Appearance.Options.UseBackColor = true;
+            this.sidePanel3.BorderThickness = 0;
+            this.sidePanel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sidePanel3.Location = new System.Drawing.Point(1610, 20);
+            this.sidePanel3.Name = "sidePanel3";
+            this.sidePanel3.Size = new System.Drawing.Size(35, 702);
+            this.sidePanel3.TabIndex = 14;
+            this.sidePanel3.Text = "sidePanel3";
+            // 
+            // sidePanel2
+            // 
+            this.sidePanel2.AllowResize = false;
+            this.sidePanel2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.sidePanel2.Appearance.Options.UseBackColor = true;
+            this.sidePanel2.BorderThickness = 0;
+            this.sidePanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidePanel2.Location = new System.Drawing.Point(0, 20);
+            this.sidePanel2.Name = "sidePanel2";
+            this.sidePanel2.Size = new System.Drawing.Size(39, 702);
+            this.sidePanel2.TabIndex = 13;
+            this.sidePanel2.Text = "sidePanel2";
+            // 
+            // sidePanel1
+            // 
+            this.sidePanel1.AllowResize = false;
+            this.sidePanel1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.sidePanel1.Appearance.Options.UseBackColor = true;
+            this.sidePanel1.BorderThickness = 0;
+            this.sidePanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.sidePanel1.Location = new System.Drawing.Point(0, 0);
+            this.sidePanel1.Name = "sidePanel1";
+            this.sidePanel1.Size = new System.Drawing.Size(1645, 20);
+            this.sidePanel1.TabIndex = 12;
+            this.sidePanel1.Text = "sidePanel1";
+            // 
+            // sidePanel10
+            // 
+            this.sidePanel10.AllowResize = false;
+            this.sidePanel10.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.sidePanel10.Appearance.Options.UseBackColor = true;
+            this.sidePanel10.BorderThickness = 0;
+            this.sidePanel10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sidePanel10.Location = new System.Drawing.Point(1104, 20);
+            this.sidePanel10.Name = "sidePanel10";
+            this.sidePanel10.Size = new System.Drawing.Size(35, 669);
+            this.sidePanel10.TabIndex = 18;
+            this.sidePanel10.Text = "sidePanel10";
+            // 
+            // sidePanel11
+            // 
+            this.sidePanel11.BorderThickness = 0;
+            this.sidePanel11.Controls.Add(this.sidePanel6);
+            this.sidePanel11.Controls.Add(this.sidePanel9);
+            this.sidePanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sidePanel11.Location = new System.Drawing.Point(39, 20);
+            this.sidePanel11.Name = "sidePanel11";
+            this.sidePanel11.Size = new System.Drawing.Size(1065, 669);
+            this.sidePanel11.TabIndex = 19;
+            this.sidePanel11.Text = "sidePanel11";
             // 
             // sidePanel6
             // 
@@ -820,20 +829,20 @@
             this.Name = "POSUserControl";
             this.Size = new System.Drawing.Size(1645, 722);
             this.sidePanel5.ResumeLayout(false);
-            this.sidePanel7.ResumeLayout(false);
-            this.sidePanel7.PerformLayout();
-            this.sidePanel9.ResumeLayout(false);
-            this.sidePanel12.ResumeLayout(false);
-            this.sidePanel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).EndInit();
-            this.sidePanel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cartGC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cartGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCancelBTN)).EndInit();
-            this.sidePanel14.ResumeLayout(false);
+            this.sidePanel7.ResumeLayout(false);
+            this.sidePanel7.PerformLayout();
+            this.sidePanel9.ResumeLayout(false);
             this.sidePanel15.ResumeLayout(false);
             this.sidePanel15.PerformLayout();
+            this.sidePanel14.ResumeLayout(false);
+            this.sidePanel12.ResumeLayout(false);
+            this.sidePanel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).EndInit();
+            this.sidePanel11.ResumeLayout(false);
             this.sidePanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.productsGC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsGV)).EndInit();

@@ -195,6 +195,7 @@
             this.addproductBTN.Size = new System.Drawing.Size(182, 47);
             this.addproductBTN.TabIndex = 38;
             this.addproductBTN.Text = "Add Product";
+            this.addproductBTN.Click += new System.EventHandler(this.addproductBTN_Click);
             // 
             // priceTE
             // 

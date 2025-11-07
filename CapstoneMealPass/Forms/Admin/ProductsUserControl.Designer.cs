@@ -35,11 +35,11 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.sidePanel7 = new DevExpress.XtraEditors.SidePanel();
-            this.gcEmployees = new DevExpress.XtraGrid.GridControl();
-            this.gvEmployees = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gcProducts = new DevExpress.XtraGrid.GridControl();
+            this.gvProducts = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ProductID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Category = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Stocks = new DevExpress.XtraGrid.Columns.GridColumn();
             this.StockStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Price = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,7 +48,7 @@
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.repositoryItemButtonDelete2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.sidePanel5 = new DevExpress.XtraEditors.SidePanel();
-            this.addBTN = new DevExpress.XtraEditors.SimpleButton();
+            this.addproductBTN = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.findTE = new DevExpress.XtraEditors.TextEdit();
             this.sidePanel6 = new DevExpress.XtraEditors.SidePanel();
@@ -57,8 +57,8 @@
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcEmployees)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvEmployees)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonDelete2)).BeginInit();
@@ -72,7 +72,7 @@
             this.sidePanel7.AllowResize = false;
             this.sidePanel7.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.sidePanel7.Appearance.Options.UseBackColor = true;
-            this.sidePanel7.Controls.Add(this.gcEmployees);
+            this.sidePanel7.Controls.Add(this.gcProducts);
             this.sidePanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sidePanel7.Location = new System.Drawing.Point(28, 81);
             this.sidePanel7.Name = "sidePanel7";
@@ -80,53 +80,51 @@
             this.sidePanel7.TabIndex = 9;
             this.sidePanel7.Text = "sidePanel7";
             // 
-            // gcEmployees
+            // gcProducts
             // 
-            this.gcEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcEmployees.EmbeddedNavigator.Buttons.Append.Visible = false;
-            this.gcEmployees.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
-            this.gcEmployees.EmbeddedNavigator.Buttons.Edit.Visible = false;
-            this.gcEmployees.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
-            this.gcEmployees.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gcEmployees.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gcEmployees.Location = new System.Drawing.Point(0, 0);
-            this.gcEmployees.MainView = this.gvEmployees;
-            this.gcEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gcEmployees.Name = "gcEmployees";
-            this.gcEmployees.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.gcProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcProducts.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.gcProducts.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gcProducts.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gcProducts.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.gcProducts.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.gcProducts.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gcProducts.Location = new System.Drawing.Point(0, 0);
+            this.gcProducts.MainView = this.gvProducts;
+            this.gcProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gcProducts.Name = "gcProducts";
+            this.gcProducts.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemPictureEdit1,
             this.repositoryItemButtonEdit1,
             this.repositoryItemButtonDelete2});
-            this.gcEmployees.Size = new System.Drawing.Size(1068, 610);
-            this.gcEmployees.TabIndex = 8;
-            this.gcEmployees.UseEmbeddedNavigator = true;
-            this.gcEmployees.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvEmployees});
+            this.gcProducts.Size = new System.Drawing.Size(1068, 610);
+            this.gcProducts.TabIndex = 8;
+            this.gcProducts.UseEmbeddedNavigator = true;
+            this.gcProducts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvProducts});
             // 
-            // gvEmployees
+            // gvProducts
             // 
-            this.gvEmployees.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvProducts.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.ProductID,
             this.gridColumn1,
-            this.gridColumn2,
+            this.Category,
             this.Stocks,
             this.StockStatus,
             this.Price,
             this.gridColumn4});
-            this.gvEmployees.DetailHeight = 284;
-            this.gvEmployees.GridControl = this.gcEmployees;
-            this.gvEmployees.GroupCount = 1;
-            this.gvEmployees.Name = "gvEmployees";
-            this.gvEmployees.OptionsBehavior.AutoExpandAllGroups = true;
-            this.gvEmployees.OptionsEditForm.PopupEditFormWidth = 686;
-            this.gvEmployees.OptionsView.RowAutoHeight = true;
-            this.gvEmployees.OptionsView.ShowGroupPanel = false;
-            this.gvEmployees.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gvProducts.DetailHeight = 284;
+            this.gvProducts.GridControl = this.gcProducts;
+            this.gvProducts.Name = "gvProducts";
+            this.gvProducts.OptionsBehavior.AutoExpandAllGroups = true;
+            this.gvProducts.OptionsEditForm.PopupEditFormWidth = 686;
+            this.gvProducts.OptionsView.RowAutoHeight = true;
+            this.gvProducts.OptionsView.ShowGroupPanel = false;
+            this.gvProducts.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvProducts_RowClick);
             // 
             // ProductID
             // 
-            this.ProductID.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.ProductID.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ProductID.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.ProductID.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ProductID.AppearanceCell.Options.UseBackColor = true;
@@ -155,7 +153,7 @@
             // 
             // gridColumn1
             // 
-            this.gridColumn1.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.gridColumn1.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.gridColumn1.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn1.AppearanceCell.Options.UseBackColor = true;
@@ -180,38 +178,38 @@
             this.gridColumn1.VisibleIndex = 1;
             this.gridColumn1.Width = 493;
             // 
-            // gridColumn2
+            // Category
             // 
-            this.gridColumn2.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
-            this.gridColumn2.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.gridColumn2.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.gridColumn2.AppearanceCell.Options.UseBackColor = true;
-            this.gridColumn2.AppearanceCell.Options.UseFont = true;
-            this.gridColumn2.AppearanceCell.Options.UseForeColor = true;
-            this.gridColumn2.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.gridColumn2.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.White;
-            this.gridColumn2.AppearanceHeader.Options.UseBackColor = true;
-            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn2.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn2.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn2.Caption = "Category";
-            this.gridColumn2.FieldName = "CategoryName";
-            this.gridColumn2.MinWidth = 21;
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.OptionsColumn.AllowEdit = false;
-            this.gridColumn2.OptionsColumn.AllowFocus = false;
-            this.gridColumn2.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 130;
+            this.Category.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Category.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.Category.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Category.AppearanceCell.Options.UseBackColor = true;
+            this.Category.AppearanceCell.Options.UseFont = true;
+            this.Category.AppearanceCell.Options.UseForeColor = true;
+            this.Category.AppearanceCell.Options.UseTextOptions = true;
+            this.Category.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.Category.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
+            this.Category.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Category.AppearanceHeader.ForeColor = System.Drawing.Color.White;
+            this.Category.AppearanceHeader.Options.UseBackColor = true;
+            this.Category.AppearanceHeader.Options.UseFont = true;
+            this.Category.AppearanceHeader.Options.UseForeColor = true;
+            this.Category.AppearanceHeader.Options.UseTextOptions = true;
+            this.Category.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Category.Caption = "Category";
+            this.Category.FieldName = "CategoryName";
+            this.Category.MinWidth = 21;
+            this.Category.Name = "Category";
+            this.Category.OptionsColumn.AllowEdit = false;
+            this.Category.OptionsColumn.AllowFocus = false;
+            this.Category.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.Category.Visible = true;
+            this.Category.VisibleIndex = 2;
+            this.Category.Width = 130;
             // 
             // Stocks
             // 
-            this.Stocks.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.Stocks.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Stocks.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.Stocks.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Stocks.AppearanceCell.Options.UseBackColor = true;
@@ -228,19 +226,19 @@
             this.Stocks.AppearanceHeader.Options.UseTextOptions = true;
             this.Stocks.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Stocks.Caption = "Stocks";
-            this.Stocks.FieldName = "StockQuantity";
+            this.Stocks.FieldName = "Quantity";
             this.Stocks.MinWidth = 21;
             this.Stocks.Name = "Stocks";
             this.Stocks.OptionsColumn.AllowEdit = false;
             this.Stocks.OptionsColumn.AllowFocus = false;
             this.Stocks.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Stocks.Visible = true;
-            this.Stocks.VisibleIndex = 2;
+            this.Stocks.VisibleIndex = 3;
             this.Stocks.Width = 252;
             // 
             // StockStatus
             // 
-            this.StockStatus.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.StockStatus.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
             this.StockStatus.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.StockStatus.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.StockStatus.AppearanceCell.Options.UseBackColor = true;
@@ -257,19 +255,19 @@
             this.StockStatus.AppearanceHeader.Options.UseTextOptions = true;
             this.StockStatus.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.StockStatus.Caption = "Stock Status";
-            this.StockStatus.FieldName = "StockStatus";
+            this.StockStatus.FieldName = "StockStatusName";
             this.StockStatus.MinWidth = 21;
             this.StockStatus.Name = "StockStatus";
             this.StockStatus.OptionsColumn.AllowEdit = false;
             this.StockStatus.OptionsColumn.AllowFocus = false;
             this.StockStatus.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.StockStatus.Visible = true;
-            this.StockStatus.VisibleIndex = 3;
+            this.StockStatus.VisibleIndex = 4;
             this.StockStatus.Width = 313;
             // 
             // Price
             // 
-            this.Price.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Price.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Price.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.Price.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Price.AppearanceCell.Options.UseBackColor = true;
@@ -293,12 +291,12 @@
             this.Price.OptionsColumn.AllowFocus = false;
             this.Price.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Price.Visible = true;
-            this.Price.VisibleIndex = 4;
+            this.Price.VisibleIndex = 5;
             this.Price.Width = 228;
             // 
             // gridColumn4
             // 
-            this.gridColumn4.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.gridColumn4.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gridColumn4.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.gridColumn4.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn4.AppearanceCell.Options.UseBackColor = true;
@@ -320,7 +318,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 5;
+            this.gridColumn4.VisibleIndex = 6;
             this.gridColumn4.Width = 172;
             // 
             // repositoryItemButtonEdit1
@@ -359,18 +357,19 @@
             this.sidePanel5.TabIndex = 0;
             this.sidePanel5.Text = "sidePanel5";
             // 
-            // addBTN
+            // addproductBTN
             // 
-            this.addBTN.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(141)))), ((int)(((byte)(57)))));
-            this.addBTN.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addBTN.Appearance.Options.UseBackColor = true;
-            this.addBTN.Appearance.Options.UseFont = true;
-            this.addBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("addBTN.ImageOptions.Image")));
-            this.addBTN.Location = new System.Drawing.Point(105, 3);
-            this.addBTN.Name = "addBTN";
-            this.addBTN.Size = new System.Drawing.Size(150, 40);
-            this.addBTN.TabIndex = 1;
-            this.addBTN.Text = "Add Product";
+            this.addproductBTN.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(141)))), ((int)(((byte)(57)))));
+            this.addproductBTN.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addproductBTN.Appearance.Options.UseBackColor = true;
+            this.addproductBTN.Appearance.Options.UseFont = true;
+            this.addproductBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("addproductBTN.ImageOptions.Image")));
+            this.addproductBTN.Location = new System.Drawing.Point(105, 3);
+            this.addproductBTN.Name = "addproductBTN";
+            this.addproductBTN.Size = new System.Drawing.Size(150, 40);
+            this.addproductBTN.TabIndex = 1;
+            this.addproductBTN.Text = "Add Product";
+            this.addproductBTN.Click += new System.EventHandler(this.addproductBTN_Click);
             // 
             // labelControl1
             // 
@@ -393,12 +392,13 @@
             this.findTE.Properties.AutoHeight = false;
             this.findTE.Size = new System.Drawing.Size(206, 23);
             this.findTE.TabIndex = 2;
+            this.findTE.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.findTE_EditValueChanging);
             // 
             // sidePanel6
             // 
             this.sidePanel6.AllowResize = false;
             this.sidePanel6.BorderThickness = 0;
-            this.sidePanel6.Controls.Add(this.addBTN);
+            this.sidePanel6.Controls.Add(this.addproductBTN);
             this.sidePanel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.sidePanel6.Location = new System.Drawing.Point(807, 30);
             this.sidePanel6.Name = "sidePanel6";
@@ -474,8 +474,8 @@
             this.Name = "ProductsUserControl";
             this.Size = new System.Drawing.Size(1125, 722);
             this.sidePanel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gcEmployees)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvEmployees)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonDelete2)).EndInit();
@@ -490,7 +490,7 @@
         #endregion
         private DevExpress.XtraEditors.SidePanel sidePanel7;
         private DevExpress.XtraEditors.SidePanel sidePanel5;
-        private DevExpress.XtraEditors.SimpleButton addBTN;
+        private DevExpress.XtraEditors.SimpleButton addproductBTN;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit findTE;
         private DevExpress.XtraEditors.SidePanel sidePanel6;
@@ -498,10 +498,10 @@
         private DevExpress.XtraEditors.SidePanel sidePanel3;
         private DevExpress.XtraEditors.SidePanel sidePanel2;
         private DevExpress.XtraEditors.SidePanel sidePanel1;
-        private DevExpress.XtraGrid.GridControl gcEmployees;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvEmployees;
+        private DevExpress.XtraGrid.GridControl gcProducts;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvProducts;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn Category;
         private DevExpress.XtraGrid.Columns.GridColumn ProductID;
         private DevExpress.XtraGrid.Columns.GridColumn Stocks;
         private DevExpress.XtraGrid.Columns.GridColumn StockStatus;

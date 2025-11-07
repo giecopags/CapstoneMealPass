@@ -422,6 +422,7 @@
             this.addemployeeBTN.Size = new System.Drawing.Size(147, 40);
             this.addemployeeBTN.TabIndex = 75;
             this.addemployeeBTN.Text = "Add Employee";
+            this.addemployeeBTN.Click += new System.EventHandler(this.addemployeeBTN_Click);
             // 
             // labelControl3
             // 
@@ -477,6 +478,8 @@
             this.passwordBE.Size = new System.Drawing.Size(172, 28);
             this.passwordBE.TabIndex = 74;
             this.passwordBE.Tag = "close";
+            this.passwordBE.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.passwordBE_ButtonPressed);
+            this.passwordBE.EditValueChanged += new System.EventHandler(this.passwordBE_EditValueChanged);
             // 
             // usernameTE
             // 

@@ -117,6 +117,7 @@
             this.saveBTN.Size = new System.Drawing.Size(155, 44);
             this.saveBTN.TabIndex = 123;
             this.saveBTN.Text = "Save Changes";
+            this.saveBTN.Click += new System.EventHandler(this.saveBTN_Click);
             // 
             // labelControl11
             // 
@@ -143,6 +144,7 @@
             this.changepasswordHLBL.Size = new System.Drawing.Size(64, 16);
             this.changepasswordHLBL.TabIndex = 121;
             this.changepasswordHLBL.Text = "Click Here!";
+            this.changepasswordHLBL.Click += new System.EventHandler(this.changepasswordHLBL_Click);
             // 
             // availabilityLC
             // 
@@ -176,6 +178,7 @@
             this.accountTS.Properties.ThumbWidth = 10;
             this.accountTS.Size = new System.Drawing.Size(105, 35);
             this.accountTS.TabIndex = 119;
+            this.accountTS.Toggled += new System.EventHandler(this.accountTS_Toggled);
             // 
             // employeeRG
             // 
@@ -504,6 +507,7 @@
             this.deleteBTN.Size = new System.Drawing.Size(155, 44);
             this.deleteBTN.TabIndex = 106;
             this.deleteBTN.Text = "Delete Employee";
+            this.deleteBTN.Click += new System.EventHandler(this.deleteBTN_Click);
             // 
             // labelControl3
             // 

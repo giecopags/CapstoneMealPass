@@ -8,6 +8,5 @@ namespace MealPass.Core.Entity
 {
     public class ProductLogs
     {
-
     }
 }
