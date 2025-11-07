@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapstoneMealPass.Helpers;
+using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace CapstoneMealPass.Forms.Staff
 {
@@ -16,6 +17,21 @@ namespace CapstoneMealPass.Forms.Staff
         public PaymentOptionXtraForm()
         {
             InitializeComponent();
+        }
+
+        private void mealpassBTN_Click(object sender, EventArgs e)
+        {
+            FormHelper.DisplayForm(new Staff.ScanRFIDXtraForm());
+        }
+
+        private void cashBTN_Click(object sender, EventArgs e)
+        {
+            FormHelper.DisplayForm(new Staff.CashOptionXtraForm());
+        }
+
+        private void topupBTN_Click(object sender, EventArgs e)
+        {
+            FormHelper.DisplayForm(new Staff.TopUpXtraForm());
         }
     }
 }

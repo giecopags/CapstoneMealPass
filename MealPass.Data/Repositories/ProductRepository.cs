@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Threading.Tasks;
-using Dapper;
+﻿using Dapper;
 using MealPass.Core.Entity;
+using MealPass.Core.GlobalSql;
 using MealPass.Core.Interface;
-using MealPass.Core.GlobalSQL;
 using MealPass.Data.Queries;
-using System.Data;
 using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 
 namespace MealPass.Data.Repositories
@@ -112,7 +114,7 @@ namespace MealPass.Data.Repositories
             }
         }
 
-        public async Task<DataRow?> GetByIdWithDetailsAsync(int productId)
+        public async Task<DataRow> GetByIdWithDetailsAsync(int productId)
         {
             using (var conn = new SqlConnection(_connectionString))
             using (var cmd = new SqlCommand(ProductQuery.GetByIdWithDetails, conn))

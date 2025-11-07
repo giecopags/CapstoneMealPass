@@ -155,6 +155,7 @@
             this.updateBTN.Size = new System.Drawing.Size(180, 54);
             this.updateBTN.TabIndex = 107;
             this.updateBTN.Text = "Save Changes";
+            this.updateBTN.Click += new System.EventHandler(this.updateBTN_Click);
             // 
             // deleteBTN
             // 
@@ -171,6 +172,7 @@
             this.deleteBTN.Size = new System.Drawing.Size(180, 54);
             this.deleteBTN.TabIndex = 106;
             this.deleteBTN.Text = "Delete Product";
+            this.deleteBTN.Click += new System.EventHandler(this.deleteBTN_Click);
             // 
             // labelControl3
             // 

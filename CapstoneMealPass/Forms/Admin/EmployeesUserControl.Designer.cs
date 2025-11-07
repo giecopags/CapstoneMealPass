@@ -41,7 +41,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.findTE = new DevExpress.XtraEditors.TextEdit();
             this.sidePanel6 = new DevExpress.XtraEditors.SidePanel();
-            this.addBTN = new DevExpress.XtraEditors.SimpleButton();
+            this.addemployeeBTN = new DevExpress.XtraEditors.SimpleButton();
             this.sidePanel5 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel7 = new DevExpress.XtraEditors.SidePanel();
             this.gcEmployees = new DevExpress.XtraGrid.GridControl();
@@ -147,12 +147,13 @@
             this.findTE.Properties.AutoHeight = false;
             this.findTE.Size = new System.Drawing.Size(206, 23);
             this.findTE.TabIndex = 2;
+            this.findTE.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.findTE_EditValueChanging);
             // 
             // sidePanel6
             // 
             this.sidePanel6.AllowResize = false;
             this.sidePanel6.BorderThickness = 0;
-            this.sidePanel6.Controls.Add(this.addBTN);
+            this.sidePanel6.Controls.Add(this.addemployeeBTN);
             this.sidePanel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.sidePanel6.Location = new System.Drawing.Point(807, 30);
             this.sidePanel6.Name = "sidePanel6";
@@ -160,18 +161,19 @@
             this.sidePanel6.TabIndex = 1;
             this.sidePanel6.Text = "sidePanel6";
             // 
-            // addBTN
+            // addemployeeBTN
             // 
-            this.addBTN.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(141)))), ((int)(((byte)(57)))));
-            this.addBTN.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addBTN.Appearance.Options.UseBackColor = true;
-            this.addBTN.Appearance.Options.UseFont = true;
-            this.addBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("addBTN.ImageOptions.Image")));
-            this.addBTN.Location = new System.Drawing.Point(105, 3);
-            this.addBTN.Name = "addBTN";
-            this.addBTN.Size = new System.Drawing.Size(150, 40);
-            this.addBTN.TabIndex = 1;
-            this.addBTN.Text = "Add Employee";
+            this.addemployeeBTN.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(141)))), ((int)(((byte)(57)))));
+            this.addemployeeBTN.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addemployeeBTN.Appearance.Options.UseBackColor = true;
+            this.addemployeeBTN.Appearance.Options.UseFont = true;
+            this.addemployeeBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("addemployeeBTN.ImageOptions.Image")));
+            this.addemployeeBTN.Location = new System.Drawing.Point(105, 3);
+            this.addemployeeBTN.Name = "addemployeeBTN";
+            this.addemployeeBTN.Size = new System.Drawing.Size(150, 40);
+            this.addemployeeBTN.TabIndex = 1;
+            this.addemployeeBTN.Text = "Add Employee";
+            this.addemployeeBTN.Click += new System.EventHandler(this.addemployeeBTN_Click);
             // 
             // sidePanel5
             // 
@@ -243,12 +245,13 @@
             this.gvEmployees.OptionsView.ShowGroupPanel = false;
             this.gvEmployees.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gvEmployees.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvEmployees_RowClick);
             // 
             // gridColumn1
             // 
-            this.gridColumn1.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.gridColumn1.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.gridColumn1.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.gridColumn1.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn1.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn1.AppearanceCell.Options.UseFont = true;
             this.gridColumn1.AppearanceCell.Options.UseForeColor = true;
@@ -273,9 +276,9 @@
             // 
             // gridColumn2
             // 
-            this.gridColumn2.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.gridColumn2.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.gridColumn2.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn2.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.gridColumn2.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn2.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn2.AppearanceCell.Options.UseFont = true;
             this.gridColumn2.AppearanceCell.Options.UseForeColor = true;
@@ -302,9 +305,9 @@
             // 
             // ContactNumber
             // 
-            this.ContactNumber.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.ContactNumber.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.ContactNumber.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContactNumber.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.ContactNumber.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ContactNumber.AppearanceCell.Options.UseBackColor = true;
             this.ContactNumber.AppearanceCell.Options.UseFont = true;
             this.ContactNumber.AppearanceCell.Options.UseForeColor = true;
@@ -331,9 +334,9 @@
             // 
             // Username
             // 
-            this.Username.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.Username.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.Username.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Username.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.Username.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Username.AppearanceCell.Options.UseBackColor = true;
             this.Username.AppearanceCell.Options.UseFont = true;
             this.Username.AppearanceCell.Options.UseForeColor = true;
@@ -360,9 +363,9 @@
             // 
             // Position
             // 
-            this.Position.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.Position.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.Position.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Position.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.Position.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Position.AppearanceCell.Options.UseBackColor = true;
             this.Position.AppearanceCell.Options.UseFont = true;
             this.Position.AppearanceCell.Options.UseForeColor = true;
@@ -389,9 +392,9 @@
             // 
             // EmployeeStatus
             // 
-            this.EmployeeStatus.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.EmployeeStatus.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.EmployeeStatus.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmployeeStatus.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.EmployeeStatus.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.EmployeeStatus.AppearanceCell.Options.UseBackColor = true;
             this.EmployeeStatus.AppearanceCell.Options.UseFont = true;
             this.EmployeeStatus.AppearanceCell.Options.UseForeColor = true;
@@ -418,9 +421,9 @@
             // 
             // AccountStatus
             // 
-            this.AccountStatus.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.AccountStatus.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.AccountStatus.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountStatus.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.AccountStatus.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.AccountStatus.AppearanceCell.Options.UseBackColor = true;
             this.AccountStatus.AppearanceCell.Options.UseFont = true;
             this.AccountStatus.AppearanceCell.Options.UseForeColor = true;
@@ -447,9 +450,9 @@
             // 
             // gridColumn4
             // 
-            this.gridColumn4.AppearanceCell.BackColor = System.Drawing.Color.DimGray;
+            this.gridColumn4.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.gridColumn4.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn4.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.gridColumn4.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn4.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn4.AppearanceCell.Options.UseFont = true;
             this.gridColumn4.AppearanceCell.Options.UseForeColor = true;
@@ -467,6 +470,9 @@
             this.gridColumn4.ColumnEdit = this.repositoryItemButtonEdit1;
             this.gridColumn4.MinWidth = 21;
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsColumn.AllowFocus = false;
+            this.gridColumn4.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 8;
@@ -484,8 +490,12 @@
             // 
             // Age
             // 
+            this.Age.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.Age.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Age.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Age.AppearanceCell.Options.UseBackColor = true;
             this.Age.AppearanceCell.Options.UseFont = true;
+            this.Age.AppearanceCell.Options.UseForeColor = true;
             this.Age.AppearanceCell.Options.UseTextOptions = true;
             this.Age.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.Age.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
@@ -497,14 +507,21 @@
             this.Age.Caption = "Age";
             this.Age.FieldName = "Age";
             this.Age.Name = "Age";
+            this.Age.OptionsColumn.AllowEdit = false;
+            this.Age.OptionsColumn.AllowFocus = false;
+            this.Age.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Age.Visible = true;
             this.Age.VisibleIndex = 1;
             this.Age.Width = 103;
             // 
             // CivilStatus
             // 
+            this.CivilStatus.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.CivilStatus.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CivilStatus.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CivilStatus.AppearanceCell.Options.UseBackColor = true;
             this.CivilStatus.AppearanceCell.Options.UseFont = true;
+            this.CivilStatus.AppearanceCell.Options.UseForeColor = true;
             this.CivilStatus.AppearanceCell.Options.UseTextOptions = true;
             this.CivilStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.CivilStatus.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
@@ -516,6 +533,9 @@
             this.CivilStatus.Caption = "Civil Status";
             this.CivilStatus.FieldName = "CivilStatus";
             this.CivilStatus.Name = "CivilStatus";
+            this.CivilStatus.OptionsColumn.AllowEdit = false;
+            this.CivilStatus.OptionsColumn.AllowFocus = false;
+            this.CivilStatus.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.CivilStatus.Visible = true;
             this.CivilStatus.VisibleIndex = 2;
             this.CivilStatus.Width = 142;
@@ -571,7 +591,7 @@
         private DevExpress.XtraEditors.TextEdit findTE;
         private DevExpress.XtraEditors.SidePanel sidePanel7;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.SimpleButton addBTN;
+        private DevExpress.XtraEditors.SimpleButton addemployeeBTN;
         private DevExpress.XtraGrid.GridControl gcEmployees;
         private DevExpress.XtraGrid.Views.Grid.GridView gvEmployees;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;

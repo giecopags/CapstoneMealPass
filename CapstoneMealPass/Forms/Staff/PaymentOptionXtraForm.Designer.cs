@@ -49,6 +49,7 @@
             this.topupBTN.Size = new System.Drawing.Size(133, 169);
             this.topupBTN.TabIndex = 19;
             this.topupBTN.Text = "simpleButton2";
+            this.topupBTN.Click += new System.EventHandler(this.topupBTN_Click);
             // 
             // cashBTN
             // 
@@ -64,6 +65,7 @@
             this.cashBTN.Size = new System.Drawing.Size(133, 169);
             this.cashBTN.TabIndex = 18;
             this.cashBTN.Text = "simpleButton1";
+            this.cashBTN.Click += new System.EventHandler(this.cashBTN_Click);
             // 
             // mealpassBTN
             // 
@@ -79,6 +81,7 @@
             this.mealpassBTN.Size = new System.Drawing.Size(133, 169);
             this.mealpassBTN.TabIndex = 17;
             this.mealpassBTN.Text = "simpleButton3";
+            this.mealpassBTN.Click += new System.EventHandler(this.mealpassBTN_Click);
             // 
             // labelControl1
             // 

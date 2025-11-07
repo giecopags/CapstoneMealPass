@@ -13,7 +13,7 @@ namespace MealPass.Core.Interface
         Task<IEnumerable<Product>> GetAllAsync();
         Task<Product> GetByIdAsync(int id);
         Task AddAsync(Product product);
-        Task<DataRow?> GetByIdWithDetailsAsync(int productId);
+        Task<DataRow> GetByIdWithDetailsAsync(int productId);
         Task UpdateAsync(Product product);
         Task DeleteAsync(int id);
         Task<DataTable> GetAllWithDetailsAsync();

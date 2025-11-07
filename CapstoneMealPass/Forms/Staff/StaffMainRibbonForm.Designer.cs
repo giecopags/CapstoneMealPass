@@ -40,9 +40,9 @@
             this.sidePanel3 = new DevExpress.XtraEditors.SidePanel();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.posACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.productsACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.topupACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.salesreportACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.q = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.purchasehistoryACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.topuphistoryACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.mainSPanel = new DevExpress.XtraEditors.SidePanel();
@@ -184,9 +184,9 @@
             this.accordionControl1.ElementPositionOnExpanding = DevExpress.XtraBars.Navigation.ElementPositionOnExpanding.Fixed;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.posACE,
-            this.productsACE,
+            this.topupACE,
             this.salesreportACE,
-            this.accordionControlElement5});
+            this.q});
             this.accordionControl1.Location = new System.Drawing.Point(0, 70);
             this.accordionControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.accordionControl1.Name = "accordionControl1";
@@ -210,19 +210,21 @@
             this.posACE.Name = "posACE";
             this.posACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.posACE.Text = "POS";
+            this.posACE.Click += new System.EventHandler(this.posACE_Click);
             // 
-            // productsACE
+            // topupACE
             // 
-            this.productsACE.Appearance.Default.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productsACE.Appearance.Default.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.productsACE.Appearance.Default.Options.UseFont = true;
-            this.productsACE.Appearance.Default.Options.UseForeColor = true;
-            this.productsACE.HeaderIndent = 28;
-            this.productsACE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("productsACE.ImageOptions.SvgImage")));
-            this.productsACE.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
-            this.productsACE.Name = "productsACE";
-            this.productsACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.productsACE.Text = "Top-Up";
+            this.topupACE.Appearance.Default.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.topupACE.Appearance.Default.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.topupACE.Appearance.Default.Options.UseFont = true;
+            this.topupACE.Appearance.Default.Options.UseForeColor = true;
+            this.topupACE.HeaderIndent = 28;
+            this.topupACE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("productsACE.ImageOptions.SvgImage")));
+            this.topupACE.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
+            this.topupACE.Name = "topupACE";
+            this.topupACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.topupACE.Text = "Top-Up";
+            this.topupACE.Click += new System.EventHandler(this.productsACE_Click);
             // 
             // salesreportACE
             // 
@@ -236,21 +238,23 @@
             this.salesreportACE.Name = "salesreportACE";
             this.salesreportACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.salesreportACE.Text = "Sales Report";
+            this.salesreportACE.Click += new System.EventHandler(this.salesreportACE_Click);
             // 
-            // accordionControlElement5
+            // q
             // 
-            this.accordionControlElement5.Appearance.Default.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accordionControlElement5.Appearance.Default.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.accordionControlElement5.Appearance.Default.Options.UseFont = true;
-            this.accordionControlElement5.Appearance.Default.Options.UseForeColor = true;
-            this.accordionControlElement5.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.q.Appearance.Default.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.q.Appearance.Default.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.q.Appearance.Default.Options.UseFont = true;
+            this.q.Appearance.Default.Options.UseForeColor = true;
+            this.q.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.purchasehistoryACE,
             this.topuphistoryACE});
-            this.accordionControlElement5.HeaderIndent = 28;
-            this.accordionControlElement5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement5.ImageOptions.SvgImage")));
-            this.accordionControlElement5.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
-            this.accordionControlElement5.Name = "accordionControlElement5";
-            this.accordionControlElement5.Text = "Transaction History";
+            this.q.Expanded = true;
+            this.q.HeaderIndent = 28;
+            this.q.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement5.ImageOptions.SvgImage")));
+            this.q.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
+            this.q.Name = "q";
+            this.q.Text = "Transaction History";
             // 
             // purchasehistoryACE
             // 
@@ -263,6 +267,7 @@
             this.purchasehistoryACE.Name = "purchasehistoryACE";
             this.purchasehistoryACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.purchasehistoryACE.Text = "Purchase History";
+            this.purchasehistoryACE.Click += new System.EventHandler(this.purchasehistoryACE_Click);
             // 
             // topuphistoryACE
             // 
@@ -275,6 +280,7 @@
             this.topuphistoryACE.Name = "topuphistoryACE";
             this.topuphistoryACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.topuphistoryACE.Text = "Top-Up History";
+            this.topuphistoryACE.Click += new System.EventHandler(this.topuphistoryACE_Click);
             // 
             // mainSPanel
             // 
@@ -321,9 +327,9 @@
         private DevExpress.XtraEditors.SidePanel sidePanel3;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement posACE;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement productsACE;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement topupACE;
         private DevExpress.XtraBars.Navigation.AccordionControlElement salesreportACE;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement5;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement q;
         private DevExpress.XtraBars.Navigation.AccordionControlElement purchasehistoryACE;
         private DevExpress.XtraBars.Navigation.AccordionControlElement topuphistoryACE;
         private DevExpress.XtraEditors.SidePanel mainSPanel;
