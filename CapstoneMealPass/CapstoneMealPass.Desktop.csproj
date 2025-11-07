@@ -71,7 +71,12 @@
     <Reference Include="DevExpress.Charts.v23.2.Core, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.Desktop.v23.2" />
     <Reference Include="DevExpress.Data.v23.2" />
+    <Reference Include="DevExpress.Office.v23.2.Core, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v23.2.Core, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v23.2.Core, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v23.2.Core" />
+    <Reference Include="DevExpress.RichEdit.v23.2.Core, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v23.2.Export, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v23.2" />
     <Reference Include="DevExpress.Utils.v23.2.UI, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v23.2" />
@@ -81,9 +86,12 @@
     <Reference Include="DevExpress.XtraCharts.v23.2.Wizard, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v23.2" />
     <Reference Include="DevExpress.Drawing.v23.2" />
+    <Reference Include="DevExpress.XtraGauges.v23.2.Core, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v23.2.Extensions, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.1\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -333,6 +341,12 @@
     <Compile Include="Helpers\UserSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\EmployeeLogsXtraReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EmployeeLogsXtraReport.Designer.cs">
+      <DependentUpon>EmployeeLogsXtraReport.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Admin\AddEmployeeRibbonForm.resx">
       <DependentUpon>AddEmployeeRibbonForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -400,6 +414,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\EmployeeLogsXtraReport.resx">
+      <DependentUpon>EmployeeLogsXtraReport.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

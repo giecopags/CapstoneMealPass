@@ -18,6 +18,7 @@ namespace CapstoneMealPass.Forms.Admin
         {
             InitializeComponent();
             datetimeLBL.Text = DateTime.Now.ToString("F");
+            usernameLBL.Text = UserSession.Username;
         }
 
         private async void employeelistACE_Click(object sender, EventArgs e)

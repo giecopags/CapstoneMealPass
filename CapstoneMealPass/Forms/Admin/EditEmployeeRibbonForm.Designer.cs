@@ -407,6 +407,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.birthdateDE.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.birthdateDE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.birthdateDE.Size = new System.Drawing.Size(172, 28);
             this.birthdateDE.TabIndex = 99;
             // 
@@ -441,6 +442,7 @@
             "Married",
             "Widowed",
             "Separated"});
+            this.civilstatusCBE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.civilstatusCBE.Size = new System.Drawing.Size(172, 28);
             this.civilstatusCBE.TabIndex = 100;
             // 

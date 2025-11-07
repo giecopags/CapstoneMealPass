@@ -1,9 +1,4 @@
-﻿using CapstoneMealPass.Helpers;
-using Dapper;
-using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
-using MealPass.Core.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapstoneMealPass.Helpers;
+using Dapper;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using MealPass.Core.Entity;
 using MealPass.Core.GlobalSql;
 using MealPass.Data.Queries;
+using MealPass.Data.Repositories;
 
 namespace CapstoneMealPass.Forms.Admin
 {
@@ -126,7 +127,7 @@ namespace CapstoneMealPass.Forms.Admin
                 }
             }
         }
-        public bool UpdateEmployee(MealPass.Core.Entity.Employee employee, string username)
+        public async Task<bool> UpdateEmployee(MealPass.Core.Entity.Employee employee, string username)
         {
             using (var connection = new SqlConnection(SQLQuery.connectionString))
             {
@@ -151,11 +152,11 @@ namespace CapstoneMealPass.Forms.Admin
                     OriginalUsername = username
                 };
 
-                int rowsAffected = connection.Execute(updateQuery, parameters); // ✅ no commandType here
+                int rowsAffected = connection.Execute(updateQuery, parameters); 
 
                 if (rowsAffected > 0)
                 {
-                    //GlobalLogger.employeeLog("Edited employee details", UserSession.Username);
+                    await GlobalLogger.EmployeeLogAsync($"{UserSession.Username} modified employee details.", UserSession.Username);
 
                     XtraMessageBox.Show("Employee updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
@@ -168,7 +169,7 @@ namespace CapstoneMealPass.Forms.Admin
             }
         }
 
-        private void saveBTN_Click(object sender, EventArgs e)
+        private async void saveBTN_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(firstnameTE.Text) ||
              string.IsNullOrWhiteSpace(lastnameTE.Text) ||
@@ -195,7 +196,7 @@ namespace CapstoneMealPass.Forms.Admin
                 Username = usernameTE.Text.Trim(),
                 Gender = genderRG.Text.Trim(),
 
-                Birthdate = birthdateDE.DateTime.Date, // ✅ handle null
+                Birthdate = birthdateDE.DateTime.Date,
 
 
                 CivilStatusID = civilstatusCBE.SelectedIndex + 1,
@@ -205,7 +206,7 @@ namespace CapstoneMealPass.Forms.Admin
 
             };
 
-            bool result = UpdateEmployee(employee, username);
+            bool result = await UpdateEmployee(employee, username);
 
             if (result)
             {
@@ -214,7 +215,7 @@ namespace CapstoneMealPass.Forms.Admin
             }
         }
 
-        private void deleteBTN_Click(object sender, EventArgs e)
+        private async void deleteBTN_Click(object sender, EventArgs e)
         {
             DialogResult confirm = XtraMessageBox.Show(
               "Are you sure you want to delete this employee?",
@@ -236,10 +237,10 @@ namespace CapstoneMealPass.Forms.Admin
 
                 if (rowsAffected > 0)
                 {
-                    //GlobalLogger.employeeLog("Deleted employee", UserSession.Username);
+                    await GlobalLogger.EmployeeLogAsync($"{UserSession.Username} deleted an employee.", UserSession.Username);
 
                     XtraMessageBox.Show("Employee deleted successfully!", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close(); // Close the edit form
+                    this.Close(); 
                 }
                 else
                 {

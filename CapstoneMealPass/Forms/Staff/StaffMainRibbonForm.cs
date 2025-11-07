@@ -18,6 +18,7 @@ namespace CapstoneMealPass.Forms.Staff
         {
             InitializeComponent();
             datetimeLBL.Text = DateTime.Now.ToString("F");
+            usernameLBL.Text = UserSession.Username;
         }
 
         private async void posACE_Click(object sender, EventArgs e)
