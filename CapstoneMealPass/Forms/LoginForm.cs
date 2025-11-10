@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +11,7 @@ using CapstoneMealPass.Helpers;
 using DevExpress.XtraEditors;
 using MealPass.Core.GlobalSql;
 using MealPass.Data.Repositories;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 using static DevExpress.Xpo.Helpers.CommandChannelHelper;
 
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +13,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using MealPass.Core.GlobalSql;
 using MealPass.Data.Queries;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 
 namespace CapstoneMealPass.Forms.Admin
 {

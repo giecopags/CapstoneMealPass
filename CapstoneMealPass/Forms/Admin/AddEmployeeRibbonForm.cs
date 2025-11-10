@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +15,7 @@ using MealPass.Core.Entity;
 using MealPass.Core.GlobalSql;
 using MealPass.Data.Queries;
 using MealPass.Data.Repositories;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 
 namespace CapstoneMealPass.Forms.Admin
 {

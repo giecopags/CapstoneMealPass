@@ -224,7 +224,7 @@
             this.topupACE.Name = "topupACE";
             this.topupACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.topupACE.Text = "Top-Up";
-            this.topupACE.Click += new System.EventHandler(this.productsACE_Click);
+            this.topupACE.Click += new System.EventHandler(this.topupACE_Click);
             // 
             // salesreportACE
             // 
