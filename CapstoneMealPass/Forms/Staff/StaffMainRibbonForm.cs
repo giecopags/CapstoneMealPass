@@ -25,11 +25,6 @@ namespace CapstoneMealPass.Forms.Staff
             await FormHelper.LoadUserControlAsync(mainSPanel, () => new Staff.POSUserControl());
         }
 
-        private async void productsACE_Click(object sender, EventArgs e)
-        {
-            await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.ProductsUserControl());
-        }
-
         private async void salesreportACE_Click(object sender, EventArgs e)
         {
             await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.SalesUserControl());
@@ -43,6 +38,11 @@ namespace CapstoneMealPass.Forms.Staff
         private async void topuphistoryACE_Click(object sender, EventArgs e)
         {
             await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.TopUpHistoryUserControl());
+        }
+
+        private void topupACE_Click(object sender, EventArgs e)
+        {
+            FormHelper.DisplayForm(new Staff.TopUpXtraForm());
         }
     }
 }

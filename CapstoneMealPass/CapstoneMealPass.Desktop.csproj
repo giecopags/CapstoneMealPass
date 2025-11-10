@@ -90,9 +90,6 @@
     <Reference Include="Microsoft.Bcl.Cryptography, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.Cryptography.8.0.0\lib\net462\Microsoft.Bcl.Cryptography.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Data.SqlClient, Version=6.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Data.SqlClient.6.1.2\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
     </Reference>
@@ -413,6 +410,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MealPass.Business\MealPass.Business.csproj">
+      <Project>{30ffff7f-3fbb-4923-818b-8afce4ec5b87}</Project>
+      <Name>MealPass.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MealPass.Core\MealPass.Core.csproj">
       <Project>{a1f8c4c0-afa9-4f3e-b97b-2ec7d324115a}</Project>
       <Name>MealPass.Core</Name>

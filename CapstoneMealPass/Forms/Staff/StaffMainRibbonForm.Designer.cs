@@ -219,12 +219,12 @@
             this.topupACE.Appearance.Default.Options.UseFont = true;
             this.topupACE.Appearance.Default.Options.UseForeColor = true;
             this.topupACE.HeaderIndent = 28;
-            this.topupACE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("productsACE.ImageOptions.SvgImage")));
+            this.topupACE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("topupACE.ImageOptions.SvgImage")));
             this.topupACE.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
             this.topupACE.Name = "topupACE";
             this.topupACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.topupACE.Text = "Top-Up";
-            this.topupACE.Click += new System.EventHandler(this.productsACE_Click);
+            this.topupACE.Click += new System.EventHandler(this.topupACE_Click);
             // 
             // salesreportACE
             // 
@@ -251,7 +251,7 @@
             this.topuphistoryACE});
             this.q.Expanded = true;
             this.q.HeaderIndent = 28;
-            this.q.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement5.ImageOptions.SvgImage")));
+            this.q.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("q.ImageOptions.SvgImage")));
             this.q.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
             this.q.Name = "q";
             this.q.Text = "Transaction History";

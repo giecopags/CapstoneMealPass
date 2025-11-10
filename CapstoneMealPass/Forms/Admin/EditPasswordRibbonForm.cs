@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 using MealPass.Core.GlobalSql;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 
 namespace CapstoneMealPass.Forms.Admin
 {
