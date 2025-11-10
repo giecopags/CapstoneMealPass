@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using MealPass.Core.Interface;
 using MealPass.Data.Repositories;
 
@@ -45,16 +46,12 @@ namespace CapstoneMealPass.Forms.Admin
 
         private void addproductBTN_Click(object sender, EventArgs e)
         {
-            // ✅ Create an instance of the form
             var form = new AddProductRibbonForm();
-
-            // 🔥 Subscribe to the ProductAdded event BEFORE showing it
             form.ProductAdded += (s, args) =>
             {
-                LoadProducts(); // ✅ Refresh grid when a new product is added
+                LoadProducts(); 
             };
 
-            // ✅ Show the form
             Helpers.FormHelper.DisplayForm(form);
         }
 
@@ -65,23 +62,47 @@ namespace CapstoneMealPass.Forms.Admin
 
         private void gvProducts_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            // ✅ Get the ProductID from the clicked row
             var selectedProductID = gvProducts.GetRowCellValue(e.RowHandle, "ProductID");
 
             if (selectedProductID != null && int.TryParse(selectedProductID.ToString(), out int productId))
             {
-                // ✅ Open the EditProductForm with the selected ProductID
                 using (var editForm = new EditProductRibbonForm(productId))
                 {
                     editForm.ShowDialog();
                 }
 
-                // ✅ Refresh the product list after editing
                 LoadProducts();
             }
             else
             {
                 MessageBox.Show("⚠️ Unable to get the selected Product ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void gvProducts_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+
+            if (e.Column.FieldName == "StockStatusName" && e.RowHandle >= 0)
+            {
+                var stockStatusObj = view.GetRowCellValue(e.RowHandle, "StockStatusName");
+                if (stockStatusObj == null)
+                    return;
+
+                string stockStatus = stockStatusObj.ToString();
+
+                if (stockStatus == "In Stock")
+                {
+                    e.Appearance.ForeColor = Color.Green;
+                }
+                else if (stockStatus == "Low Stock")
+                {
+                    e.Appearance.ForeColor = Color.Orange;
+                }
+                else if (stockStatus == "Out Of Stock")
+                {
+                    e.Appearance.ForeColor = Color.IndianRed;
+                }
             }
         }
     }

@@ -183,7 +183,7 @@
             this.saveBTN.Size = new System.Drawing.Size(199, 35);
             this.saveBTN.TabIndex = 62;
             this.saveBTN.Text = "Save New Password";
-            this.saveBTN.Click += new System.EventHandler(this.saveBTN_Click);
+
             // 
             // resultLBL
             // 

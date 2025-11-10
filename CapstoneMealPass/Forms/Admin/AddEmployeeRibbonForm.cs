@@ -1,10 +1,3 @@
-﻿using Dapper;
-using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
-using MealPass.Core.Entity;
-using MealPass.Core.GlobalSql;
-using MealPass.Data.Queries;
-using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapstoneMealPass.Helpers;
+using Dapper;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using MealPass.Core.Entity;
+using MealPass.Core.GlobalSql;
+using MealPass.Data.Queries;
+using MealPass.Data.Repositories;
+using System.Data.SqlClient;
 
 namespace CapstoneMealPass.Forms.Admin
 {
@@ -104,7 +106,7 @@ namespace CapstoneMealPass.Forms.Admin
             }
         }
 
-        private void addemployeeBTN_Click(object sender, EventArgs e)
+        private async Task addemployeeBTN_Click(object sender, EventArgs e)
         {
             var confirmResult = XtraMessageBox.Show("Do you want to save this account?", "Confirm Save", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirmResult != DialogResult.Yes)
@@ -139,7 +141,7 @@ namespace CapstoneMealPass.Forms.Admin
                     civilStatusID = 4;
                     break;
                 default:
-                    civilStatusID = 0; // Or handle invalid case
+                    civilStatusID = 0;
                     break;
             }
 
@@ -163,7 +165,7 @@ namespace CapstoneMealPass.Forms.Admin
 
             RegisterAccount(employee);
 
-            //GlobalLogger.employeeLog("Added new employee", UserSession.Username);
+            await GlobalLogger.EmployeeLogAsync($"{UserSession.Username} added a new employee.", UserSession.Username);
             XtraMessageBox.Show("Account saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }

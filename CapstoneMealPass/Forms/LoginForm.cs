@@ -1,6 +1,3 @@
-﻿using DevExpress.XtraEditors;
-using MealPass.Core.GlobalSql;
-using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapstoneMealPass.Helpers;
+using DevExpress.XtraEditors;
+using MealPass.Core.GlobalSql;
+using MealPass.Data.Repositories;
+using System.Data.SqlClient;
 using static DevExpress.Xpo.Helpers.CommandChannelHelper;
 
 
@@ -24,7 +26,18 @@ namespace CapstoneMealPass.Forms
             ApplyTextEditBehaviors();
         }
 
-        private void loginBTN_Click(object sender, EventArgs e)
+        private void ApplyTextEditBehaviors()
+        {
+            Helpers.TextHelper.AttachBehavior(usernameTE, "Username");
+            Helpers.TextHelper.AttachBehavior(passwordTE, "Password", true);
+        }
+
+        private void showCE_CheckedChanged(object sender, EventArgs e)
+        {
+            passwordTE.Properties.UseSystemPasswordChar = !showCE.Checked;
+        }  
+
+        private async void loginBTN_Click(object sender, EventArgs e)
         {
             string username = usernameTE.Text.Trim();
             string password = passwordTE.Text;
@@ -54,7 +67,8 @@ namespace CapstoneMealPass.Forms
                         if (isLocked)
                         {
                             MessageBox.Show("Your account is locked. Please contact the administrator.");
-                            //GlobalLogger.employeeLoginLog(username, false);
+                            await GlobalLogger.EmployeeLoginLogAsync(username, false);
+
                             return;
                         }
 
@@ -72,7 +86,7 @@ namespace CapstoneMealPass.Forms
                                 resetCmd.ExecuteNonQuery();
                             }
 
-                            //GlobalLogger.employeeLoginLog(username, true);
+                            await GlobalLogger.EmployeeLoginLogAsync(username, true);
 
                             this.Hide();
 
@@ -109,7 +123,7 @@ namespace CapstoneMealPass.Forms
                                 updateCmd.ExecuteNonQuery();
                             }
 
-                            //GlobalLogger.employeeLoginLog(username, false);
+                            await GlobalLogger.EmployeeLoginLogAsync(username, false);
 
                             if (shouldLock)
                             {
@@ -128,22 +142,11 @@ namespace CapstoneMealPass.Forms
                     else
                     {
                         reader.Close();
-                        //GlobalLogger.employeeLoginLog(username, false);
+                        await GlobalLogger.EmployeeLoginLogAsync(username, false);
                         MessageBox.Show("Invalid username or password.");
                     }
                 }
             }
-        }
-
-        private void ApplyTextEditBehaviors()
-        {
-            Helpers.TextHelper.AttachBehavior(usernameTE, "Username");
-            Helpers.TextHelper.AttachBehavior(passwordTE, "Password", true);
-        }
-
-        private void showCE_CheckedChanged(object sender, EventArgs e)
-        {
-            passwordTE.Properties.UseSystemPasswordChar = !showCE.Checked;
         }
     }
 }

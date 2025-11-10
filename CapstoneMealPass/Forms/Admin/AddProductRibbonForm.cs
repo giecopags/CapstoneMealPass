@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapstoneMealPass.Helpers;
 using DevExpress.XtraBars;
 using MealPass.Core.Entity;
 using MealPass.Core.GlobalSql;
@@ -19,7 +20,6 @@ namespace CapstoneMealPass.Forms.Admin
     {
         private readonly IProductRepository _productRepository = new ProductRepository();
 
-        // 🔥 Declare event
         public event EventHandler ProductAdded;
 
         public AddProductRibbonForm()
@@ -39,9 +39,9 @@ namespace CapstoneMealPass.Forms.Admin
             };
 
             await _productRepository.AddAsync(product);
+            await GlobalLogger.EmployeeLogAsync($"{UserSession.Username} added a product.", UserSession.Username);
             MessageBox.Show("✅ Product added successfully!");
 
-            // 🔥 Trigger the event
             ProductAdded?.Invoke(this, EventArgs.Empty);
 
             ClearAll();
@@ -49,16 +49,13 @@ namespace CapstoneMealPass.Forms.Admin
 
         private void ClearAll()
         {
-            // Clear text fields
             productnameTE.Text = string.Empty;
             priceTE.Text = string.Empty;
             quantityTE.Text = string.Empty;
             lowstocklevelTE.Text = string.Empty;
 
-            // Reset combo box
             categoryCBE.SelectedIndex = -1;
 
-            // Optional: Set focus back to the first input
             productnameTE.Focus();
         }
     }

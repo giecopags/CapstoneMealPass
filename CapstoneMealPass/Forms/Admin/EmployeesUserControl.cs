@@ -1,5 +1,3 @@
-﻿using CapstoneMealPass.Helpers;
-using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,10 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using CapstoneMealPass.Helpers;
 using Dapper;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using MealPass.Core.GlobalSql;
 using MealPass.Data.Queries;
+using System.Data.SqlClient;
 
 namespace CapstoneMealPass.Forms.Admin
 {
@@ -69,5 +70,30 @@ namespace CapstoneMealPass.Forms.Admin
                 FilterAllEmployees();
             }
         }
+
+        private void gvEmployees_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+
+            if (e.Column.FieldName == "IsLocked" && e.RowHandle >= 0)
+            {
+                var isLocked = view.GetRowCellValue(e.RowHandle, "IsLocked");
+                if (isLocked == null)
+                    return;
+
+                string account = isLocked.ToString();
+
+                if (account == "Locked")
+                {
+                    e.Appearance.ForeColor = Color.Red;
+                }
+                else
+                {
+                    e.Appearance.ForeColor = Color.Black;
+                }
+
+            }
+        }
     }
 }
+

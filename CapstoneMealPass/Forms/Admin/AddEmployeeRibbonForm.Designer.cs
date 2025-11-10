@@ -309,6 +309,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.birthdateDE.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.birthdateDE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.birthdateDE.Size = new System.Drawing.Size(172, 28);
             this.birthdateDE.TabIndex = 67;
             // 
@@ -343,6 +344,7 @@
             "Married",
             "Widowed",
             "Separated"});
+            this.civilstatusCBE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.civilstatusCBE.Size = new System.Drawing.Size(172, 28);
             this.civilstatusCBE.TabIndex = 68;
             // 
@@ -422,7 +424,6 @@
             this.addemployeeBTN.Size = new System.Drawing.Size(147, 40);
             this.addemployeeBTN.TabIndex = 75;
             this.addemployeeBTN.Text = "Add Employee";
-            this.addemployeeBTN.Click += new System.EventHandler(this.addemployeeBTN_Click);
             // 
             // labelControl3
             // 

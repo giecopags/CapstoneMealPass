@@ -33,7 +33,7 @@
             this.sidePanel5 = new DevExpress.XtraEditors.SidePanel();
             this.datetimeLBL = new DevExpress.XtraEditors.LabelControl();
             this.sidePanel7 = new DevExpress.XtraEditors.SidePanel();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.usernameLBL = new DevExpress.XtraEditors.LabelControl();
             this.sidePanel6 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel4 = new DevExpress.XtraEditors.SidePanel();
@@ -74,12 +74,12 @@
             this.sidePanel5.BorderThickness = 0;
             this.sidePanel5.Controls.Add(this.datetimeLBL);
             this.sidePanel5.Controls.Add(this.sidePanel7);
-            this.sidePanel5.Controls.Add(this.labelControl1);
+            this.sidePanel5.Controls.Add(this.usernameLBL);
             this.sidePanel5.Controls.Add(this.sidePanel6);
             this.sidePanel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sidePanel5.Location = new System.Drawing.Point(904, 7);
+            this.sidePanel5.Location = new System.Drawing.Point(816, 7);
             this.sidePanel5.Name = "sidePanel5";
-            this.sidePanel5.Size = new System.Drawing.Size(512, 63);
+            this.sidePanel5.Size = new System.Drawing.Size(600, 63);
             this.sidePanel5.TabIndex = 3;
             this.sidePanel5.Text = "sidePanel5";
             // 
@@ -89,7 +89,7 @@
             this.datetimeLBL.Appearance.ForeColor = System.Drawing.Color.White;
             this.datetimeLBL.Appearance.Options.UseFont = true;
             this.datetimeLBL.Appearance.Options.UseForeColor = true;
-            this.datetimeLBL.Location = new System.Drawing.Point(191, 23);
+            this.datetimeLBL.Location = new System.Drawing.Point(248, 23);
             this.datetimeLBL.Name = "datetimeLBL";
             this.datetimeLBL.Size = new System.Drawing.Size(110, 20);
             this.datetimeLBL.TabIndex = 2;
@@ -100,23 +100,23 @@
             this.sidePanel7.AllowResize = false;
             this.sidePanel7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sidePanel7.BackgroundImage")));
             this.sidePanel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.sidePanel7.Location = new System.Drawing.Point(129, 18);
+            this.sidePanel7.Location = new System.Drawing.Point(186, 18);
             this.sidePanel7.Name = "sidePanel7";
             this.sidePanel7.Size = new System.Drawing.Size(30, 30);
             this.sidePanel7.TabIndex = 1;
             this.sidePanel7.Text = "sidePanel7";
             // 
-            // labelControl1
+            // usernameLBL
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(53, 24);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(48, 18);
-            this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "Admin";
+            this.usernameLBL.Appearance.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameLBL.Appearance.ForeColor = System.Drawing.Color.White;
+            this.usernameLBL.Appearance.Options.UseFont = true;
+            this.usernameLBL.Appearance.Options.UseForeColor = true;
+            this.usernameLBL.Location = new System.Drawing.Point(61, 24);
+            this.usernameLBL.Name = "usernameLBL";
+            this.usernameLBL.Size = new System.Drawing.Size(48, 18);
+            this.usernameLBL.TabIndex = 1;
+            this.usernameLBL.Text = "Admin";
             // 
             // sidePanel6
             // 
@@ -320,7 +320,7 @@
         private DevExpress.XtraEditors.SidePanel sidePanel5;
         private DevExpress.XtraEditors.LabelControl datetimeLBL;
         private DevExpress.XtraEditors.SidePanel sidePanel7;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl usernameLBL;
         private DevExpress.XtraEditors.SidePanel sidePanel6;
         private DevExpress.XtraEditors.SidePanel sidePanel2;
         private DevExpress.XtraEditors.SidePanel sidePanel4;

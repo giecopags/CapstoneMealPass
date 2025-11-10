@@ -40,6 +40,11 @@
             this.sidePanel7 = new DevExpress.XtraEditors.SidePanel();
             this.gcEmployeeLogs = new DevExpress.XtraGrid.GridControl();
             this.gvEmployeeLogs = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.LogID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Username = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DateTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Activity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Authentication = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sidePanel1.SuspendLayout();
             this.sidePanel6.SuspendLayout();
             this.sidePanel7.SuspendLayout();
@@ -94,12 +99,13 @@
             this.printBTN.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printBTN.Appearance.Options.UseBackColor = true;
             this.printBTN.Appearance.Options.UseFont = true;
-            this.printBTN.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
+            this.printBTN.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("printBTN.ImageOptions.SvgImage")));
             this.printBTN.Location = new System.Drawing.Point(62, 5);
             this.printBTN.Name = "printBTN";
             this.printBTN.Size = new System.Drawing.Size(103, 40);
             this.printBTN.TabIndex = 0;
             this.printBTN.Text = "PRINT";
+            this.printBTN.Click += new System.EventHandler(this.printBTN_Click);
             // 
             // sidePanel5
             // 
@@ -168,18 +174,148 @@
             // gcEmployeeLogs
             // 
             this.gcEmployeeLogs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcEmployeeLogs.EmbeddedNavigator.Buttons.Append.Enabled = false;
+            this.gcEmployeeLogs.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.gcEmployeeLogs.EmbeddedNavigator.Buttons.CancelEdit.Enabled = false;
+            this.gcEmployeeLogs.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gcEmployeeLogs.EmbeddedNavigator.Buttons.Edit.Enabled = false;
+            this.gcEmployeeLogs.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gcEmployeeLogs.EmbeddedNavigator.Buttons.EndEdit.Enabled = false;
+            this.gcEmployeeLogs.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.gcEmployeeLogs.EmbeddedNavigator.Buttons.Remove.Enabled = false;
+            this.gcEmployeeLogs.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.gcEmployeeLogs.Location = new System.Drawing.Point(0, 0);
             this.gcEmployeeLogs.MainView = this.gvEmployeeLogs;
             this.gcEmployeeLogs.Name = "gcEmployeeLogs";
             this.gcEmployeeLogs.Size = new System.Drawing.Size(1147, 480);
             this.gcEmployeeLogs.TabIndex = 0;
+            this.gcEmployeeLogs.UseEmbeddedNavigator = true;
             this.gcEmployeeLogs.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvEmployeeLogs});
+            this.gcEmployeeLogs.Load += new System.EventHandler(this.gcEmployeeLogs_Load);
             // 
             // gvEmployeeLogs
             // 
+            this.gvEmployeeLogs.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gvEmployeeLogs.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gvEmployeeLogs.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.LogID,
+            this.Username,
+            this.DateTime,
+            this.Activity,
+            this.Authentication});
             this.gvEmployeeLogs.GridControl = this.gcEmployeeLogs;
             this.gvEmployeeLogs.Name = "gvEmployeeLogs";
+            // 
+            // LogID
+            // 
+            this.LogID.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LogID.AppearanceCell.Options.UseFont = true;
+            this.LogID.AppearanceCell.Options.UseTextOptions = true;
+            this.LogID.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.LogID.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
+            this.LogID.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.LogID.AppearanceHeader.Options.UseBackColor = true;
+            this.LogID.AppearanceHeader.Options.UseFont = true;
+            this.LogID.AppearanceHeader.Options.UseTextOptions = true;
+            this.LogID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.LogID.Caption = "#";
+            this.LogID.FieldName = "LogID";
+            this.LogID.Name = "LogID";
+            this.LogID.OptionsColumn.AllowEdit = false;
+            this.LogID.OptionsColumn.AllowFocus = false;
+            this.LogID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.LogID.Visible = true;
+            this.LogID.VisibleIndex = 0;
+            this.LogID.Width = 86;
+            // 
+            // Username
+            // 
+            this.Username.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.Username.AppearanceCell.Options.UseFont = true;
+            this.Username.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
+            this.Username.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.Username.AppearanceHeader.Options.UseBackColor = true;
+            this.Username.AppearanceHeader.Options.UseFont = true;
+            this.Username.AppearanceHeader.Options.UseTextOptions = true;
+            this.Username.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Username.Caption = "Username";
+            this.Username.FieldName = "Username";
+            this.Username.Name = "Username";
+            this.Username.OptionsColumn.AllowEdit = false;
+            this.Username.OptionsColumn.AllowFocus = false;
+            this.Username.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.Username.Visible = true;
+            this.Username.VisibleIndex = 1;
+            this.Username.Width = 357;
+            // 
+            // DateTime
+            // 
+            this.DateTime.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.DateTime.AppearanceCell.Options.UseFont = true;
+            this.DateTime.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
+            this.DateTime.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.DateTime.AppearanceHeader.Options.UseBackColor = true;
+            this.DateTime.AppearanceHeader.Options.UseFont = true;
+            this.DateTime.AppearanceHeader.Options.UseTextOptions = true;
+            this.DateTime.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.DateTime.Caption = "Date/Time";
+            this.DateTime.FieldName = "DateTime";
+            this.DateTime.Name = "DateTime";
+            this.DateTime.OptionsColumn.AllowEdit = false;
+            this.DateTime.OptionsColumn.AllowFocus = false;
+            this.DateTime.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.DateTime.Visible = true;
+            this.DateTime.VisibleIndex = 2;
+            this.DateTime.Width = 357;
+            // 
+            // Activity
+            // 
+            this.Activity.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Activity.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.Activity.AppearanceCell.Options.UseFont = true;
+            this.Activity.AppearanceCell.Options.UseForeColor = true;
+            this.Activity.AppearanceCell.Options.UseTextOptions = true;
+            this.Activity.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Activity.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
+            this.Activity.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.Activity.AppearanceHeader.Options.UseBackColor = true;
+            this.Activity.AppearanceHeader.Options.UseFont = true;
+            this.Activity.AppearanceHeader.Options.UseTextOptions = true;
+            this.Activity.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Activity.Caption = "Activity";
+            this.Activity.FieldName = "Activity";
+            this.Activity.Name = "Activity";
+            this.Activity.OptionsColumn.AllowEdit = false;
+            this.Activity.OptionsColumn.AllowFocus = false;
+            this.Activity.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.Activity.Visible = true;
+            this.Activity.VisibleIndex = 4;
+            this.Activity.Width = 463;
+            // 
+            // Authentication
+            // 
+            this.Authentication.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Authentication.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.Authentication.AppearanceCell.Options.UseFont = true;
+            this.Authentication.AppearanceCell.Options.UseForeColor = true;
+            this.Authentication.AppearanceCell.Options.UseTextOptions = true;
+            this.Authentication.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Authentication.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
+            this.Authentication.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.Authentication.AppearanceHeader.Options.UseBackColor = true;
+            this.Authentication.AppearanceHeader.Options.UseFont = true;
+            this.Authentication.AppearanceHeader.Options.UseTextOptions = true;
+            this.Authentication.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Authentication.Caption = "Authentication";
+            this.Authentication.FieldName = "Authentication";
+            this.Authentication.Name = "Authentication";
+            this.Authentication.OptionsColumn.AllowEdit = false;
+            this.Authentication.OptionsColumn.AllowFocus = false;
+            this.Authentication.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.Authentication.Visible = true;
+            this.Authentication.VisibleIndex = 3;
+            this.Authentication.Width = 259;
             // 
             // EmployeeLogsUserControl
             // 
@@ -215,5 +351,10 @@
         private DevExpress.XtraEditors.SidePanel sidePanel7;
         private DevExpress.XtraGrid.GridControl gcEmployeeLogs;
         private DevExpress.XtraGrid.Views.Grid.GridView gvEmployeeLogs;
+        private DevExpress.XtraGrid.Columns.GridColumn LogID;
+        private DevExpress.XtraGrid.Columns.GridColumn Username;
+        private DevExpress.XtraGrid.Columns.GridColumn DateTime;
+        private DevExpress.XtraGrid.Columns.GridColumn Activity;
+        private DevExpress.XtraGrid.Columns.GridColumn Authentication;
     }
 }
