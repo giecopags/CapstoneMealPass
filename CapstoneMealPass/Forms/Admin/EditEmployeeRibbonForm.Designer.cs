@@ -135,7 +135,7 @@
             // changepasswordHLBL
             // 
             this.changepasswordHLBL.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changepasswordHLBL.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
+            this.changepasswordHLBL.Appearance.ForeColor = System.Drawing.Color.MediumSpringGreen;
             this.changepasswordHLBL.Appearance.Options.UseFont = true;
             this.changepasswordHLBL.Appearance.Options.UseForeColor = true;
             this.changepasswordHLBL.Location = new System.Drawing.Point(595, 264);
