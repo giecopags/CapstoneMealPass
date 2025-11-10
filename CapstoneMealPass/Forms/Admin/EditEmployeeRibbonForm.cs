@@ -39,11 +39,11 @@ namespace CapstoneMealPass.Forms.Admin
 
         private void SetupToggleSwitch()
         {
-            accountTS.Properties.ValueOff = "Unlocked";
-            accountTS.Properties.ValueOn = "Locked";
-            var a = accountTS.Properties.GetValueByState(false); // returns "Disabled"
-            var b = accountTS.Properties.GetStateByValue("Locked"); // returns true
-            var c = accountTS.Properties.GetStateByValue("Unlocked"); // returns false
+            accountTS.Properties.OffText = "Unlocked";
+            accountTS.Properties.OnText = "Locked";
+
+            accountTS.Properties.ValueOff = false;
+            accountTS.Properties.ValueOn = true;
         }
 
         private void UpdateAvailabilityLabel()
@@ -51,12 +51,12 @@ namespace CapstoneMealPass.Forms.Admin
             if (accountTS.IsOn)
             {
                 availabilityLC.Text = "Locked";
-                availabilityLC.ForeColor = Color.Green;
+                availabilityLC.ForeColor = Color.Salmon;
             }
             else
             {
                 availabilityLC.Text = "Unlocked";
-                availabilityLC.ForeColor = Color.Red;
+                availabilityLC.ForeColor = Color.LightGreen;
             }
         }
 
@@ -105,19 +105,15 @@ namespace CapstoneMealPass.Forms.Admin
 
                     employeeRG.SelectedIndex = Convert.ToInt32(employee.EmploymentStatus) - 1;
 
-                    if (employee.IsLocked == null)
+                    bool isLocked = false;
+                    if (employee.IsLocked != null)
                     {
-                        accountTS.IsOn = false; // default when null
+                        var val = employee.IsLocked.ToString().Trim().ToLower();
+                        isLocked = val == "locked" || val == "1" || val == "true" || val == "yes";
                     }
-                    else if (employee.IsLocked is bool boolVal)
-                    {
-                        accountTS.IsOn = boolVal;
-                    }
-                    else
-                    {
-                        string val = employee.IsLocked.ToString();
-                        accountTS.IsOn = val == "Locked" || val == "1" || val.Equals("true", StringComparison.OrdinalIgnoreCase);
-                    }
+
+                    accountTS.IsOn = isLocked;
+                    UpdateAvailabilityLabel();
 
                 }
                 else

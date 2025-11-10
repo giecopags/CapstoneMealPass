@@ -24,6 +24,8 @@ namespace CapstoneMealPass.Forms.Admin
             InitializeComponent();
             _username = username;
             ApplyTextEditBehaviors();
+
+            lblConfirmPasswordCaption.Visible = false;
         }
 
         private void ApplyTextEditBehaviors()
@@ -98,8 +100,9 @@ namespace CapstoneMealPass.Forms.Admin
             string password = passwordBE.Text;
             string confirmPassword = confirmpassBE.Text;
 
-            if (string.IsNullOrEmpty(confirmPassword))
+            if (string.IsNullOrWhiteSpace(confirmPassword))
             {
+                lblConfirmPasswordCaption.Visible = false;
                 lblConfirmPasswordCaption.Text = string.Empty;
                 return;
             }
