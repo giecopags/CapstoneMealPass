@@ -205,5 +205,27 @@ namespace MealPass.Data.Repositories
                 }
             }
         }
+        public async Task DeductStockAsync(int productId, int quantity)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                // 1. Get current product
+                var product = await GetByIdAsync(productId);
+                if (product == null)
+                    throw new Exception($"Product with ID {productId} not found.");
+
+                // 2. Deduct quantity
+                product.Quantity -= quantity;
+                if (product.Quantity < 0)
+                    product.Quantity = 0; // Prevent negative stock
+
+                // 3. Recalculate stock status
+                product.StockStatusID = CalculateStockStatus(product.Quantity, product.LowStockLevel);
+
+                // 4. Update product
+                await UpdateAsync(product);
+            }
+
+        }
     }
 }

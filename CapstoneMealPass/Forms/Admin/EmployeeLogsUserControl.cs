@@ -12,7 +12,7 @@ using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using MealPass.Core.GlobalSql;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 
 namespace CapstoneMealPass.Forms.Admin
 {

@@ -23,5 +23,7 @@ namespace MealPass.Core.Interface
 
         // Easier product update by fields
         Task UpdateProductAsync(int productId, string name, int categoryId, decimal price, int quantity, int lowStockLevel, int stockStatusId);
+
+        Task DeductStockAsync(int productId, int quantity);
     }
 }

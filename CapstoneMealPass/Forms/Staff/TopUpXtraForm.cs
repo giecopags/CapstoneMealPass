@@ -16,8 +16,14 @@ namespace CapstoneMealPass.Forms.Staff
         private readonly RFIDReaderService _rfidReader;
         private string _scannedRfid;
         private string _currentStudentId;
+        private readonly ScanRFIDXtraForm _scanForm;
+        private readonly decimal? _initialBalance;
+        private readonly string _initialStudentId;
+        private readonly bool _rfidRequired = true;
 
-        public TopUpXtraForm()
+
+        // Constructor for ScanRFIDXtraForm context
+        public TopUpXtraForm(string studentId, decimal balance, ScanRFIDXtraForm scanForm)
         {
             InitializeComponent();
 
@@ -27,18 +33,38 @@ namespace CapstoneMealPass.Forms.Staff
             IBalanceRepository balanceRepo = new BalanceRepository(connectionString);
 
             _topUpService = new TopUpService(studentRepo, balanceRepo);
+            _rfidReader = null; // RFID not needed in this context
+            _scanForm = scanForm;
+
+            _currentStudentId = studentId;
+            _initialBalance = balance;
+            _initialStudentId = studentId;
+            _rfidRequired = false; // RFID not needed
+
+
+        }
+
+        // Default constructor for standalone use
+        public TopUpXtraForm()
+        {
+            InitializeComponent();
+
+            string connectionString = SQLQuery.connectionString;
+            IStudentRepository studentRepo = new StudentRepository(connectionString);
+            IBalanceRepository balanceRepo = new BalanceRepository(connectionString);
+
+            _topUpService = new TopUpService(studentRepo, balanceRepo);
             _rfidReader = new RFIDReaderService();
         }
 
-
-
         private async void confirmBTN_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(_scannedRfid))
+            if (_rfidRequired && string.IsNullOrEmpty(_scannedRfid))
             {
                 MessageBox.Show("Please scan an RFID card first.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
 
             if (!decimal.TryParse(topupamountTE.Text, out decimal topUpAmount) || topUpAmount <= 0)
             {
@@ -54,6 +80,10 @@ namespace CapstoneMealPass.Forms.Staff
                 // Refresh student balance display
                 await LoadStudentInfoAsync(_scannedRfid);
 
+                // Trigger balance refresh in ScanRFIDXtraForm
+                if (_scanForm != null)
+                    await _scanForm.RefreshStudentBalanceAsync(_currentStudentId);
+
                 this.Close();
             }
             catch (Exception ex)
@@ -65,6 +95,16 @@ namespace CapstoneMealPass.Forms.Staff
         private void TopUpXtraForm_Load(object sender, EventArgs e)
         {
             studentidTE.ReadOnly = true;
+
+            if (!string.IsNullOrEmpty(_initialStudentId) && _initialBalance.HasValue)
+            {
+                studentidTE.Text = _initialStudentId;
+                accountbalanceLBL.Text = $"₱{_initialBalance.Value:N2}";
+                statusLBL.Text = "Ready for top-up";
+                return; // Skip RFID setup
+            }
+
+            if (_rfidReader == null) return;
 
             _rfidReader.OnStatusChanged += (status) =>
             {
@@ -82,20 +122,17 @@ namespace CapstoneMealPass.Forms.Staff
 
             _rfidReader.OnCardRemoved += () =>
             {
+                if (!IsHandleCreated || IsDisposed || statusLBL == null) return;
+
                 if (InvokeRequired)
-                {
-                    Invoke(new Action(() =>
-                    {
-                        statusLBL.Text = "Waiting for card...";
-                    }));
-                }
+                    Invoke(new Action(() => statusLBL.Text = "Waiting for card..."));
                 else
-                {
                     statusLBL.Text = "Waiting for card...";
-                }
             };
 
             _rfidReader.Initialize();
+
+
         }
 
         private async Task LoadStudentInfoAsync(string rfid)

@@ -21,5 +21,10 @@ namespace MealPass.Data.Queries
         public const string InsertBalance = @"
             INSERT INTO Balance (StudentID, StudentBalance)
             VALUES (@StudentID, @StudentBalance)";
+
+        public const string DeductBalance = @"
+        UPDATE Balance
+        SET StudentBalance = StudentBalance - @Amount
+        WHERE StudentID = @StudentID";
     }
 }

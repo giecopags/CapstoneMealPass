@@ -38,6 +38,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.studentidTE = new DevExpress.XtraEditors.TextEdit();
+            this.statusLBL = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentidTE.Properties)).BeginInit();
             this.SuspendLayout();
@@ -100,6 +101,7 @@
             this.confirmBTN.Size = new System.Drawing.Size(204, 31);
             this.confirmBTN.TabIndex = 16;
             this.confirmBTN.Text = "Confirm Purchase";
+            this.confirmBTN.Click += new System.EventHandler(this.confirmBTN_Click);
             // 
             // labelControl3
             // 
@@ -145,6 +147,18 @@
             this.studentidTE.Size = new System.Drawing.Size(289, 28);
             this.studentidTE.TabIndex = 12;
             // 
+            // statusLBL
+            // 
+            this.statusLBL.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLBL.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
+            this.statusLBL.Appearance.Options.UseFont = true;
+            this.statusLBL.Appearance.Options.UseForeColor = true;
+            this.statusLBL.Location = new System.Drawing.Point(418, 22);
+            this.statusLBL.Name = "statusLBL";
+            this.statusLBL.Size = new System.Drawing.Size(44, 16);
+            this.statusLBL.TabIndex = 21;
+            this.statusLBL.Text = "STATUS";
+            // 
             // ScanRFIDXtraForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -152,6 +166,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(557, 264);
+            this.Controls.Add(this.statusLBL);
             this.Controls.Add(this.remainingLBL);
             this.Controls.Add(this.accountbalanceLBL);
             this.Controls.Add(this.totalamountLBL);
@@ -168,6 +183,7 @@
             this.Name = "ScanRFIDXtraForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Scan RFID";
+            this.Load += new System.EventHandler(this.ScanRFIDXtraForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentidTE.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -186,5 +202,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit studentidTE;
+        private DevExpress.XtraEditors.LabelControl statusLBL;
     }
 }

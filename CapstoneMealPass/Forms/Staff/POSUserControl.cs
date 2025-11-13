@@ -17,6 +17,7 @@ namespace CapstoneMealPass.Forms.Staff
     {
         private readonly ProductRepository _productRepo = new ProductRepository();
 
+
         public POSUserControl()
         {
             InitializeComponent();
@@ -174,7 +175,33 @@ namespace CapstoneMealPass.Forms.Staff
 
         private void confirmBTN_Click(object sender, EventArgs e)
         {
-            FormHelper.DisplayForm(new Staff.PaymentOptionXtraForm());
+            var cartTable = cartGC.DataSource as DataTable;
+            if (cartTable == null || cartTable.Rows.Count == 0)
+            {
+                MessageBox.Show("Cart is empty. Cannot proceed to checkout.", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Parse Grand Total
+            if (!decimal.TryParse(grandtotalLBL.Text, out var grandTotal))
+            {
+                MessageBox.Show("Invalid total amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Build TransactionData object
+            var transactionData = new MealPass.Core.Entity.TransactionData
+            {
+                CartItems = cartTable.Copy(), // Copy to avoid modifying original
+                GrandTotal = grandTotal,
+                Username = UserSession.Username, // or your logged-in staff name
+                TransactionDateTime = DateTime.Now
+            };
+
+            // Pass it to the PaymentOptionXtraForm
+            var paymentForm = new Staff.PaymentOptionXtraForm(transactionData,this);
+            FormHelper.DisplayForm(paymentForm);
         }
 
         private async void snacksBTN_Click(object sender, EventArgs e)
@@ -200,6 +227,13 @@ namespace CapstoneMealPass.Forms.Staff
         private void findTE_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
             productsGV.ApplyFindFilter(e.NewValue as string);
+        }
+
+        public async void ReloadItems()
+        {
+            await LoadProductsAsync();  // refresh product list
+            cartGC.DataSource = null; // reset cart
+            grandtotalLBL.Text = "0.00";
         }
     }
 }
