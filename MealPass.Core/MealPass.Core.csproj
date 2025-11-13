@@ -66,10 +66,15 @@
     <Compile Include="Entity\ProductLogs.cs" />
     <Compile Include="Entity\StockStatus.cs" />
     <Compile Include="Entity\Student.cs" />
+    <Compile Include="Entity\Transaction.cs" />
+    <Compile Include="Entity\TransactionData.cs" />
+    <Compile Include="Entity\TransactionDetail.cs" />
     <Compile Include="GlobalSql\SQLQuery.cs" />
     <Compile Include="Interface\IBalanceRepository.cs" />
     <Compile Include="Interface\IProductRepository.cs" />
     <Compile Include="Interface\IStudentRepository.cs" />
+    <Compile Include="Interface\ITransactionDetailRepository.cs" />
+    <Compile Include="Interface\ITransactionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

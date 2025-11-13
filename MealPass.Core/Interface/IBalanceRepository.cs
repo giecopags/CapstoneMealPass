@@ -13,5 +13,6 @@ namespace MealPass.Core.Interface
         Task UpdateBalanceAsync(string studentId, decimal newBalance);
         Task InsertBalanceAsync(string studentId, decimal initialBalance);
         Task AddBalanceAsync(Balance balance);
+        Task DeductBalanceAsync(string studentId, decimal amount);
     }
 }

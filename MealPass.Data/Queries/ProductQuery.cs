@@ -112,5 +112,9 @@ namespace MealPass.Data.Queries
                                               ON ss.StockStatusID = p.StockStatusID
                                               WHERE c.CategoryID = 3;";
 
+        public static string DeductStock = @"UPDATE pro.Products
+                                             SET Quantity = Quantity - @Quantity
+                                             WHERE ProductID = @ProductID";
+
     }
 }

@@ -50,6 +50,7 @@ namespace MealPass.Data.Repositories
                     new { StudentID = studentId, StudentBalance = initialBalance });
             }
         }
+
         public async Task AddBalanceAsync(Balance balance)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -61,6 +62,17 @@ namespace MealPass.Data.Repositories
                         balance.StudentID,
                         balance.StudentBalance
                     }
+                );
+            }
+        }
+
+        public async Task DeductBalanceAsync(string studentId, decimal amount)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(
+                    BalanceQuery.DeductBalance,
+                    new { StudentID = studentId, Amount = amount }
                 );
             }
         }
