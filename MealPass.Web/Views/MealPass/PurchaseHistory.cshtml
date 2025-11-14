@@ -1,0 +1,146 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<Transactions>
+
+<!-- BALANCE SUMMARY CARD -->
+<div class="col-12 mb-4">
+    <div class="card shadow-sm rounded border-light p-3" style="background-color:#f8f9fa;">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h5 class="mb-1">Current Balance</h5>
+                <p class="mb-0" style="font-size:1.25rem; font-weight:600; color:#28a745;" id="currentBalance">
+                    ₱@ViewBag.CurrentBalance.ToString("N2")
+                </p>
+            </div>
+            <div>
+                <h5 class="mb-1">Total Amount Topped Up</h5>
+                <p class="mb-0" style="font-size:1.25rem; font-weight:600; color:#0097b2;" id="totalToppedUp">
+                    ₱@ViewBag.TotalToppedUp.ToString("N2")
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <!-- TRANSACTIONS TABLE -->
+    <div class="col-md-12 mb-4">
+        <div class="card shadow-sm rounded border-light">
+            <div class="card-body">
+                <h4 class="mb-3">Purchase History</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered" id="transactionTable">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Reference ID</th>
+                                <th>Date</th>
+                                <th>Employee</th>
+                                <th>Payment Method</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr data-ref="@item.ReferenceID" style="cursor:pointer;">
+                                    <td>@item.ReferenceID</td>
+                                    <td>@item.SaleDate.ToString("MMMM dd, yyyy hh:mm tt")</td>
+                                    <td>@item.Username</td>
+                                    <td>@(item.PaymentMethod ? "Cash" : "MealPass")</td>
+                                    <td>₱@item.TotalAmount.ToString("N2")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+<!-- TRANSACTION DETAILS TABLE -->
+<div class="col-md-12">
+    <div class="card shadow-sm rounded border-light">
+        <div class="card-body">
+            <h4 class="mb-3">Transaction Details</h4>
+
+            <!-- DEFAULT MESSAGE -->
+            <div id="detailsSection">
+                <p class="text-muted">Select a transaction to display details.</p>
+            </div>
+
+            <!-- DETAILS TABLE -->
+            <div class="table-responsive d-none" id="detailsTableWrapper">
+                <table class="table table-hover table-bordered" id="detailsTable">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+                <!-- GRAND TOTAL -->
+                <div class="text-right mt-3 border-top pt-2">
+                    <h5 style="font-weight:700; font-size:1.2rem;">
+                        Grand Total:
+                        <span id="grandTotalDisplay" style="color:#1b7d4f;">₱0.00</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- SCRIPT -->
+<script>
+    document.querySelectorAll("#transactionTable tbody tr").forEach(row => {
+        row.addEventListener("click", function () {
+
+            let referenceId = this.getAttribute("data-ref");
+
+            fetch(`/MealPass/GetTransactionDetails?referenceId=${referenceId}`)
+                .then(res => res.json())
+                .then(data => {
+
+                    let tbody = document.querySelector("#detailsTable tbody");
+                    tbody.innerHTML = "";
+
+                    let grandTotal = 0;
+
+                    data.forEach(item => {
+                        grandTotal += item.subtotal;
+
+                        let tr = `
+                            <tr>
+                                <td>${item.productName}</td>
+                                <td>${item.quantitySold}</td>
+                                <td>₱${item.unitPrice.toFixed(2)}</td>
+                                <td>₱${item.subtotal.toFixed(2)}</td>
+                            </tr>`;
+                        tbody.innerHTML += tr;
+                    });
+
+                    // Show computed grand total
+                    document.getElementById("grandTotalDisplay").innerText =
+                        "₱" + grandTotal.toFixed(2);
+
+                    // Show the details table and hide the default message
+                    document.getElementById("detailsTableWrapper").classList.remove("d-none");
+                    document.getElementById("detailsSection").classList.add("d-none");
+                })
+                .catch(err => {
+                    console.error("Error fetching transaction details:", err);
+                });
+        });
+    });
+</script>
+
