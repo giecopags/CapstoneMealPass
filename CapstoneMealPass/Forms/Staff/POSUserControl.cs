@@ -28,6 +28,9 @@ namespace CapstoneMealPass.Forms.Staff
         private async void PosUC_LoadAsync(object sender, EventArgs e)
         {
             await LoadProductsAsync();
+
+            productsGV.Columns["Price"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            productsGV.Columns["Price"].DisplayFormat.FormatString = "N2";
         }
 
         private async Task LoadSnacksAsync()
@@ -89,6 +92,14 @@ namespace CapstoneMealPass.Forms.Staff
                 cartTable.Columns.Add("Price", typeof(decimal));
                 cartTable.Columns.Add("Total", typeof(decimal));
                 cartGC.DataSource = cartTable;
+
+                cartGV.Columns["Price"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                cartGV.Columns["Price"].DisplayFormat.FormatString = "N2";
+
+                cartGV.Columns["Total"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                cartGV.Columns["Total"].DisplayFormat.FormatString = "N2";
+
+                cartGV.BestFitColumns();
             }
 
             bool alreadyInCart = cartTable.AsEnumerable().Any(r => r["ID"].ToString() == productID);

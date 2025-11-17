@@ -292,6 +292,8 @@
             this.SaleID.AppearanceCell.Options.UseBackColor = true;
             this.SaleID.AppearanceCell.Options.UseFont = true;
             this.SaleID.AppearanceCell.Options.UseForeColor = true;
+            this.SaleID.AppearanceCell.Options.UseTextOptions = true;
+            this.SaleID.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.SaleID.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
             this.SaleID.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.SaleID.AppearanceHeader.ForeColor = System.Drawing.Color.White;

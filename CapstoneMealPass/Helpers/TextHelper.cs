@@ -49,5 +49,39 @@ namespace CapstoneMealPass.Helpers
                 }
             };
         }
+
+        public static void AttachPasswordBehavior(TextEdit textEdit, string placeholder, CheckEdit showCheck)
+        {
+            textEdit.Text = placeholder;
+            textEdit.ForeColor = Color.DarkGray;
+            textEdit.Properties.UseSystemPasswordChar = false;
+
+            textEdit.Enter += (s, e) =>
+            {
+                if (textEdit.Text == placeholder)
+                {
+                    textEdit.Text = "";
+                    textEdit.ForeColor = Color.DarkGray;
+
+                    textEdit.Properties.UseSystemPasswordChar = !showCheck.Checked;
+                }
+            };
+
+            textEdit.Leave += (s, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(textEdit.Text))
+                {
+                    textEdit.Text = placeholder;
+                    textEdit.ForeColor = Color.DarkGray;
+                    textEdit.Properties.UseSystemPasswordChar = false;
+                }
+            };
+
+            showCheck.CheckedChanged += (s, e) =>
+            {
+                if (textEdit.Text != placeholder)
+                    textEdit.Properties.UseSystemPasswordChar = !showCheck.Checked;
+            };
+        }
     }
 }

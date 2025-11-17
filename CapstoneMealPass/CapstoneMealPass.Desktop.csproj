@@ -146,7 +146,9 @@
     <Reference Include="Sydesoft.NfcDevice.ACR122U, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <HintPath>..\packages\NFC-ACR122U.1.0.0\lib\Sydesoft.NfcDevice.ACR122U.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8.1\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>

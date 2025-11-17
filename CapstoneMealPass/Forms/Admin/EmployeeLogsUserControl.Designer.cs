@@ -233,6 +233,8 @@
             // 
             this.Username.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.Username.AppearanceCell.Options.UseFont = true;
+            this.Username.AppearanceCell.Options.UseTextOptions = true;
+            this.Username.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Username.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
             this.Username.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.Username.AppearanceHeader.Options.UseBackColor = true;
@@ -253,6 +255,8 @@
             // 
             this.DateTime.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.DateTime.AppearanceCell.Options.UseFont = true;
+            this.DateTime.AppearanceCell.Options.UseTextOptions = true;
+            this.DateTime.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.DateTime.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
             this.DateTime.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.DateTime.AppearanceHeader.Options.UseBackColor = true;

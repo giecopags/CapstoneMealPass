@@ -52,6 +52,7 @@ namespace CapstoneMealPass.Forms.Admin
 
                 gcSales.DataSource = sales.Select(x => new
                 {
+                    x.ProductID,
                     x.ProductName,
                     x.CategoryName,
                     UnitPrice = x.UnitPrice.ToString("N2"),
@@ -73,6 +74,7 @@ namespace CapstoneMealPass.Forms.Admin
 
                 gcSales.DataSource = sales.Select(x => new
                 {
+                    x.ProductID,
                     x.ProductName,
                     x.CategoryName,
                     UnitPrice = x.UnitPrice.ToString("N2"),

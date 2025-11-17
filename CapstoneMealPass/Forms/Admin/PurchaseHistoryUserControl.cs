@@ -47,7 +47,7 @@ namespace CapstoneMealPass.Forms.Admin
                     x.Username,
                     x.StudentID,
                     SaleDate = x.SaleDate.ToString("dd/MM/yy hh:mm tt"),
-                    x.TotalAmount,
+                    TotalAmount = x.TotalAmount.ToString("N2"),
                     PaymentMethod = x.PaymentMethod == 1 ? "Cash" : "MealPass"
                 }).ToList();
 
@@ -123,6 +123,12 @@ namespace CapstoneMealPass.Forms.Admin
                 var items = await _purchaseRepo.GetPurchasedItemsByReferenceIDAsync(referenceID);
 
                 productpurchasesGC.DataSource = items;
+                productpurchasesGV.Columns["UnitPrice"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                productpurchasesGV.Columns["UnitPrice"].DisplayFormat.FormatString = "N2";
+
+                productpurchasesGV.Columns["Subtotal"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                productpurchasesGV.Columns["Subtotal"].DisplayFormat.FormatString = "N2";
+
             }
             catch (Exception ex)
             {

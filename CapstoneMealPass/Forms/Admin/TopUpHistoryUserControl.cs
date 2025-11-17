@@ -43,6 +43,11 @@ namespace CapstoneMealPass.Forms.Admin
             {
                 var logs = await _logRepo.LoadTopUpLogsAsync();
                 gcTopUp.DataSource = logs;
+
+                gvTopUp.Columns["Amount"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                gvTopUp.Columns["Amount"].DisplayFormat.FormatString = "N2";
+
+                gvTopUp.BestFitColumns();
             }
             catch (Exception ex)
             {
