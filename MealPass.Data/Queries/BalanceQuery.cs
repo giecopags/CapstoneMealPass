@@ -23,8 +23,8 @@ namespace MealPass.Data.Queries
             VALUES (@StudentID, @StudentBalance)";
 
         public const string DeductBalance = @"
-        UPDATE Balance
-        SET StudentBalance = StudentBalance - @Amount
-        WHERE StudentID = @StudentID";
+            UPDATE Balance
+            SET StudentBalance = StudentBalance - @Amount
+            WHERE StudentID = @StudentID";
     }
 }

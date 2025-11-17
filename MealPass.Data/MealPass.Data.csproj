@@ -185,12 +185,18 @@
     <Compile Include="Queries\BalanceQuery.cs" />
     <Compile Include="Queries\EmployeeQuery.cs" />
     <Compile Include="Queries\ProductQuery.cs" />
+    <Compile Include="Queries\PurchaseHistoryQuery.cs" />
+    <Compile Include="Queries\SaleQuery.cs" />
     <Compile Include="Queries\StudentQuery.cs" />
+    <Compile Include="Queries\TopUpLogQuery.cs" />
     <Compile Include="Queries\TransactionQuery.cs" />
     <Compile Include="Repositories\BalanceRepository.cs" />
     <Compile Include="Repositories\GlobalLogger.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\PurchaseHistoryRepository.cs" />
+    <Compile Include="Repositories\SaleRepository.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
+    <Compile Include="Repositories\TopUpLogRepository.cs" />
     <Compile Include="Repositories\TransactionDetailRepository.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
   </ItemGroup>

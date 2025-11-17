@@ -19,7 +19,7 @@ namespace MealPass.Business.Services
             _balanceRepository = balanceRepository;
         }
 
-        // ✅ Gets student + balance record. Creates balance if missing.
+        // Gets student + balance record. Creates balance if missing.
         public async Task<(Student student, Balance balance)> GetOrCreateStudentBalanceByRFIDAsync(string rfid)
         {
             var student = await _studentRepository.GetStudentByRFIDAsync(rfid);
@@ -28,7 +28,7 @@ namespace MealPass.Business.Services
 
             var balance = await _balanceRepository.GetBalanceByStudentIDAsync(student.StudentID);
 
-            // ✅ If no balance record, insert it
+            // If no balance record, insert it
             if (balance == null)
             {
                 balance = new Balance
@@ -38,7 +38,7 @@ namespace MealPass.Business.Services
                 };
                 await _balanceRepository.AddBalanceAsync(balance);
 
-                // 🔄 Fetch again to ensure we return a populated balance object
+                // Fetch again to ensure we return a populated balance object
                 balance = await _balanceRepository.GetBalanceByStudentIDAsync(student.StudentID);
             }
 

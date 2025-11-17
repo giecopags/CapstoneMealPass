@@ -126,6 +126,7 @@
             this.dateDE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dateDE.Size = new System.Drawing.Size(206, 23);
             this.dateDE.TabIndex = 30;
+            this.dateDE.EditValueChanged += new System.EventHandler(this.dateDE_EditValueChanged);
             // 
             // findTE
             // 
@@ -141,6 +142,7 @@
             this.findTE.Properties.AutoHeight = false;
             this.findTE.Size = new System.Drawing.Size(206, 23);
             this.findTE.TabIndex = 29;
+            this.findTE.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.findTE_EditValueChanging);
             // 
             // sidePanel9
             // 
@@ -309,7 +311,7 @@
             this.ItemsSold.AppearanceHeader.Options.UseTextOptions = true;
             this.ItemsSold.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ItemsSold.Caption = "Items Sold";
-            this.ItemsSold.FieldName = "ItemsSold";
+            this.ItemsSold.FieldName = "ItemSold";
             this.ItemsSold.MinWidth = 21;
             this.ItemsSold.Name = "ItemsSold";
             this.ItemsSold.OptionsColumn.AllowEdit = false;
@@ -338,7 +340,7 @@
             this.Price.AppearanceHeader.Options.UseTextOptions = true;
             this.Price.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Price.Caption = "Price";
-            this.Price.FieldName = "Price";
+            this.Price.FieldName = "UnitPrice";
             this.Price.MinWidth = 21;
             this.Price.Name = "Price";
             this.Price.OptionsColumn.AllowEdit = false;
@@ -537,6 +539,7 @@
             this.Controls.Add(this.sidePanel6);
             this.Name = "SalesUserControl";
             this.Size = new System.Drawing.Size(1076, 590);
+            this.Load += new System.EventHandler(this.SalesUserControl_Load);
             this.sidePanel5.ResumeLayout(false);
             this.sidePanel5.PerformLayout();
             this.sidePanel10.ResumeLayout(false);

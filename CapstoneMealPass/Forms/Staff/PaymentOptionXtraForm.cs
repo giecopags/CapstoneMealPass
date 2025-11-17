@@ -32,7 +32,8 @@ namespace CapstoneMealPass.Forms.Staff
 
         private void cashBTN_Click(object sender, EventArgs e)
         {
-            FormHelper.DisplayForm(new Staff.CashOptionXtraForm());
+            var cashForm = new Staff.CashOptionXtraForm(_transaction, this, _posControl);
+            FormHelper.DisplayForm(cashForm);
         }
 
         private void topupBTN_Click(object sender, EventArgs e)
