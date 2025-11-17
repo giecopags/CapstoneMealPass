@@ -65,7 +65,7 @@
             // pictureEdit1
             // 
             this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.Location = new System.Drawing.Point(342, 33);
+            this.pictureEdit1.Location = new System.Drawing.Point(363, 38);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -83,7 +83,7 @@
             this.confirmBTN.Name = "confirmBTN";
             this.confirmBTN.Size = new System.Drawing.Size(204, 31);
             this.confirmBTN.TabIndex = 15;
-            this.confirmBTN.Text = "Confirm Purchase";
+            this.confirmBTN.Text = "Confirm Top-Up";
             this.confirmBTN.Click += new System.EventHandler(this.confirmBTN_Click);
             // 
             // labelControl3
@@ -124,7 +124,7 @@
             this.statusLBL.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
             this.statusLBL.Appearance.Options.UseFont = true;
             this.statusLBL.Appearance.Options.UseForeColor = true;
-            this.statusLBL.Location = new System.Drawing.Point(430, 12);
+            this.statusLBL.Location = new System.Drawing.Point(372, 16);
             this.statusLBL.Name = "statusLBL";
             this.statusLBL.Size = new System.Drawing.Size(44, 16);
             this.statusLBL.TabIndex = 19;
@@ -136,7 +136,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 281);
+            this.ClientSize = new System.Drawing.Size(577, 281);
             this.Controls.Add(this.statusLBL);
             this.Controls.Add(this.topupamountTE);
             this.Controls.Add(this.accountbalanceLBL);

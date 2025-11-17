@@ -37,7 +37,7 @@ namespace MealPass.Business.Services
                 cardReader.CardInserted += CardInserted;
                 cardReader.CardRemoved += CardRemoved;
 
-                OnStatusChanged?.Invoke("Waiting for card...");
+                OnStatusChanged?.Invoke("Waiting...");
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace MealPass.Business.Services
         private void CardRemoved()
         {
             OnCardRemoved?.Invoke();
-            OnStatusChanged?.Invoke("Card removed. Waiting for next scan...");
+            OnStatusChanged?.Invoke("Card removed.");
         }
     }
 

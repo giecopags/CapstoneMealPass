@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TopUpHistoryUserControl));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.sidePanel3 = new DevExpress.XtraEditors.SidePanel();
             this.dateDE = new DevExpress.XtraEditors.DateEdit();
             this.sidePanel10 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel5 = new DevExpress.XtraEditors.SidePanel();
+            this.findTE = new DevExpress.XtraEditors.TextEdit();
             this.sidePanel9 = new DevExpress.XtraEditors.SidePanel();
-            this.addemployeeBTN = new DevExpress.XtraEditors.SimpleButton();
+            this.printBTN = new DevExpress.XtraEditors.SimpleButton();
             this.sidePanel8 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel7 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
@@ -58,11 +59,11 @@
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel4 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel6 = new DevExpress.XtraEditors.SidePanel();
-            this.findTE = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).BeginInit();
             this.sidePanel10.SuspendLayout();
             this.sidePanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).BeginInit();
             this.sidePanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcTopUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvTopUp)).BeginInit();
@@ -70,7 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonDelete2)).BeginInit();
             this.sidePanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // sidePanel3
@@ -141,13 +141,29 @@
             this.sidePanel5.TabIndex = 53;
             this.sidePanel5.Text = "sidePanel5";
             // 
+            // findTE
+            // 
+            this.findTE.Location = new System.Drawing.Point(234, 36);
+            this.findTE.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.findTE.Name = "findTE";
+            this.findTE.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.findTE.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.findTE.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.findTE.Properties.Appearance.Options.UseBackColor = true;
+            this.findTE.Properties.Appearance.Options.UseFont = true;
+            this.findTE.Properties.Appearance.Options.UseForeColor = true;
+            this.findTE.Properties.AutoHeight = false;
+            this.findTE.Size = new System.Drawing.Size(206, 23);
+            this.findTE.TabIndex = 32;
+            this.findTE.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.findTE_EditValueChanging);
+            // 
             // sidePanel9
             // 
             this.sidePanel9.AllowResize = false;
             this.sidePanel9.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.sidePanel9.Appearance.Options.UseBackColor = true;
             this.sidePanel9.BorderThickness = 0;
-            this.sidePanel9.Controls.Add(this.addemployeeBTN);
+            this.sidePanel9.Controls.Add(this.printBTN);
             this.sidePanel9.Dock = System.Windows.Forms.DockStyle.Right;
             this.sidePanel9.Location = new System.Drawing.Point(934, 12);
             this.sidePanel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -156,21 +172,22 @@
             this.sidePanel9.TabIndex = 28;
             this.sidePanel9.Text = "sidePanel9";
             // 
-            // addemployeeBTN
+            // printBTN
             // 
-            this.addemployeeBTN.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(141)))), ((int)(((byte)(57)))));
-            this.addemployeeBTN.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addemployeeBTN.Appearance.Options.UseBackColor = true;
-            this.addemployeeBTN.Appearance.Options.UseFont = true;
-            this.addemployeeBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("addemployeeBTN.ImageOptions.Image")));
-            this.addemployeeBTN.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
-            this.addemployeeBTN.Location = new System.Drawing.Point(8, 15);
-            this.addemployeeBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.addemployeeBTN.Name = "addemployeeBTN";
-            this.addemployeeBTN.Padding = new System.Windows.Forms.Padding(2);
-            this.addemployeeBTN.Size = new System.Drawing.Size(93, 35);
-            this.addemployeeBTN.TabIndex = 24;
-            this.addemployeeBTN.Text = "Print";
+            this.printBTN.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(141)))), ((int)(((byte)(57)))));
+            this.printBTN.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.printBTN.Appearance.Options.UseBackColor = true;
+            this.printBTN.Appearance.Options.UseFont = true;
+            this.printBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("printBTN.ImageOptions.Image")));
+            this.printBTN.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
+            this.printBTN.Location = new System.Drawing.Point(8, 15);
+            this.printBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.printBTN.Name = "printBTN";
+            this.printBTN.Padding = new System.Windows.Forms.Padding(2);
+            this.printBTN.Size = new System.Drawing.Size(93, 35);
+            this.printBTN.TabIndex = 24;
+            this.printBTN.Text = "Print";
+            this.printBTN.Click += new System.EventHandler(this.printBTN_Click);
             // 
             // sidePanel8
             // 
@@ -447,9 +464,9 @@
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions3.SvgImage")));
+            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("repositoryItemButtonEdit1.ContextImageOptions.SvgImage")));
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -503,22 +520,6 @@
             this.sidePanel6.TabIndex = 55;
             this.sidePanel6.Text = "sidePanel6";
             // 
-            // findTE
-            // 
-            this.findTE.Location = new System.Drawing.Point(234, 36);
-            this.findTE.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.findTE.Name = "findTE";
-            this.findTE.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.findTE.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.findTE.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.findTE.Properties.Appearance.Options.UseBackColor = true;
-            this.findTE.Properties.Appearance.Options.UseFont = true;
-            this.findTE.Properties.Appearance.Options.UseForeColor = true;
-            this.findTE.Properties.AutoHeight = false;
-            this.findTE.Size = new System.Drawing.Size(206, 23);
-            this.findTE.TabIndex = 32;
-            this.findTE.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.findTE_EditValueChanging);
-            // 
             // TopUpHistoryUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -536,6 +537,7 @@
             this.sidePanel10.ResumeLayout(false);
             this.sidePanel5.ResumeLayout(false);
             this.sidePanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).EndInit();
             this.sidePanel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcTopUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvTopUp)).EndInit();
@@ -543,7 +545,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonDelete2)).EndInit();
             this.sidePanel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -555,7 +556,7 @@
         private DevExpress.XtraEditors.SidePanel sidePanel10;
         private DevExpress.XtraEditors.SidePanel sidePanel5;
         private DevExpress.XtraEditors.SidePanel sidePanel9;
-        private DevExpress.XtraEditors.SimpleButton addemployeeBTN;
+        private DevExpress.XtraEditors.SimpleButton printBTN;
         private DevExpress.XtraEditors.SidePanel sidePanel8;
         private DevExpress.XtraEditors.SidePanel sidePanel7;
         private DevExpress.XtraEditors.SidePanel sidePanel1;
