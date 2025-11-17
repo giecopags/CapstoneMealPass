@@ -48,7 +48,7 @@ namespace CapstoneMealPass.Forms.Staff
         {
             try
             {
-                // ✅ 1. Validate scan
+                // Validate scan
                 if (string.IsNullOrEmpty(_studentId))
                 {
                     MessageBox.Show("Please scan a valid student RFID before confirming the purchase.",
@@ -56,7 +56,7 @@ namespace CapstoneMealPass.Forms.Staff
                     return;
                 }
 
-                // ✅ 2. Ensure balance validity
+                // Ensure balance validity
                 if (_studentBalance < 0)
                 {
                     MessageBox.Show("Invalid student balance. Please rescan the card.",
@@ -64,7 +64,7 @@ namespace CapstoneMealPass.Forms.Staff
                     return;
                 }
 
-                // ✅ 3. Check sufficient balance
+                // Check sufficient balance
                 decimal totalAmount = _transaction.GrandTotal;
                 if (_studentBalance < totalAmount)
                 {
@@ -75,10 +75,10 @@ namespace CapstoneMealPass.Forms.Staff
                         var topUpForm = new TopUpXtraForm(_studentId, _studentBalance, this);
                         topUpForm.ShowDialog();
 
-                        // ✅ Refresh balance after top-up
+                        // Refresh balance after top-up
                         await RefreshStudentBalanceAsync(_studentId);
 
-                        // ✅ Recheck balance after top-up
+                        // Recheck balance after top-up
                         if (_studentBalance < totalAmount)
                         {
                             MessageBox.Show("Balance is still insufficient after top-up.", "Transaction Halted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -88,23 +88,23 @@ namespace CapstoneMealPass.Forms.Staff
                     return;
 
                 }
-
-                // ✅ 4. Compute new balance
+                
+                // Compute new balance
                 decimal newBalance = _studentBalance - totalAmount;
 
-                // ✅ 5. Initialize repositories
+                // Initialize repositories
                 string connectionString = SQLQuery.connectionString;
                 var balanceRepo = new BalanceRepository(connectionString);
                 var transactionRepo = new TransactionRepository(connectionString);
                 var transactionDetailRepo = new TransactionDetailRepository(connectionString);
                 var productRepo = new ProductRepository();
 
-                // ✅ 6. Generate ReferenceID
+                // Generate ReferenceID
                 string refId = "R" +
                     DateTime.Now.ToString("yyMMddHHmmss") +
                     _studentId.Substring(_studentId.Length - 4);
 
-                // ✅ 7. Insert master Transaction
+                // Insert master Transaction
                 var transaction = new MealPass.Core.Entity.Transaction
                 {
                     ReferenceID = refId,
@@ -118,7 +118,7 @@ namespace CapstoneMealPass.Forms.Staff
 
                 await transactionRepo.InsertTransactionAsync(transaction);
 
-                // ✅ 8. Insert Transaction Details (no TransactionDetailID needed)
+                // Insert Transaction Details (no TransactionDetailID needed)
                 foreach (DataRow row in _transaction.CartItems.Rows)
                 {
                     int productId = Convert.ToInt32(row["ID"]);
@@ -139,10 +139,10 @@ namespace CapstoneMealPass.Forms.Staff
                     await productRepo.DeductStockAsync(productId, quantity);
                 }
 
-                // ✅ 9. Update Balance
+                // Update Balance
                 await balanceRepo.UpdateBalanceAsync(_studentId, newBalance);
 
-                // ✅ 10. Update UI
+                // Update UI
                 accountbalanceLBL.Text = newBalance.ToString("N2");
                 remainingLBL.Text = "0.00";
                 remainingLBL.ForeColor = Color.Green;
@@ -226,7 +226,7 @@ namespace CapstoneMealPass.Forms.Staff
             try
             {
                 string connectionString = SQLQuery.connectionString;
-                // 1. Look up student
+                // Look up student
                 var studentRepo = new StudentRepository(connectionString);
                 var balanceRepo = new BalanceRepository(connectionString);
 
@@ -241,7 +241,7 @@ namespace CapstoneMealPass.Forms.Staff
                 _studentId = student.StudentID;
                 studentidTE.Text = _studentId;
 
-                // 2. Load or create balance
+                // Load or create balance
                 var balance = await balanceRepo.GetBalanceByStudentIDAsync(_studentId);
 
                 if (balance == null)
@@ -257,7 +257,7 @@ namespace CapstoneMealPass.Forms.Staff
 
                 accountbalanceLBL.Text = _studentBalance.ToString("N2");
 
-                // 3. Compute remaining
+                // Compute remaining
                 decimal total = _transaction.GrandTotal;
                 decimal remaining = _studentBalance - total;
 

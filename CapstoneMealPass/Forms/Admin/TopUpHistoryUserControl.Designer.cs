@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TopUpHistoryUserControl));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             this.sidePanel3 = new DevExpress.XtraEditors.SidePanel();
             this.dateDE = new DevExpress.XtraEditors.DateEdit();
             this.sidePanel10 = new DevExpress.XtraEditors.SidePanel();
@@ -44,30 +44,33 @@
             this.sidePanel7 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.gcSales = new DevExpress.XtraGrid.GridControl();
-            this.gvSales = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gcTopUp = new DevExpress.XtraGrid.GridControl();
+            this.gvTopUp = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SaleID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.EmployeeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.StudentID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.DateTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Username = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TopUpDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TopUpAmount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemButtonDelete2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel4 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel6 = new DevExpress.XtraEditors.SidePanel();
+            this.findTE = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).BeginInit();
             this.sidePanel10.SuspendLayout();
             this.sidePanel5.SuspendLayout();
             this.sidePanel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcSales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcTopUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvTopUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonDelete2)).BeginInit();
             this.sidePanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // sidePanel3
@@ -103,6 +106,7 @@
             this.dateDE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dateDE.Size = new System.Drawing.Size(206, 23);
             this.dateDE.TabIndex = 30;
+            this.dateDE.EditValueChanged += new System.EventHandler(this.dateDE_EditValueChanged);
             // 
             // sidePanel10
             // 
@@ -122,6 +126,7 @@
             this.sidePanel5.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.sidePanel5.Appearance.Options.UseBackColor = true;
             this.sidePanel5.BorderThickness = 0;
+            this.sidePanel5.Controls.Add(this.findTE);
             this.sidePanel5.Controls.Add(this.sidePanel10);
             this.sidePanel5.Controls.Add(this.sidePanel9);
             this.sidePanel5.Controls.Add(this.sidePanel8);
@@ -222,49 +227,50 @@
             this.labelControl2.TabIndex = 9;
             this.labelControl2.Text = "Top-Up History";
             // 
-            // gcSales
+            // gcTopUp
             // 
-            this.gcSales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcSales.EmbeddedNavigator.Buttons.Append.Visible = false;
-            this.gcSales.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
-            this.gcSales.EmbeddedNavigator.Buttons.Edit.Visible = false;
-            this.gcSales.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
-            this.gcSales.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gcSales.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gcSales.Location = new System.Drawing.Point(0, 0);
-            this.gcSales.MainView = this.gvSales;
-            this.gcSales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gcSales.Name = "gcSales";
-            this.gcSales.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.gcTopUp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcTopUp.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.gcTopUp.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gcTopUp.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gcTopUp.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.gcTopUp.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.gcTopUp.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gcTopUp.Location = new System.Drawing.Point(0, 0);
+            this.gcTopUp.MainView = this.gvTopUp;
+            this.gcTopUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gcTopUp.Name = "gcTopUp";
+            this.gcTopUp.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemPictureEdit1,
             this.repositoryItemButtonEdit1,
             this.repositoryItemButtonDelete2});
-            this.gcSales.Size = new System.Drawing.Size(1027, 484);
-            this.gcSales.TabIndex = 54;
-            this.gcSales.UseEmbeddedNavigator = true;
-            this.gcSales.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvSales});
+            this.gcTopUp.Size = new System.Drawing.Size(1027, 484);
+            this.gcTopUp.TabIndex = 54;
+            this.gcTopUp.UseEmbeddedNavigator = true;
+            this.gcTopUp.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvTopUp});
             // 
-            // gvSales
+            // gvTopUp
             // 
-            this.gvSales.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvTopUp.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.SaleID,
-            this.EmployeeName,
             this.StudentID,
-            this.DateTime,
-            this.TopUpAmount});
-            this.gvSales.DetailHeight = 284;
-            this.gvSales.GridControl = this.gcSales;
-            this.gvSales.Name = "gvSales";
-            this.gvSales.OptionsBehavior.AutoExpandAllGroups = true;
-            this.gvSales.OptionsEditForm.PopupEditFormWidth = 686;
-            this.gvSales.OptionsView.RowAutoHeight = true;
-            this.gvSales.OptionsView.ShowGroupPanel = false;
+            this.Username,
+            this.TopUpDate,
+            this.TopUpAmount,
+            this.Status});
+            this.gvTopUp.DetailHeight = 284;
+            this.gvTopUp.GridControl = this.gcTopUp;
+            this.gvTopUp.Name = "gvTopUp";
+            this.gvTopUp.OptionsBehavior.AutoExpandAllGroups = true;
+            this.gvTopUp.OptionsEditForm.PopupEditFormWidth = 686;
+            this.gvTopUp.OptionsView.RowAutoHeight = true;
+            this.gvTopUp.OptionsView.ShowGroupPanel = false;
             // 
             // SaleID
             // 
             this.SaleID.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.SaleID.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaleID.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.SaleID.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.SaleID.AppearanceCell.Options.UseBackColor = true;
             this.SaleID.AppearanceCell.Options.UseFont = true;
@@ -278,7 +284,7 @@
             this.SaleID.AppearanceHeader.Options.UseTextOptions = true;
             this.SaleID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.SaleID.Caption = "#";
-            this.SaleID.FieldName = "SaleID";
+            this.SaleID.FieldName = "TopUpID";
             this.SaleID.MinWidth = 21;
             this.SaleID.Name = "SaleID";
             this.SaleID.OptionsColumn.AllowEdit = false;
@@ -286,39 +292,12 @@
             this.SaleID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.SaleID.Visible = true;
             this.SaleID.VisibleIndex = 0;
-            this.SaleID.Width = 58;
-            // 
-            // EmployeeName
-            // 
-            this.EmployeeName.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.EmployeeName.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmployeeName.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.EmployeeName.AppearanceCell.Options.UseBackColor = true;
-            this.EmployeeName.AppearanceCell.Options.UseFont = true;
-            this.EmployeeName.AppearanceCell.Options.UseForeColor = true;
-            this.EmployeeName.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.EmployeeName.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.EmployeeName.AppearanceHeader.ForeColor = System.Drawing.Color.White;
-            this.EmployeeName.AppearanceHeader.Options.UseBackColor = true;
-            this.EmployeeName.AppearanceHeader.Options.UseFont = true;
-            this.EmployeeName.AppearanceHeader.Options.UseForeColor = true;
-            this.EmployeeName.AppearanceHeader.Options.UseTextOptions = true;
-            this.EmployeeName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.EmployeeName.Caption = "EmployeeName";
-            this.EmployeeName.FieldName = "EmployeeName";
-            this.EmployeeName.MinWidth = 21;
-            this.EmployeeName.Name = "EmployeeName";
-            this.EmployeeName.OptionsColumn.AllowEdit = false;
-            this.EmployeeName.OptionsColumn.AllowFocus = false;
-            this.EmployeeName.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
-            this.EmployeeName.Visible = true;
-            this.EmployeeName.VisibleIndex = 1;
-            this.EmployeeName.Width = 412;
+            this.SaleID.Width = 55;
             // 
             // StudentID
             // 
             this.StudentID.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.StudentID.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StudentID.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.StudentID.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.StudentID.AppearanceCell.Options.UseBackColor = true;
             this.StudentID.AppearanceCell.Options.UseFont = true;
@@ -341,42 +320,71 @@
             this.StudentID.OptionsColumn.AllowFocus = false;
             this.StudentID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.StudentID.Visible = true;
-            this.StudentID.VisibleIndex = 2;
-            this.StudentID.Width = 223;
+            this.StudentID.VisibleIndex = 1;
+            this.StudentID.Width = 215;
             // 
-            // DateTime
+            // Username
             // 
-            this.DateTime.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.DateTime.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateTime.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.DateTime.AppearanceCell.Options.UseBackColor = true;
-            this.DateTime.AppearanceCell.Options.UseFont = true;
-            this.DateTime.AppearanceCell.Options.UseForeColor = true;
-            this.DateTime.AppearanceCell.Options.UseTextOptions = true;
-            this.DateTime.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.DateTime.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.DateTime.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.DateTime.AppearanceHeader.ForeColor = System.Drawing.Color.White;
-            this.DateTime.AppearanceHeader.Options.UseBackColor = true;
-            this.DateTime.AppearanceHeader.Options.UseFont = true;
-            this.DateTime.AppearanceHeader.Options.UseForeColor = true;
-            this.DateTime.AppearanceHeader.Options.UseTextOptions = true;
-            this.DateTime.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.DateTime.Caption = "Date/Time";
-            this.DateTime.FieldName = "DateTime";
-            this.DateTime.MinWidth = 21;
-            this.DateTime.Name = "DateTime";
-            this.DateTime.OptionsColumn.AllowEdit = false;
-            this.DateTime.OptionsColumn.AllowFocus = false;
-            this.DateTime.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
-            this.DateTime.Visible = true;
-            this.DateTime.VisibleIndex = 3;
-            this.DateTime.Width = 294;
+            this.Username.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Username.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.Username.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Username.AppearanceCell.Options.UseBackColor = true;
+            this.Username.AppearanceCell.Options.UseFont = true;
+            this.Username.AppearanceCell.Options.UseForeColor = true;
+            this.Username.AppearanceCell.Options.UseTextOptions = true;
+            this.Username.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Username.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
+            this.Username.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Username.AppearanceHeader.ForeColor = System.Drawing.Color.White;
+            this.Username.AppearanceHeader.Options.UseBackColor = true;
+            this.Username.AppearanceHeader.Options.UseFont = true;
+            this.Username.AppearanceHeader.Options.UseForeColor = true;
+            this.Username.AppearanceHeader.Options.UseTextOptions = true;
+            this.Username.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Username.Caption = "Username";
+            this.Username.FieldName = "Username";
+            this.Username.MinWidth = 21;
+            this.Username.Name = "Username";
+            this.Username.OptionsColumn.AllowEdit = false;
+            this.Username.OptionsColumn.AllowFocus = false;
+            this.Username.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.Username.Visible = true;
+            this.Username.VisibleIndex = 4;
+            this.Username.Width = 138;
+            // 
+            // TopUpDate
+            // 
+            this.TopUpDate.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.TopUpDate.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TopUpDate.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TopUpDate.AppearanceCell.Options.UseBackColor = true;
+            this.TopUpDate.AppearanceCell.Options.UseFont = true;
+            this.TopUpDate.AppearanceCell.Options.UseForeColor = true;
+            this.TopUpDate.AppearanceCell.Options.UseTextOptions = true;
+            this.TopUpDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TopUpDate.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
+            this.TopUpDate.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.TopUpDate.AppearanceHeader.ForeColor = System.Drawing.Color.White;
+            this.TopUpDate.AppearanceHeader.Options.UseBackColor = true;
+            this.TopUpDate.AppearanceHeader.Options.UseFont = true;
+            this.TopUpDate.AppearanceHeader.Options.UseForeColor = true;
+            this.TopUpDate.AppearanceHeader.Options.UseTextOptions = true;
+            this.TopUpDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TopUpDate.Caption = "Date/Time";
+            this.TopUpDate.FieldName = "TopUpDate";
+            this.TopUpDate.MinWidth = 21;
+            this.TopUpDate.Name = "TopUpDate";
+            this.TopUpDate.OptionsColumn.AllowEdit = false;
+            this.TopUpDate.OptionsColumn.AllowFocus = false;
+            this.TopUpDate.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.TopUpDate.Visible = true;
+            this.TopUpDate.VisibleIndex = 2;
+            this.TopUpDate.Width = 283;
             // 
             // TopUpAmount
             // 
             this.TopUpAmount.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.TopUpAmount.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TopUpAmount.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.TopUpAmount.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TopUpAmount.AppearanceCell.Options.UseBackColor = true;
             this.TopUpAmount.AppearanceCell.Options.UseFont = true;
@@ -392,15 +400,44 @@
             this.TopUpAmount.AppearanceHeader.Options.UseTextOptions = true;
             this.TopUpAmount.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.TopUpAmount.Caption = "Top-Up Amount";
-            this.TopUpAmount.FieldName = "TopUpAmount";
+            this.TopUpAmount.FieldName = "Amount";
             this.TopUpAmount.MinWidth = 21;
             this.TopUpAmount.Name = "TopUpAmount";
             this.TopUpAmount.OptionsColumn.AllowEdit = false;
             this.TopUpAmount.OptionsColumn.AllowFocus = false;
             this.TopUpAmount.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.TopUpAmount.Visible = true;
-            this.TopUpAmount.VisibleIndex = 4;
-            this.TopUpAmount.Width = 288;
+            this.TopUpAmount.VisibleIndex = 3;
+            this.TopUpAmount.Width = 138;
+            // 
+            // Status
+            // 
+            this.Status.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Status.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.Status.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Status.AppearanceCell.Options.UseBackColor = true;
+            this.Status.AppearanceCell.Options.UseFont = true;
+            this.Status.AppearanceCell.Options.UseForeColor = true;
+            this.Status.AppearanceCell.Options.UseTextOptions = true;
+            this.Status.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Status.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
+            this.Status.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Status.AppearanceHeader.ForeColor = System.Drawing.Color.White;
+            this.Status.AppearanceHeader.Options.UseBackColor = true;
+            this.Status.AppearanceHeader.Options.UseFont = true;
+            this.Status.AppearanceHeader.Options.UseForeColor = true;
+            this.Status.AppearanceHeader.Options.UseTextOptions = true;
+            this.Status.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Status.Caption = "Status";
+            this.Status.FieldName = "Status";
+            this.Status.MinWidth = 21;
+            this.Status.Name = "Status";
+            this.Status.OptionsColumn.AllowEdit = false;
+            this.Status.OptionsColumn.AllowFocus = false;
+            this.Status.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.Status.Visible = true;
+            this.Status.VisibleIndex = 5;
+            this.Status.Width = 149;
             // 
             // repositoryItemPictureEdit1
             // 
@@ -410,9 +447,9 @@
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            editorButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions3.SvgImage")));
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("repositoryItemButtonEdit1.ContextImageOptions.SvgImage")));
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -458,13 +495,29 @@
             // sidePanel6
             // 
             this.sidePanel6.AllowResize = false;
-            this.sidePanel6.Controls.Add(this.gcSales);
+            this.sidePanel6.Controls.Add(this.gcTopUp);
             this.sidePanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sidePanel6.Location = new System.Drawing.Point(25, 73);
             this.sidePanel6.Name = "sidePanel6";
             this.sidePanel6.Size = new System.Drawing.Size(1027, 484);
             this.sidePanel6.TabIndex = 55;
             this.sidePanel6.Text = "sidePanel6";
+            // 
+            // findTE
+            // 
+            this.findTE.Location = new System.Drawing.Point(234, 36);
+            this.findTE.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.findTE.Name = "findTE";
+            this.findTE.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.findTE.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.findTE.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.findTE.Properties.Appearance.Options.UseBackColor = true;
+            this.findTE.Properties.Appearance.Options.UseFont = true;
+            this.findTE.Properties.Appearance.Options.UseForeColor = true;
+            this.findTE.Properties.AutoHeight = false;
+            this.findTE.Size = new System.Drawing.Size(206, 23);
+            this.findTE.TabIndex = 32;
+            this.findTE.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.findTE_EditValueChanging);
             // 
             // TopUpHistoryUserControl
             // 
@@ -477,18 +530,20 @@
             this.Controls.Add(this.sidePanel4);
             this.Name = "TopUpHistoryUserControl";
             this.Size = new System.Drawing.Size(1076, 590);
+            this.Load += new System.EventHandler(this.TopUpHistoryUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).EndInit();
             this.sidePanel10.ResumeLayout(false);
             this.sidePanel5.ResumeLayout(false);
             this.sidePanel5.PerformLayout();
             this.sidePanel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gcSales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvSales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcTopUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvTopUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonDelete2)).EndInit();
             this.sidePanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -505,12 +560,11 @@
         private DevExpress.XtraEditors.SidePanel sidePanel7;
         private DevExpress.XtraEditors.SidePanel sidePanel1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraGrid.GridControl gcSales;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvSales;
+        private DevExpress.XtraGrid.GridControl gcTopUp;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvTopUp;
         private DevExpress.XtraGrid.Columns.GridColumn SaleID;
-        private DevExpress.XtraGrid.Columns.GridColumn EmployeeName;
         private DevExpress.XtraGrid.Columns.GridColumn StudentID;
-        private DevExpress.XtraGrid.Columns.GridColumn DateTime;
+        private DevExpress.XtraGrid.Columns.GridColumn TopUpDate;
         private DevExpress.XtraGrid.Columns.GridColumn TopUpAmount;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
@@ -518,5 +572,8 @@
         private DevExpress.XtraEditors.SidePanel sidePanel2;
         private DevExpress.XtraEditors.SidePanel sidePanel4;
         private DevExpress.XtraEditors.SidePanel sidePanel6;
+        private DevExpress.XtraGrid.Columns.GridColumn Username;
+        private DevExpress.XtraGrid.Columns.GridColumn Status;
+        private DevExpress.XtraEditors.TextEdit findTE;
     }
 }

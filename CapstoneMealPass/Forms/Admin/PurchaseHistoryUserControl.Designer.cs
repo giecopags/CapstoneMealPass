@@ -52,11 +52,12 @@
             this.EmployeeUsername = new DevExpress.XtraGrid.Columns.GridColumn();
             this.StudentID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Date = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.PaymentMethod = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GrandTotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.sidePanel7 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel8 = new DevExpress.XtraEditors.SidePanel();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.grandtotalLBL = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.sidePanel9 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel10 = new DevExpress.XtraEditors.SidePanel();
@@ -106,6 +107,7 @@
             this.findTE.Properties.AutoHeight = false;
             this.findTE.Size = new System.Drawing.Size(206, 23);
             this.findTE.TabIndex = 30;
+            this.findTE.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.findTE_EditValueChanging);
             // 
             // sidePanel6
             // 
@@ -141,6 +143,7 @@
             this.dateDE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dateDE.Size = new System.Drawing.Size(206, 23);
             this.dateDE.TabIndex = 31;
+            this.dateDE.EditValueChanged += new System.EventHandler(this.dateDE_EditValueChanged);
             // 
             // printBTN
             // 
@@ -222,6 +225,9 @@
             this.ProductName.Caption = "Product";
             this.ProductName.FieldName = "ProductName";
             this.ProductName.Name = "ProductName";
+            this.ProductName.OptionsColumn.AllowEdit = false;
+            this.ProductName.OptionsColumn.AllowFocus = false;
+            this.ProductName.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 0;
             // 
@@ -240,6 +246,9 @@
             this.Category.Caption = "Category";
             this.Category.FieldName = "CategoryName";
             this.Category.Name = "Category";
+            this.Category.OptionsColumn.AllowEdit = false;
+            this.Category.OptionsColumn.AllowFocus = false;
+            this.Category.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Category.Visible = true;
             this.Category.VisibleIndex = 1;
             // 
@@ -256,8 +265,11 @@
             this.Price.AppearanceHeader.Options.UseTextOptions = true;
             this.Price.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Price.Caption = "Price";
-            this.Price.FieldName = "Price";
+            this.Price.FieldName = "UnitPrice";
             this.Price.Name = "Price";
+            this.Price.OptionsColumn.AllowEdit = false;
+            this.Price.OptionsColumn.AllowFocus = false;
+            this.Price.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Price.Visible = true;
             this.Price.VisibleIndex = 2;
             // 
@@ -274,8 +286,11 @@
             this.Quantity.AppearanceHeader.Options.UseTextOptions = true;
             this.Quantity.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Quantity.Caption = "Quantity";
-            this.Quantity.FieldName = "Quantity";
+            this.Quantity.FieldName = "QuantitySold";
             this.Quantity.Name = "Quantity";
+            this.Quantity.OptionsColumn.AllowEdit = false;
+            this.Quantity.OptionsColumn.AllowFocus = false;
+            this.Quantity.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Quantity.Visible = true;
             this.Quantity.VisibleIndex = 3;
             // 
@@ -292,8 +307,11 @@
             this.Total.AppearanceHeader.Options.UseTextOptions = true;
             this.Total.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Total.Caption = "Total";
-            this.Total.FieldName = "Total";
+            this.Total.FieldName = "Subtotal";
             this.Total.Name = "Total";
+            this.Total.OptionsColumn.AllowEdit = false;
+            this.Total.OptionsColumn.AllowFocus = false;
+            this.Total.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Total.Visible = true;
             this.Total.VisibleIndex = 4;
             // 
@@ -355,10 +373,12 @@
             this.EmployeeUsername,
             this.StudentID,
             this.Date,
+            this.PaymentMethod,
             this.GrandTotal});
             this.purchasehistoryGV.GridControl = this.purchasehistoryGC;
             this.purchasehistoryGV.Name = "purchasehistoryGV";
             this.purchasehistoryGV.OptionsView.ShowGroupPanel = false;
+            this.purchasehistoryGV.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.purchasehistoryGV_RowClick);
             // 
             // ReferenceID
             // 
@@ -375,6 +395,9 @@
             this.ReferenceID.Caption = "Reference No.";
             this.ReferenceID.FieldName = "ReferenceID";
             this.ReferenceID.Name = "ReferenceID";
+            this.ReferenceID.OptionsColumn.AllowEdit = false;
+            this.ReferenceID.OptionsColumn.AllowFocus = false;
+            this.ReferenceID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.ReferenceID.Visible = true;
             this.ReferenceID.VisibleIndex = 0;
             // 
@@ -393,6 +416,9 @@
             this.EmployeeUsername.Caption = "Employee";
             this.EmployeeUsername.FieldName = "Username";
             this.EmployeeUsername.Name = "EmployeeUsername";
+            this.EmployeeUsername.OptionsColumn.AllowEdit = false;
+            this.EmployeeUsername.OptionsColumn.AllowFocus = false;
+            this.EmployeeUsername.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.EmployeeUsername.Visible = true;
             this.EmployeeUsername.VisibleIndex = 1;
             // 
@@ -411,6 +437,9 @@
             this.StudentID.Caption = "StudentID";
             this.StudentID.FieldName = "StudentID";
             this.StudentID.Name = "StudentID";
+            this.StudentID.OptionsColumn.AllowEdit = false;
+            this.StudentID.OptionsColumn.AllowFocus = false;
+            this.StudentID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.StudentID.Visible = true;
             this.StudentID.VisibleIndex = 2;
             // 
@@ -427,10 +456,34 @@
             this.Date.AppearanceHeader.Options.UseTextOptions = true;
             this.Date.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Date.Caption = "Date";
-            this.Date.FieldName = "Date";
+            this.Date.FieldName = "SaleDate";
             this.Date.Name = "Date";
+            this.Date.OptionsColumn.AllowEdit = false;
+            this.Date.OptionsColumn.AllowFocus = false;
+            this.Date.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Date.Visible = true;
             this.Date.VisibleIndex = 3;
+            // 
+            // PaymentMethod
+            // 
+            this.PaymentMethod.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.PaymentMethod.AppearanceCell.Options.UseFont = true;
+            this.PaymentMethod.AppearanceCell.Options.UseTextOptions = true;
+            this.PaymentMethod.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.PaymentMethod.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
+            this.PaymentMethod.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.PaymentMethod.AppearanceHeader.Options.UseBackColor = true;
+            this.PaymentMethod.AppearanceHeader.Options.UseFont = true;
+            this.PaymentMethod.AppearanceHeader.Options.UseTextOptions = true;
+            this.PaymentMethod.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.PaymentMethod.Caption = "Payment Method";
+            this.PaymentMethod.FieldName = "PaymentMethod";
+            this.PaymentMethod.Name = "PaymentMethod";
+            this.PaymentMethod.OptionsColumn.AllowEdit = false;
+            this.PaymentMethod.OptionsColumn.AllowFocus = false;
+            this.PaymentMethod.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.PaymentMethod.Visible = true;
+            this.PaymentMethod.VisibleIndex = 5;
             // 
             // GrandTotal
             // 
@@ -445,8 +498,11 @@
             this.GrandTotal.AppearanceHeader.Options.UseTextOptions = true;
             this.GrandTotal.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.GrandTotal.Caption = "Total";
-            this.GrandTotal.FieldName = "GrandTotal";
+            this.GrandTotal.FieldName = "TotalAmount";
             this.GrandTotal.Name = "GrandTotal";
+            this.GrandTotal.OptionsColumn.AllowEdit = false;
+            this.GrandTotal.OptionsColumn.AllowFocus = false;
+            this.GrandTotal.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.GrandTotal.Visible = true;
             this.GrandTotal.VisibleIndex = 4;
             // 
@@ -473,7 +529,7 @@
             // 
             this.sidePanel8.Appearance.BackColor = System.Drawing.Color.SeaGreen;
             this.sidePanel8.Appearance.Options.UseBackColor = true;
-            this.sidePanel8.Controls.Add(this.labelControl3);
+            this.sidePanel8.Controls.Add(this.grandtotalLBL);
             this.sidePanel8.Controls.Add(this.labelControl2);
             this.sidePanel8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.sidePanel8.Location = new System.Drawing.Point(0, 597);
@@ -482,18 +538,18 @@
             this.sidePanel8.TabIndex = 1;
             this.sidePanel8.Text = "sidePanel8";
             // 
-            // labelControl3
+            // grandtotalLBL
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(450, 11);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(54, 25);
-            this.labelControl3.TabIndex = 4;
-            this.labelControl3.Text = "00.00";
+            this.grandtotalLBL.Appearance.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grandtotalLBL.Appearance.ForeColor = System.Drawing.Color.GreenYellow;
+            this.grandtotalLBL.Appearance.Options.UseFont = true;
+            this.grandtotalLBL.Appearance.Options.UseForeColor = true;
+            this.grandtotalLBL.Location = new System.Drawing.Point(450, 11);
+            this.grandtotalLBL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grandtotalLBL.Name = "grandtotalLBL";
+            this.grandtotalLBL.Size = new System.Drawing.Size(54, 25);
+            this.grandtotalLBL.TabIndex = 4;
+            this.grandtotalLBL.Text = "00.00";
             // 
             // labelControl2
             // 
@@ -545,6 +601,7 @@
             this.Controls.Add(this.sidePanel2);
             this.Name = "PurchaseHistoryUserControl";
             this.Size = new System.Drawing.Size(1497, 760);
+            this.Load += new System.EventHandler(this.PurchaseHistoryUserControl_Load);
             this.sidePanel1.ResumeLayout(false);
             this.sidePanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).EndInit();
@@ -594,8 +651,9 @@
         private DevExpress.XtraEditors.SidePanel sidePanel7;
         private DevExpress.XtraEditors.SidePanel sidePanel9;
         private DevExpress.XtraEditors.SidePanel sidePanel8;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl grandtotalLBL;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SidePanel sidePanel10;
+        private DevExpress.XtraGrid.Columns.GridColumn PaymentMethod;
     }
 }

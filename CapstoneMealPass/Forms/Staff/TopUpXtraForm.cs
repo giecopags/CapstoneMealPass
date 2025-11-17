@@ -1,8 +1,10 @@
-﻿using DevExpress.XtraEditors;
+﻿using CapstoneMealPass.Helpers;
+using DevExpress.XtraEditors;
 using MealPass.Business.Services;
+using MealPass.Core.Entity;
+using MealPass.Core.GlobalSql;
 using MealPass.Core.Interface;
 using MealPass.Data.Repositories;
-using MealPass.Core.GlobalSql;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,15 +35,13 @@ namespace CapstoneMealPass.Forms.Staff
             IBalanceRepository balanceRepo = new BalanceRepository(connectionString);
 
             _topUpService = new TopUpService(studentRepo, balanceRepo);
-            _rfidReader = null; // RFID not needed in this context
+            _rfidReader = null;
             _scanForm = scanForm;
 
             _currentStudentId = studentId;
             _initialBalance = balance;
             _initialStudentId = studentId;
             _rfidRequired = false; // RFID not needed
-
-
         }
 
         // Default constructor for standalone use
@@ -65,7 +65,6 @@ namespace CapstoneMealPass.Forms.Staff
                 return;
             }
 
-
             if (!decimal.TryParse(topupamountTE.Text, out decimal topUpAmount) || topUpAmount <= 0)
             {
                 MessageBox.Show("Please enter a valid top-up amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -74,13 +73,34 @@ namespace CapstoneMealPass.Forms.Staff
 
             try
             {
-                await _topUpService.TopUpAsync(_currentStudentId, topUpAmount);
-                MessageBox.Show("✅ Top-up successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                decimal previousBalance = 0m;
+                if (decimal.TryParse(accountbalanceLBL.Text, out decimal parsedBal))
+                    previousBalance = parsedBal;
 
-                // Refresh student balance display
+                await _topUpService.TopUpAsync(_currentStudentId, topUpAmount);
+
+                decimal newBalance = previousBalance + topUpAmount;
+
+                string connectionString = SQLQuery.connectionString;
+                var logRepo = new TopUpLogRepository(connectionString);
+
+                var log = new TopUpLog
+                {
+                    StudentID = _currentStudentId,
+                    Username = UserSession.Username,
+                    Amount = topUpAmount,
+                    PreviousBalance = previousBalance,
+                    NewBalance = newBalance,
+                    TopUpDate = DateTime.Now,
+                    Status = "Completed"
+                };
+
+                await logRepo.InsertTopUpLogAsync(log);
+
+                MessageBox.Show("Top-up successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 await LoadStudentInfoAsync(_scannedRfid);
 
-                // Trigger balance refresh in ScanRFIDXtraForm
                 if (_scanForm != null)
                     await _scanForm.RefreshStudentBalanceAsync(_currentStudentId);
 
@@ -88,7 +108,8 @@ namespace CapstoneMealPass.Forms.Staff
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while processing top-up: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while processing top-up: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -99,7 +120,7 @@ namespace CapstoneMealPass.Forms.Staff
             if (!string.IsNullOrEmpty(_initialStudentId) && _initialBalance.HasValue)
             {
                 studentidTE.Text = _initialStudentId;
-                accountbalanceLBL.Text = $"₱{_initialBalance.Value:N2}";
+                accountbalanceLBL.Text = $"{_initialBalance.Value:N2}";
                 statusLBL.Text = "Ready for top-up";
                 return; // Skip RFID setup
             }
@@ -131,15 +152,13 @@ namespace CapstoneMealPass.Forms.Staff
             };
 
             _rfidReader.Initialize();
-
-
         }
 
         private async Task LoadStudentInfoAsync(string rfid)
         {
             try
             {
-                // ✅ Always ensures student + balance record exist
+                // Always ensures student + balance record exist
                 var (student, balance) = await _topUpService.GetOrCreateStudentBalanceByRFIDAsync(rfid);
 
                 if (student == null)
@@ -148,7 +167,7 @@ namespace CapstoneMealPass.Forms.Staff
                     {
                         statusLBL.Text = "⚠️ Unknown RFID";
                         studentidTE.Text = string.Empty;
-                        accountbalanceLBL.Text = "₱0.00";
+                        accountbalanceLBL.Text = "0.00";
                     }));
                     _currentStudentId = "";
                     return;
@@ -156,13 +175,13 @@ namespace CapstoneMealPass.Forms.Staff
 
                 _currentStudentId = student.StudentID;
 
-                // ✅ Safely handle even if balance is temporarily null
+                // Safely handle even if balance is temporarily null
                 decimal displayBalance = balance?.StudentBalance ?? 0m;
 
                 Invoke(new Action(() =>
                 {
                     studentidTE.Text = student.StudentID;
-                    accountbalanceLBL.Text = $"₱{displayBalance:N2}";
+                    accountbalanceLBL.Text = $"{displayBalance:N2}";
                     statusLBL.Text = "Connected";
                 }));
             }

@@ -92,7 +92,7 @@ namespace CapstoneMealPass.Forms.Admin
             try
             {
                 var result = MessageBox.Show(
-                    "🗑️ Are you sure you want to delete this product? This action cannot be undone.",
+                    "Are you sure you want to delete this product? This action cannot be undone.",
                     "Confirm Delete",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
