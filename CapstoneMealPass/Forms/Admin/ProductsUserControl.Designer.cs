@@ -149,7 +149,7 @@
             this.ProductID.Name = "ProductID";
             this.ProductID.OptionsColumn.AllowEdit = false;
             this.ProductID.OptionsColumn.AllowFocus = false;
-            this.ProductID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.ProductID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.ProductID.Visible = true;
             this.ProductID.VisibleIndex = 0;
             this.ProductID.Width = 93;
@@ -176,7 +176,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.OptionsColumn.AllowFocus = false;
-            this.gridColumn1.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn1.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
             this.gridColumn1.Width = 405;
@@ -205,7 +205,7 @@
             this.Category.Name = "Category";
             this.Category.OptionsColumn.AllowEdit = false;
             this.Category.OptionsColumn.AllowFocus = false;
-            this.Category.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.Category.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.Category.Visible = true;
             this.Category.VisibleIndex = 2;
             this.Category.Width = 170;
@@ -234,7 +234,7 @@
             this.Stocks.Name = "Stocks";
             this.Stocks.OptionsColumn.AllowEdit = false;
             this.Stocks.OptionsColumn.AllowFocus = false;
-            this.Stocks.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.Stocks.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.Stocks.Visible = true;
             this.Stocks.VisibleIndex = 3;
             this.Stocks.Width = 230;
@@ -263,7 +263,7 @@
             this.StockStatus.Name = "StockStatus";
             this.StockStatus.OptionsColumn.AllowEdit = false;
             this.StockStatus.OptionsColumn.AllowFocus = false;
-            this.StockStatus.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.StockStatus.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.StockStatus.Visible = true;
             this.StockStatus.VisibleIndex = 4;
             this.StockStatus.Width = 286;
@@ -292,7 +292,7 @@
             this.Price.Name = "Price";
             this.Price.OptionsColumn.AllowEdit = false;
             this.Price.OptionsColumn.AllowFocus = false;
-            this.Price.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.Price.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.Price.Visible = true;
             this.Price.VisibleIndex = 5;
             this.Price.Width = 208;
@@ -319,6 +319,9 @@
             this.gridColumn4.ColumnEdit = this.repositoryItemButtonEdit1;
             this.gridColumn4.MinWidth = 21;
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsColumn.AllowFocus = false;
+            this.gridColumn4.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 6;

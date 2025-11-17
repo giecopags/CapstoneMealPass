@@ -39,7 +39,6 @@
             this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.topuphistoryACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.employeelogsACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.salesreportACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.employeelistACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel4 = new DevExpress.XtraEditors.SidePanel();
@@ -48,6 +47,10 @@
             this.sidePanel3 = new DevExpress.XtraEditors.SidePanel();
             this.mainSPanel = new DevExpress.XtraEditors.SidePanel();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.salesreportACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.weeklysalesreportACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.monthlysalesreportACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.topupACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -148,7 +151,6 @@
             this.accordionControlElement5.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.purchasehistoryACE,
             this.topuphistoryACE});
-            this.accordionControlElement5.Expanded = true;
             this.accordionControlElement5.HeaderIndent = 28;
             this.accordionControlElement5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement5.ImageOptions.SvgImage")));
             this.accordionControlElement5.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
@@ -181,20 +183,6 @@
             this.employeelogsACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.employeelogsACE.Text = "Employee Logs";
             this.employeelogsACE.Click += new System.EventHandler(this.employeelogsACE_Click);
-            // 
-            // salesreportACE
-            // 
-            this.salesreportACE.Appearance.Default.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.salesreportACE.Appearance.Default.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.salesreportACE.Appearance.Default.Options.UseFont = true;
-            this.salesreportACE.Appearance.Default.Options.UseForeColor = true;
-            this.salesreportACE.HeaderIndent = 28;
-            this.salesreportACE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("salesreportACE.ImageOptions.SvgImage")));
-            this.salesreportACE.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
-            this.salesreportACE.Name = "salesreportACE";
-            this.salesreportACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.salesreportACE.Text = "Sales Report";
-            this.salesreportACE.Click += new System.EventHandler(this.salesreportACE_Click);
             // 
             // employeelistACE
             // 
@@ -309,10 +297,13 @@
             this.dashboardACE,
             this.productsACE,
             this.employeelistACE,
-            this.salesreportACE,
             this.employeelogsACE,
+            this.salesreportACE,
+            this.weeklysalesreportACE,
+            this.monthlysalesreportACE,
             this.accordionControlElement5,
-            this.posACE});
+            this.posACE,
+            this.topupACE});
             this.accordionControl1.Location = new System.Drawing.Point(0, 70);
             this.accordionControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.accordionControl1.Name = "accordionControl1";
@@ -323,6 +314,54 @@
             this.accordionControl1.Size = new System.Drawing.Size(304, 737);
             this.accordionControl1.TabIndex = 4;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
+            // 
+            // salesreportACE
+            // 
+            this.salesreportACE.Appearance.Default.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salesreportACE.Appearance.Default.Options.UseFont = true;
+            this.salesreportACE.HeaderIndent = 28;
+            this.salesreportACE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("salesreportACE.ImageOptions.SvgImage")));
+            this.salesreportACE.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
+            this.salesreportACE.Name = "salesreportACE";
+            this.salesreportACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.salesreportACE.Text = "Daily Sales Report";
+            this.salesreportACE.Click += new System.EventHandler(this.salesreportACE_Click_2);
+            // 
+            // weeklysalesreportACE
+            // 
+            this.weeklysalesreportACE.Appearance.Default.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weeklysalesreportACE.Appearance.Default.Options.UseFont = true;
+            this.weeklysalesreportACE.HeaderIndent = 28;
+            this.weeklysalesreportACE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("weeklysalesreportACE.ImageOptions.SvgImage")));
+            this.weeklysalesreportACE.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
+            this.weeklysalesreportACE.Name = "weeklysalesreportACE";
+            this.weeklysalesreportACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.weeklysalesreportACE.Text = "Weekly Sales Report";
+            this.weeklysalesreportACE.Click += new System.EventHandler(this.weeklysalesreportACE_Click);
+            // 
+            // monthlysalesreportACE
+            // 
+            this.monthlysalesreportACE.Appearance.Default.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthlysalesreportACE.Appearance.Default.Options.UseFont = true;
+            this.monthlysalesreportACE.HeaderIndent = 28;
+            this.monthlysalesreportACE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("monthlysalesreportACE.ImageOptions.SvgImage")));
+            this.monthlysalesreportACE.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
+            this.monthlysalesreportACE.Name = "monthlysalesreportACE";
+            this.monthlysalesreportACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.monthlysalesreportACE.Text = "Monthly Sales Report";
+            this.monthlysalesreportACE.Click += new System.EventHandler(this.monthlysalesreportACE_Click);
+            // 
+            // topupACE
+            // 
+            this.topupACE.Appearance.Default.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.topupACE.Appearance.Default.Options.UseFont = true;
+            this.topupACE.HeaderIndent = 28;
+            this.topupACE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("topupACE.ImageOptions.SvgImage")));
+            this.topupACE.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
+            this.topupACE.Name = "topupACE";
+            this.topupACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.topupACE.Text = "Top-Up";
+            this.topupACE.Click += new System.EventHandler(this.topupACE_Click);
             // 
             // sidePanel1
             // 
@@ -374,7 +413,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement5;
         private DevExpress.XtraBars.Navigation.AccordionControlElement topuphistoryACE;
         private DevExpress.XtraBars.Navigation.AccordionControlElement employeelogsACE;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement salesreportACE;
         private DevExpress.XtraBars.Navigation.AccordionControlElement employeelistACE;
         private DevExpress.XtraEditors.SidePanel sidePanel2;
         private DevExpress.XtraEditors.SidePanel sidePanel4;
@@ -384,5 +422,9 @@
         private DevExpress.XtraEditors.SidePanel mainSPanel;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraEditors.SidePanel sidePanel1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement topupACE;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement salesreportACE;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement weeklysalesreportACE;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement monthlysalesreportACE;
     }
 }

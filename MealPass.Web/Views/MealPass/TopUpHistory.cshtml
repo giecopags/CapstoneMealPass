@@ -1,11 +1,17 @@
 ﻿@model IEnumerable<TopUpLogs>
 
-<div class="card">
+<div class="card shadow-sm rounded-lg mb-4" style="border-radius:12px; background-color:#f8f9fa;">
     <div class="card-body">
         <h4 class="card-title mb-4">Top-Up History</h4>
 
+        <!-- DATE FILTER -->
+        <div class="mb-3 d-flex align-items-center">
+            <input type="date" id="topupFilterDate" class="form-control mr-2" style="max-width:200px;" />
+            <button type="button" class="btn btn-secondary" id="clearTopUpFilter">Clear</button>
+        </div>
+
         <div class="table-responsive">
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover" id="topupTable">
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
@@ -21,7 +27,7 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
+                        <tr data-date="@item.TopUpDate.ToString("yyyy-MM-dd")">
                             <td>@item.TopUpID</td>
                             <td>@item.Username</td>
                             <td>₱@item.Amount.ToString("N2")</td>
@@ -46,7 +52,6 @@
                                     <span class="badge badge-secondary">@item.Status</span>
                                 }
                             </td>
-
                         </tr>
                     }
                 </tbody>
@@ -55,4 +60,21 @@
     </div>
 </div>
 
+<script>
+    const topupFilter = document.getElementById("topupFilterDate");
+    const topupTableRows = document.querySelectorAll("#topupTable tbody tr");
+    const clearTopUpBtn = document.getElementById("clearTopUpFilter");
 
+    topupFilter.addEventListener("change", function() {
+        const selectedDate = this.value;
+        topupTableRows.forEach(row => {
+            const rowDate = row.getAttribute("data-date");
+            row.style.display = (!selectedDate || rowDate === selectedDate) ? "" : "none";
+        });
+    });
+
+    clearTopUpBtn.addEventListener("click", function() {
+        topupFilter.value = "";
+        topupTableRows.forEach(row => row.style.display = "");
+    });
+</script>

@@ -82,7 +82,7 @@
             // pictureEdit1
             // 
             this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.Location = new System.Drawing.Point(341, 44);
+            this.pictureEdit1.Location = new System.Drawing.Point(360, 51);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -153,7 +153,7 @@
             this.statusLBL.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
             this.statusLBL.Appearance.Options.UseFont = true;
             this.statusLBL.Appearance.Options.UseForeColor = true;
-            this.statusLBL.Location = new System.Drawing.Point(418, 22);
+            this.statusLBL.Location = new System.Drawing.Point(365, 22);
             this.statusLBL.Name = "statusLBL";
             this.statusLBL.Size = new System.Drawing.Size(44, 16);
             this.statusLBL.TabIndex = 21;
@@ -165,7 +165,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 264);
+            this.ClientSize = new System.Drawing.Size(579, 264);
             this.Controls.Add(this.statusLBL);
             this.Controls.Add(this.remainingLBL);
             this.Controls.Add(this.accountbalanceLBL);

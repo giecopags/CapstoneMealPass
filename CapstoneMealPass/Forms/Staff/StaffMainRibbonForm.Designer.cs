@@ -249,7 +249,6 @@
             this.q.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.purchasehistoryACE,
             this.topuphistoryACE});
-            this.q.Expanded = true;
             this.q.HeaderIndent = 28;
             this.q.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("q.ImageOptions.SvgImage")));
             this.q.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
