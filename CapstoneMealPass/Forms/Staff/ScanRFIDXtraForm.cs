@@ -168,6 +168,7 @@ namespace CapstoneMealPass.Forms.Staff
         {
             SetupRFIDReader();
             InitializeLabels();
+            studentidTE.ReadOnly = true;
         }
 
         private void InitializeLabels()

@@ -192,10 +192,6 @@
             this.employeelistACE.Appearance.Default.Options.UseForeColor = true;
             this.employeelistACE.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.employeelistACE.Appearance.Hovered.Options.UseBackColor = true;
-            this.employeelistACE.Appearance.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(191)))), ((int)(((byte)(99)))));
-            this.employeelistACE.Appearance.Pressed.ForeColor = System.Drawing.Color.White;
-            this.employeelistACE.Appearance.Pressed.Options.UseBackColor = true;
-            this.employeelistACE.Appearance.Pressed.Options.UseForeColor = true;
             this.employeelistACE.HeaderIndent = 28;
             this.employeelistACE.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("employeelistACE.ImageOptions.SvgImage")));
             this.employeelistACE.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);

@@ -36,6 +36,9 @@ namespace CapstoneMealPass.Forms.Admin
                 }
 
                 gcProducts.DataSource = productsTable;
+                // Format the Price column to N2
+                gvProducts.Columns["Price"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                gvProducts.Columns["Price"].DisplayFormat.FormatString = "N2";
                 gvProducts.BestFitColumns();
             }
             catch (Exception ex)

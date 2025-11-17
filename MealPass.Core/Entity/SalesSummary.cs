@@ -8,6 +8,7 @@ namespace MealPass.Core.Entity
 {
     public class SalesSummary
     {
+        public int ProductID { get; set; }
         public string ProductName { get; set; }
         public string CategoryName { get; set; }
         public decimal UnitPrice { get; set; }

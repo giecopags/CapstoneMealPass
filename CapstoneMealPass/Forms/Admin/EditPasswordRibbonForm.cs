@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapstoneMealPass.Helpers;
 using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 using MealPass.Core.GlobalSql;
 using MealPass.Data.Repositories;
-using System.Data.SqlClient;
 
 namespace CapstoneMealPass.Forms.Admin
 {
@@ -23,8 +24,11 @@ namespace CapstoneMealPass.Forms.Admin
         {
             InitializeComponent();
             _username = username;
-            ApplyTextEditBehaviors();
 
+            passwordBE.Tag = "eyeopen";
+            confirmpassBE.Tag = "eyeopen";
+
+            ApplyTextEditBehaviors();
             lblConfirmPasswordCaption.Visible = false;
         }
 
@@ -37,20 +41,7 @@ namespace CapstoneMealPass.Forms.Admin
 
         private void passwordBE_ButtonPressed(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            var tagAction = passwordBE.Tag?.ToString() ?? "eyeopen";
-
-            if (tagAction == "eyeopen")
-            {
-                passwordBE.Properties.Buttons[0].ImageOptions.Image = imageCollection1.Images[1];
-                passwordBE.Tag = "eyeclose";
-                passwordBE.Properties.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                passwordBE.Properties.Buttons[0].ImageOptions.Image = imageCollection1.Images[0];
-                passwordBE.Tag = "eyeopen";
-                passwordBE.Properties.UseSystemPasswordChar = true;
-            }
+            ToggleEye(passwordBE);
         }
 
         private void passwordBE_EditValueChanged(object sender, EventArgs e)
@@ -158,7 +149,7 @@ namespace CapstoneMealPass.Forms.Admin
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@password", hashedPassword);
-                    cmd.Parameters.AddWithValue("@username", _username); 
+                    cmd.Parameters.AddWithValue("@username", _username);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
@@ -177,20 +168,17 @@ namespace CapstoneMealPass.Forms.Admin
 
         private void confirmpassBE_ButtonPressed(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            var tagAction = confirmpassBE.Tag?.ToString() ?? "eyeopen";
+            ToggleEye(confirmpassBE);
+        }
 
-            if (tagAction == "eyeopen")
-            {
-                confirmpassBE.Properties.Buttons[0].ImageOptions.Image = imageCollection1.Images[1];
-                confirmpassBE.Tag = "eyeclose";
-                confirmpassBE.Properties.UseSystemPasswordChar = false;
-            }
+        private void ToggleEye(DevExpress.XtraEditors.ButtonEdit edit)
+        {
+            edit.Properties.UseSystemPasswordChar = !edit.Properties.UseSystemPasswordChar;
+
+            if (edit.Properties.UseSystemPasswordChar)
+                edit.Properties.Buttons[0].ImageOptions.Image = imageCollection1.Images[0]; 
             else
-            {
-                confirmpassBE.Properties.Buttons[0].ImageOptions.Image = imageCollection1.Images[0];
-                confirmpassBE.Tag = "eyeopen";
-                confirmpassBE.Properties.UseSystemPasswordChar = true;
-            }
+                edit.Properties.Buttons[0].ImageOptions.Image = imageCollection1.Images[1]; 
         }
     }
 }

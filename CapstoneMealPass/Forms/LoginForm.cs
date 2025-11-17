@@ -29,7 +29,7 @@ namespace CapstoneMealPass.Forms
         private void ApplyTextEditBehaviors()
         {
             Helpers.TextHelper.AttachBehavior(usernameTE, "Username");
-            Helpers.TextHelper.AttachBehavior(passwordTE, "Password", true);
+            Helpers.TextHelper.AttachPasswordBehavior(passwordTE, "Password", showCE); 
         }
 
         private void showCE_CheckedChanged(object sender, EventArgs e)
