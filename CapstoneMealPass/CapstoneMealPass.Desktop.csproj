@@ -233,6 +233,12 @@
     <Compile Include="Forms\Admin\AddProductRibbonForm.Designer.cs">
       <DependentUpon>AddProductRibbonForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Admin\DashboardUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\DashboardUserControl.Designer.cs">
+      <DependentUpon>DashboardUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Admin\EditEmployeeRibbonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -387,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\AddProductRibbonForm.resx">
       <DependentUpon>AddProductRibbonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\DashboardUserControl.resx">
+      <DependentUpon>DashboardUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\EditEmployeeRibbonForm.resx">
       <DependentUpon>EditEmployeeRibbonForm.cs</DependentUpon>

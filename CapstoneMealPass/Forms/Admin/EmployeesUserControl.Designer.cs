@@ -29,17 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeesUserControl));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
-            this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel3 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel4 = new DevExpress.XtraEditors.SidePanel();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.findTE = new DevExpress.XtraEditors.TextEdit();
             this.sidePanel6 = new DevExpress.XtraEditors.SidePanel();
             this.addemployeeBTN = new DevExpress.XtraEditors.SimpleButton();
             this.sidePanel5 = new DevExpress.XtraEditors.SidePanel();
@@ -59,8 +57,9 @@
             this.CivilStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.repositoryItemButtonDelete2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
+            this.findTE = new DevExpress.XtraEditors.TextEdit();
             this.sidePanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).BeginInit();
             this.sidePanel6.SuspendLayout();
             this.sidePanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcEmployees)).BeginInit();
@@ -68,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonDelete2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // sidePanel1
@@ -82,19 +82,6 @@
             this.sidePanel1.Size = new System.Drawing.Size(28, 722);
             this.sidePanel1.TabIndex = 0;
             this.sidePanel1.Text = "sidePanel1";
-            // 
-            // sidePanel2
-            // 
-            this.sidePanel2.AllowResize = false;
-            this.sidePanel2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.sidePanel2.Appearance.Options.UseBackColor = true;
-            this.sidePanel2.BorderThickness = 0;
-            this.sidePanel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sidePanel2.Location = new System.Drawing.Point(1096, 0);
-            this.sidePanel2.Name = "sidePanel2";
-            this.sidePanel2.Size = new System.Drawing.Size(29, 722);
-            this.sidePanel2.TabIndex = 1;
-            this.sidePanel2.Text = "sidePanel2";
             // 
             // sidePanel3
             // 
@@ -137,17 +124,6 @@
             this.labelControl1.Size = new System.Drawing.Size(155, 36);
             this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "Employees";
-            // 
-            // findTE
-            // 
-            this.findTE.Location = new System.Drawing.Point(175, 37);
-            this.findTE.Name = "findTE";
-            this.findTE.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.findTE.Properties.Appearance.Options.UseBackColor = true;
-            this.findTE.Properties.AutoHeight = false;
-            this.findTE.Size = new System.Drawing.Size(206, 23);
-            this.findTE.TabIndex = 2;
-            this.findTE.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.findTE_EditValueChanging);
             // 
             // sidePanel6
             // 
@@ -486,9 +462,9 @@
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("repositoryItemButtonEdit1.ContextImageOptions.SvgImage")));
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -560,6 +536,30 @@
             this.repositoryItemButtonDelete2.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("repositoryItemButtonDelete2.ContextImageOptions.SvgImage")));
             this.repositoryItemButtonDelete2.Name = "repositoryItemButtonDelete2";
             // 
+            // sidePanel2
+            // 
+            this.sidePanel2.AllowResize = false;
+            this.sidePanel2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.sidePanel2.Appearance.Options.UseBackColor = true;
+            this.sidePanel2.BorderThickness = 0;
+            this.sidePanel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sidePanel2.Location = new System.Drawing.Point(1096, 0);
+            this.sidePanel2.Name = "sidePanel2";
+            this.sidePanel2.Size = new System.Drawing.Size(29, 722);
+            this.sidePanel2.TabIndex = 1;
+            this.sidePanel2.Text = "sidePanel2";
+            // 
+            // findTE
+            // 
+            this.findTE.Location = new System.Drawing.Point(175, 37);
+            this.findTE.Name = "findTE";
+            this.findTE.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.findTE.Properties.Appearance.Options.UseBackColor = true;
+            this.findTE.Properties.AutoHeight = false;
+            this.findTE.Size = new System.Drawing.Size(206, 23);
+            this.findTE.TabIndex = 2;
+            this.findTE.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.findTE_EditValueChanging);
+            // 
             // EmployeesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -573,7 +573,6 @@
             this.Size = new System.Drawing.Size(1125, 722);
             this.sidePanel4.ResumeLayout(false);
             this.sidePanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).EndInit();
             this.sidePanel6.ResumeLayout(false);
             this.sidePanel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcEmployees)).EndInit();
@@ -581,6 +580,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonDelete2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -588,12 +588,10 @@
         #endregion
 
         private DevExpress.XtraEditors.SidePanel sidePanel1;
-        private DevExpress.XtraEditors.SidePanel sidePanel2;
         private DevExpress.XtraEditors.SidePanel sidePanel3;
         private DevExpress.XtraEditors.SidePanel sidePanel4;
         private DevExpress.XtraEditors.SidePanel sidePanel5;
         private DevExpress.XtraEditors.SidePanel sidePanel6;
-        private DevExpress.XtraEditors.TextEdit findTE;
         private DevExpress.XtraEditors.SidePanel sidePanel7;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton addemployeeBTN;
@@ -612,5 +610,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonDelete2;
         private DevExpress.XtraGrid.Columns.GridColumn Age;
         private DevExpress.XtraGrid.Columns.GridColumn CivilStatus;
+        private DevExpress.XtraEditors.SidePanel sidePanel2;
+        private DevExpress.XtraEditors.TextEdit findTE;
     }
 }
