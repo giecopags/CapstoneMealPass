@@ -11,5 +11,6 @@ namespace MealPass.Core.Interface
     {
         Task<List<SalesSummary>> GetAllSalesSummaryAsync();
         Task<List<SalesSummary>> GetSalesSummaryByDateAsync(DateTime date);
+        Task<List<SalesSummary>> GetSalesSummaryByDateTimeRangeAsync(DateTime from, DateTime to);
     }
 }

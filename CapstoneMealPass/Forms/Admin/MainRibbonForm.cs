@@ -82,14 +82,26 @@ namespace CapstoneMealPass.Forms.Admin
             await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.SalesUserControl());
         }
 
-        private void weeklysalesreportACE_Click(object sender, EventArgs e)
+        private void logout_Click(object sender, EventArgs e)
         {
-            FormHelper.DisplayForm(new Admin.SelectWeekXtraForm());
-        }
+            var result = MessageBox.Show(
+                "Are you sure you want to logout?",
+                "Confirm Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
-        private void monthlysalesreportACE_Click(object sender, EventArgs e)
-        {
-            FormHelper.DisplayForm(new Admin.SelectMonthXtraForm());
+            if (result == DialogResult.Yes)
+            {
+                UserSession.Username = null;
+
+                this.Hide();
+
+                var loginForm = new LoginForm();
+                loginForm.Show();
+
+
+            }
         }
     }
 }
