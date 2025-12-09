@@ -47,6 +47,9 @@
             this.topupamountTE.Location = new System.Drawing.Point(34, 159);
             this.topupamountTE.Name = "topupamountTE";
             this.topupamountTE.Properties.AutoHeight = false;
+            this.topupamountTE.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.topupamountTE.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
+            this.topupamountTE.Properties.MaskSettings.Set("mask", "n");
             this.topupamountTE.Size = new System.Drawing.Size(289, 28);
             this.topupamountTE.TabIndex = 18;
             // 

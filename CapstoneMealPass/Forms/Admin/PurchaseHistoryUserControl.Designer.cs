@@ -31,6 +31,7 @@
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
             this.findTE = new DevExpress.XtraEditors.TextEdit();
             this.sidePanel6 = new DevExpress.XtraEditors.SidePanel();
+            this.dateDE = new DevExpress.XtraEditors.DateEdit();
             this.sidePanel5 = new DevExpress.XtraEditors.SidePanel();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.productpurchasesGC = new DevExpress.XtraGrid.GridControl();
@@ -40,6 +41,7 @@
             this.Price = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Total = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sidePanel4 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel3 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
@@ -58,10 +60,11 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.sidePanel9 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel10 = new DevExpress.XtraEditors.SidePanel();
-            this.dateDE = new DevExpress.XtraEditors.DateEdit();
             this.sidePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).BeginInit();
             this.sidePanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productpurchasesGC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productpurchasesGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchasehistoryGC)).BeginInit();
@@ -70,8 +73,6 @@
             this.sidePanel7.SuspendLayout();
             this.sidePanel8.SuspendLayout();
             this.sidePanel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).BeginInit();
             this.SuspendLayout();
             // 
             // sidePanel1
@@ -121,6 +122,27 @@
             this.sidePanel6.TabIndex = 4;
             this.sidePanel6.Text = "sidePanel6";
             // 
+            // dateDE
+            // 
+            this.dateDE.EditValue = null;
+            this.dateDE.Location = new System.Drawing.Point(186, 13);
+            this.dateDE.Name = "dateDE";
+            this.dateDE.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dateDE.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDE.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dateDE.Properties.Appearance.Options.UseBackColor = true;
+            this.dateDE.Properties.Appearance.Options.UseFont = true;
+            this.dateDE.Properties.Appearance.Options.UseForeColor = true;
+            this.dateDE.Properties.AutoHeight = false;
+            this.dateDE.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateDE.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateDE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.dateDE.Size = new System.Drawing.Size(206, 23);
+            this.dateDE.TabIndex = 31;
+            this.dateDE.EditValueChanged += new System.EventHandler(this.dateDE_EditValueChanged);
+            // 
             // sidePanel5
             // 
             this.sidePanel5.AllowResize = false;
@@ -165,19 +187,20 @@
             this.Category,
             this.Price,
             this.Quantity,
-            this.Total});
+            this.Total,
+            this.gridColumn1});
             this.productpurchasesGV.GridControl = this.productpurchasesGC;
             this.productpurchasesGV.Name = "productpurchasesGV";
             this.productpurchasesGV.OptionsView.ShowGroupPanel = false;
             // 
             // ProductName
             // 
-            this.ProductName.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProductName.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.ProductName.AppearanceCell.Options.UseFont = true;
             this.ProductName.AppearanceCell.Options.UseTextOptions = true;
             this.ProductName.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ProductName.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.ProductName.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProductName.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.ProductName.AppearanceHeader.Options.UseBackColor = true;
             this.ProductName.AppearanceHeader.Options.UseFont = true;
             this.ProductName.AppearanceHeader.Options.UseTextOptions = true;
@@ -190,15 +213,16 @@
             this.ProductName.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 0;
+            this.ProductName.Width = 260;
             // 
             // Category
             // 
-            this.Category.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Category.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.Category.AppearanceCell.Options.UseFont = true;
             this.Category.AppearanceCell.Options.UseTextOptions = true;
             this.Category.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Category.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.Category.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Category.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.Category.AppearanceHeader.Options.UseBackColor = true;
             this.Category.AppearanceHeader.Options.UseFont = true;
             this.Category.AppearanceHeader.Options.UseTextOptions = true;
@@ -211,15 +235,16 @@
             this.Category.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Category.Visible = true;
             this.Category.VisibleIndex = 1;
+            this.Category.Width = 260;
             // 
             // Price
             // 
-            this.Price.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Price.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.Price.AppearanceCell.Options.UseFont = true;
             this.Price.AppearanceCell.Options.UseTextOptions = true;
             this.Price.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.Price.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.Price.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Price.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.Price.AppearanceHeader.Options.UseBackColor = true;
             this.Price.AppearanceHeader.Options.UseFont = true;
             this.Price.AppearanceHeader.Options.UseTextOptions = true;
@@ -232,15 +257,16 @@
             this.Price.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Price.Visible = true;
             this.Price.VisibleIndex = 2;
+            this.Price.Width = 151;
             // 
             // Quantity
             // 
-            this.Quantity.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Quantity.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.Quantity.AppearanceCell.Options.UseFont = true;
             this.Quantity.AppearanceCell.Options.UseTextOptions = true;
             this.Quantity.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Quantity.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.Quantity.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Quantity.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.Quantity.AppearanceHeader.Options.UseBackColor = true;
             this.Quantity.AppearanceHeader.Options.UseFont = true;
             this.Quantity.AppearanceHeader.Options.UseTextOptions = true;
@@ -253,15 +279,16 @@
             this.Quantity.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Quantity.Visible = true;
             this.Quantity.VisibleIndex = 3;
+            this.Quantity.Width = 294;
             // 
             // Total
             // 
-            this.Total.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Total.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.Total.AppearanceCell.Options.UseFont = true;
             this.Total.AppearanceCell.Options.UseTextOptions = true;
             this.Total.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.Total.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
-            this.Total.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Total.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.Total.AppearanceHeader.Options.UseBackColor = true;
             this.Total.AppearanceHeader.Options.UseFont = true;
             this.Total.AppearanceHeader.Options.UseTextOptions = true;
@@ -274,6 +301,29 @@
             this.Total.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Total.Visible = true;
             this.Total.VisibleIndex = 4;
+            this.Total.Width = 171;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.gridColumn1.AppearanceCell.Options.UseFont = true;
+            this.gridColumn1.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn1.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.Options.UseBackColor = true;
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn1.Caption = "Remarks";
+            this.gridColumn1.FieldName = "Remarks";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.AllowFocus = false;
+            this.gridColumn1.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 5;
+            this.gridColumn1.Width = 427;
             // 
             // sidePanel4
             // 
@@ -548,27 +598,6 @@
             this.sidePanel10.TabIndex = 20;
             this.sidePanel10.Text = "sidePanel10";
             // 
-            // dateDE
-            // 
-            this.dateDE.EditValue = null;
-            this.dateDE.Location = new System.Drawing.Point(186, 13);
-            this.dateDE.Name = "dateDE";
-            this.dateDE.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.dateDE.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateDE.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dateDE.Properties.Appearance.Options.UseBackColor = true;
-            this.dateDE.Properties.Appearance.Options.UseFont = true;
-            this.dateDE.Properties.Appearance.Options.UseForeColor = true;
-            this.dateDE.Properties.AutoHeight = false;
-            this.dateDE.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateDE.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateDE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.dateDE.Size = new System.Drawing.Size(206, 23);
-            this.dateDE.TabIndex = 31;
-            this.dateDE.EditValueChanged += new System.EventHandler(this.dateDE_EditValueChanged);
-            // 
             // PurchaseHistoryUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -587,6 +616,8 @@
             this.sidePanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).EndInit();
             this.sidePanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productpurchasesGC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productpurchasesGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchasehistoryGC)).EndInit();
@@ -596,8 +627,6 @@
             this.sidePanel8.ResumeLayout(false);
             this.sidePanel8.PerformLayout();
             this.sidePanel10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -635,5 +664,6 @@
         private DevExpress.XtraEditors.SidePanel sidePanel10;
         private DevExpress.XtraGrid.Columns.GridColumn PaymentMethod;
         private DevExpress.XtraEditors.DateEdit dateDE;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

@@ -64,11 +64,16 @@ namespace CapstoneMealPass.Forms.Staff
                     return;
                 }
 
-                // Check sufficient balance
                 decimal totalAmount = _transaction.GrandTotal;
+
+                // Check sufficient balance
                 if (_studentBalance < totalAmount)
                 {
-                    var result = MessageBox.Show("Insufficient balance. Would you like to top up now?","Not Enough Balance",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                    var result = MessageBox.Show(
+                        "Insufficient balance. Would you like to top up now?",
+                        "Not Enough Balance",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {
@@ -81,31 +86,134 @@ namespace CapstoneMealPass.Forms.Staff
                         // Recheck balance after top-up
                         if (_studentBalance < totalAmount)
                         {
-                            MessageBox.Show("Balance is still insufficient after top-up.", "Transaction Halted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                    }
-                    return;
+                            MessageBox.Show(
+                                "Balance is still insufficient after top-up.",
+                                "Transaction Halted",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
 
+                            return; // Stop transaction
+                        }
+
+                        MessageBox.Show(
+                            "Top-up successful. Please click Confirm again to complete the purchase.",
+                            "Top-Up Completed",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        return; // Stop current execution, wait for manual confirm
+                    }
+                    else
+                    {
+                        // User chose not to top up
+                        return;
+                    }
                 }
-                
-                // Compute new balance
-                decimal newBalance = _studentBalance - totalAmount;
 
                 // Initialize repositories
-                string connectionString = SQLQuery.connectionString;
-                var balanceRepo = new BalanceRepository(connectionString);
-                var transactionRepo = new TransactionRepository(connectionString);
-                var transactionDetailRepo = new TransactionDetailRepository(connectionString);
-                var productRepo = new ProductRepository();
+                var productRepo = new ProductRepository(); // implements IProductRepository
+                var transactionRepo = new TransactionRepository(SQLQuery.connectionString);
+                var transactionDetailRepo = new TransactionDetailRepository(SQLQuery.connectionString);
+                var balanceRepo = new BalanceRepository(SQLQuery.connectionString);
 
                 // Generate ReferenceID
-                string refId = "R" +
-                    DateTime.Now.ToString("yyMMddHHmmss") +
-                    _studentId.Substring(_studentId.Length - 4);
+                string refId = "R" + DateTime.Now.ToString("yyMMddHHmmss") + _studentId.Substring(_studentId.Length - 4);
 
-                // Insert master Transaction
-                var transaction = new MealPass.Core.Entity.Transaction
+                // Prepare TransactionDetails
+                bool hasOOS = false;
+                var transactionDetails = new List<TransactionDetail>();
+
+                foreach (DataRow row in _transaction.CartItems.Rows)
+                {
+                    int productId = Convert.ToInt32(row["ID"]);
+                    int cartQuantity = Convert.ToInt32(row["Quantity"]);
+
+                    // Get product details including CategoryName
+                    DataRow productRow = await productRepo.GetByIdWithDetailsAsync(productId);
+                    int stockQuantity = Convert.ToInt32(productRow["Quantity"]);
+                    string categoryName = productRow["CategoryName"].ToString();
+
+                    if (categoryName != "Meals")
+                    {
+                        // Non-meals: proceed only if stock is enough
+                        if (cartQuantity > stockQuantity)
+                        {
+                            MessageBox.Show(
+                                $"Insufficient stock for {productRow["ProductName"]}. Transaction cannot proceed.",
+                                "Stock Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        transactionDetails.Add(new TransactionDetail
+                        {
+                            ReferenceID = refId,
+                            ProductID = productId,
+                            QuantitySold = cartQuantity,
+                            UnitPrice = Convert.ToDecimal(row["Price"]),
+                            Subtotal = Convert.ToDecimal(row["Total"]),
+                            Remarks = "Completed"
+                        });
+
+                        await productRepo.DeductStockAsync(productId, cartQuantity);
+                    }
+                    else
+                    {
+                        // Meals: split into Completed and Out of stock purchase
+                        if (cartQuantity <= stockQuantity)
+                        {
+                            transactionDetails.Add(new TransactionDetail
+                            {
+                                ReferenceID = refId,
+                                ProductID = productId,
+                                QuantitySold = cartQuantity,
+                                UnitPrice = Convert.ToDecimal(row["Price"]),
+                                Subtotal = Convert.ToDecimal(row["Total"]),
+                                Remarks = "Completed"
+                            });
+
+                            await productRepo.DeductStockAsync(productId, cartQuantity);
+                        }
+                        else
+                        {
+                            // Split quantities
+                            if (stockQuantity > 0)
+                            {
+                                transactionDetails.Add(new TransactionDetail
+                                {
+                                    ReferenceID = refId,
+                                    ProductID = productId,
+                                    QuantitySold = stockQuantity,
+                                    UnitPrice = Convert.ToDecimal(row["Price"]),
+                                    Subtotal = Convert.ToDecimal(row["Price"]) * stockQuantity,
+                                    Remarks = "Completed"
+                                });
+
+                                await productRepo.DeductStockAsync(productId, stockQuantity);
+                            }
+
+                            transactionDetails.Add(new TransactionDetail
+                            {
+                                ReferenceID = refId,
+                                ProductID = productId,
+                                QuantitySold = cartQuantity - stockQuantity,
+                                UnitPrice = Convert.ToDecimal(row["Price"]),
+                                Subtotal = Convert.ToDecimal(row["Price"]) * (cartQuantity - stockQuantity),
+                                Remarks = "Out of stock purchase"
+                            });
+
+                            hasOOS = true;
+                        }
+                    }
+                }
+
+                // Insert transaction details
+                foreach (var detail in transactionDetails)
+                    await transactionDetailRepo.InsertTransactionDetailAsync(detail);
+
+                // Insert master transaction
+                var masterTransaction = new Transaction
                 {
                     ReferenceID = refId,
                     SaleDate = DateTime.Now,
@@ -113,33 +221,13 @@ namespace CapstoneMealPass.Forms.Staff
                     Username = UserSession.Username,
                     TotalAmount = totalAmount,
                     PaymentMethod = 0,
-                    Remarks = "Completed"
+                    Remarks = hasOOS ? "Out of stock purchase" : "Completed"
                 };
 
-                await transactionRepo.InsertTransactionAsync(transaction);
+                await transactionRepo.InsertTransactionAsync(masterTransaction);
 
-                // Insert Transaction Details (no TransactionDetailID needed)
-                foreach (DataRow row in _transaction.CartItems.Rows)
-                {
-                    int productId = Convert.ToInt32(row["ID"]);
-                    int quantity = Convert.ToInt32(row["Quantity"]);
-
-                    var detail = new MealPass.Core.Entity.TransactionDetail
-                    {
-                        ReferenceID = refId,
-                        ProductID = Convert.ToInt32(row["ID"]),
-                        QuantitySold = Convert.ToInt32(row["Quantity"]),
-                        UnitPrice = Convert.ToDecimal(row["Price"]),
-                        Subtotal = Convert.ToDecimal(row["Total"]),
-                    };
-
-                    await transactionDetailRepo.InsertTransactionDetailAsync(detail);
-
-                    // Deduct stock
-                    await productRepo.DeductStockAsync(productId, quantity);
-                }
-
-                // Update Balance
+                // Update student balance
+                decimal newBalance = _studentBalance - totalAmount;
                 await balanceRepo.UpdateBalanceAsync(_studentId, newBalance);
 
                 // Update UI
@@ -147,13 +235,12 @@ namespace CapstoneMealPass.Forms.Staff
                 remainingLBL.Text = "0.00";
                 remainingLBL.ForeColor = Color.Green;
 
-                MessageBox.Show("Purchase completed successfully!", "Success",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(hasOOS
+                    ? "Purchase completed with OUT-OF-STOCK items!"
+                    : "Purchase completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                _posControl?.ReloadItems(); 
-
-                _transaction.CartItems.Clear(); 
-
+                _posControl?.ReloadItems();
+                _transaction.CartItems.Clear();
                 _paymentForm?.Close();
                 this.Close();
             }

@@ -14,5 +14,6 @@ namespace MealPass.Core.Entity
         public DateTime SaleDate { get; set; }
         public decimal TotalAmount { get; set; }
         public int PaymentMethod { get; set; }
+        public string Remarks { get; set; }
     }
 }

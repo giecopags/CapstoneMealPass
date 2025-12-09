@@ -14,5 +14,6 @@ namespace MealPass.Core.Entity
         public int QuantitySold { get; set; }          // Quantity sold for that product
         public decimal UnitPrice { get; set; }         // Price per unit at time of sale
         public decimal Subtotal { get; set; }          // UnitPrice * QuantitySold
+        public string Remarks { get; set; }
     }
 }

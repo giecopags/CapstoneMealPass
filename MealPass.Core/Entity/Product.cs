@@ -11,7 +11,7 @@ namespace MealPass.Core.Entity
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public int CategoryID { get; set; }
-
+        
         public int StockStatusID { get; set; }
         public int LowStockLevel { get; set; }
         public int Quantity { get; set; }

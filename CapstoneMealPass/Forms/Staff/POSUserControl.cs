@@ -70,16 +70,38 @@ namespace CapstoneMealPass.Forms.Staff
             string productName = productsGV.GetRowCellValue(selectedRow, "ProductName")?.ToString();
             string priceStr = productsGV.GetRowCellValue(selectedRow, "Price")?.ToString();
             string stockStr = productsGV.GetRowCellValue(selectedRow, "Quantity")?.ToString();
-            int stock = int.TryParse(stockStr, out int s) ? s : 0;
+            string categoryStr = productsGV.GetRowCellValue(selectedRow, "CategoryID")?.ToString();
+            string categoryName = productsGV.GetRowCellValue(selectedRow, "CategoryName")?.ToString();
 
+            int stock = int.TryParse(stockStr, out int s) ? s : 0;
+            int categoryID = int.TryParse(categoryStr, out int c) ? c : 0;
+
+            // Meals 0 stock logic
             if (stock <= 0)
             {
-                MessageBox.Show($"Sorry, '{productName}' is out of stock.", "Out of Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                if (categoryName == "Meals")
+                {
+                    MessageBox.Show(
+                        $"Warning: '{productName}' has 0 stock but is allowed for sale.",
+                        "Zero Stock Allowed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
+                else
+                {
+                    MessageBox.Show(
+                        $"Sorry, '{productName}' is out of stock.",
+                        "Out of Stock",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
             }
 
             decimal price = decimal.TryParse(priceStr, out decimal p) ? p : 0;
-            int quantity = 1;
+            int quantity = 1; // default quantity
             decimal total = price * quantity;
 
             DataTable cartTable = cartGC.DataSource as DataTable;
@@ -186,6 +208,12 @@ namespace CapstoneMealPass.Forms.Staff
 
         private void confirmBTN_Click(object sender, EventArgs e)
         {
+            if (!ValidateCartStock(out string errorMessage))
+            {
+                MessageBox.Show(errorMessage, "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Stop checkout
+            }
+
             var cartTable = cartGC.DataSource as DataTable;
             if (cartTable == null || cartTable.Rows.Count == 0)
             {
@@ -245,6 +273,45 @@ namespace CapstoneMealPass.Forms.Staff
             await LoadProductsAsync();  // refresh product list
             cartGC.DataSource = null; // reset cart
             grandtotalLBL.Text = "0.00";
+        }
+
+        private bool ValidateCartStock(out string errorMessage)
+        {
+            errorMessage = string.Empty;
+
+            // Get the products data source
+            DataTable productsTable = productsGC.DataSource as DataTable;
+            if (productsTable == null) return true; // No products loaded
+
+            DataTable cartTable = cartGC.DataSource as DataTable;
+            if (cartTable == null || cartTable.Rows.Count == 0) return true; // Cart empty
+
+            foreach (DataRow cartRow in cartTable.Rows)
+            {
+                string productId = cartRow["ID"].ToString();
+                int cartQuantity = Convert.ToInt32(cartRow["Quantity"]);
+
+                // Lookup product in productsGC table
+                DataRow productRow = productsTable.AsEnumerable()
+                    .FirstOrDefault(r => r["ProductID"].ToString() == productId);
+
+                if (productRow == null) continue; // Product not found
+
+                int stock = Convert.ToInt32(productRow["Quantity"]);
+                string category = productRow["CategoryName"].ToString();
+
+                // Skip check for Meals category
+                if (category.Equals("Meals", StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                if (cartQuantity > stock)
+                {
+                    errorMessage = $"'{cartRow["ProductName"]}' exceeds available stock ({stock}).";
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
