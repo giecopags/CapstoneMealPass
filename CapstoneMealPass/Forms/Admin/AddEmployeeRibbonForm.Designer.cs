@@ -424,6 +424,7 @@
             this.addemployeeBTN.Size = new System.Drawing.Size(147, 40);
             this.addemployeeBTN.TabIndex = 75;
             this.addemployeeBTN.Text = "Add Employee";
+            this.addemployeeBTN.Click += new System.EventHandler(this.addemployeeBTN_Click);
             // 
             // labelControl3
             // 

@@ -13,17 +13,15 @@ namespace MealPass.Core.Interface
         Task<IEnumerable<Product>> GetAllAsync();
         Task<Product> GetByIdAsync(int id);
         Task AddAsync(Product product);
-        Task<DataRow> GetByIdWithDetailsAsync(int productId);
         Task UpdateAsync(Product product);
         Task DeleteAsync(int id);
+
+        // Add this:
+        Task<DataRow> GetByIdWithDetailsAsync(int productId);
+
         Task<DataTable> GetAllWithDetailsAsync();
-
-        // Centralized stock status calculation
         int CalculateStockStatus(int quantity, int lowStockLevel);
-
-        // Easier product update by fields
         Task UpdateProductAsync(int productId, string name, int categoryId, decimal price, int quantity, int lowStockLevel, int stockStatusId);
-
         Task DeductStockAsync(int productId, int quantity);
     }
 }

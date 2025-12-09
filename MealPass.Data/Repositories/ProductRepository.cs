@@ -41,11 +41,19 @@ namespace MealPass.Data.Repositories
             }
         }
 
+        // GET BY ID INCLUDING CATEGORY NAME
+        public async Task<Product> GetProductByIdAsync(int productId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return await connection.QueryFirstOrDefaultAsync<Product>(ProductQuery.GetByIdWithDetails, new { ProductID = productId });
+            }
+        }
+
         // ADD (StockStatusID auto-calculated)
         public async Task AddAsync(Product product)
         {
             product.StockStatusID = CalculateStockStatus(product.Quantity, product.LowStockLevel);
-
             using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.ExecuteAsync(ProductQuery.Insert, product);
@@ -56,7 +64,6 @@ namespace MealPass.Data.Repositories
         public async Task UpdateAsync(Product product)
         {
             product.StockStatusID = CalculateStockStatus(product.Quantity, product.LowStockLevel);
-
             using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.ExecuteAsync(ProductQuery.Update, product);
@@ -75,7 +82,6 @@ namespace MealPass.Data.Repositories
                 LowStockLevel = lowStockLevel,
                 StockStatusID = stockStatusId
             };
-
             await UpdateAsync(product);
         }
 
@@ -99,6 +105,53 @@ namespace MealPass.Data.Repositories
                 return 1; // InStock
         }
 
+        // LOAD DATA TABLES
+        public async Task<DataTable> LoadProductsAsync() => await LoadDataTableAsync(ProductQuery.FilterAllProducts);
+        public async Task<DataTable> LoadSnacksAsync() => await LoadDataTableAsync(ProductQuery.FilterSnacks);
+        public async Task<DataTable> LoadMealsAsync() => await LoadDataTableAsync(ProductQuery.FilterMeals);
+        public async Task<DataTable> LoadDrinksAsync() => await LoadDataTableAsync(ProductQuery.FilterDrinks);
+
+        private async Task<DataTable> LoadDataTableAsync(string query)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                await conn.OpenAsync();
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    var adapter = new SqlDataAdapter(command);
+                    var table = new DataTable();
+                    await Task.Run(() => adapter.Fill(table));
+                    return table;
+                }
+            }
+        }
+
+        // DEDUCT STOCK USING YOUR QUERY
+        public async Task DeductStockAsync(int productId, int quantity)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var product = await GetProductByIdAsync(productId);
+                if (product == null)
+                    throw new Exception($"Product with ID {productId} not found.");
+
+                // Only deduct stock for completed quantity
+                int deductQuantity = quantity;
+                if (deductQuantity > product.Quantity)
+                    deductQuantity = product.Quantity;
+
+                if (deductQuantity > 0)
+                {
+                    await connection.ExecuteAsync(ProductQuery.DeductStock, new { ProductID = productId, Quantity = deductQuantity });
+                }
+
+                // Update StockStatusID after deduction
+                product.Quantity -= deductQuantity;
+                product.StockStatusID = CalculateStockStatus(product.Quantity, product.LowStockLevel);
+                await UpdateAsync(product);
+            }
+        }
+
         public async Task<DataTable> GetAllWithDetailsAsync()
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -113,7 +166,6 @@ namespace MealPass.Data.Repositories
                 }
             }
         }
-
         public async Task<DataRow> GetByIdWithDetailsAsync(int productId)
         {
             using (var conn = new SqlConnection(_connectionString))
@@ -130,102 +182,5 @@ namespace MealPass.Data.Repositories
             }
         }
 
-        public async Task<DataTable> LoadProductsAsync()
-        {
-            using (SqlConnection conn = new SqlConnection(_connectionString))
-            {
-                await conn.OpenAsync();
-
-                string query = ProductQuery.FilterAllProducts;
-                using (SqlCommand command = new SqlCommand(query, conn))
-                {
-                    DataTable dataTable = new DataTable();
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-
-                    await Task.Run(() => adapter.Fill(dataTable));
-
-                    return dataTable;
-                }
-            }
-        }
-
-        public async Task<DataTable> LoadSnacksAsync()
-        {
-            using (SqlConnection conn = new SqlConnection(_connectionString))
-            {
-                await conn.OpenAsync();
-
-                string query = ProductQuery.FilterSnacks;
-                using (SqlCommand command = new SqlCommand(query, conn))
-                {
-                    DataTable dataTable = new DataTable();
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-
-                    await Task.Run(() => adapter.Fill(dataTable));
-
-                    return dataTable;
-                }
-            }
-        }
-
-        public async Task<DataTable> LoadMealsAsync()
-        {
-            using (SqlConnection conn = new SqlConnection(_connectionString))
-            {
-                await conn.OpenAsync();
-
-                string query = ProductQuery.FilterMeals;
-                using (SqlCommand command = new SqlCommand(query, conn))
-                {
-                    DataTable dataTable = new DataTable();
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-
-                    await Task.Run(() => adapter.Fill(dataTable));
-
-                    return dataTable;
-                }
-            }
-        }
-
-        public async Task<DataTable> LoadDrinksAsync()
-        {
-            using (SqlConnection conn = new SqlConnection(_connectionString))
-            {
-                await conn.OpenAsync();
-
-                string query = ProductQuery.FilterDrinks;
-                using (SqlCommand command = new SqlCommand(query, conn))
-                {
-                    DataTable dataTable = new DataTable();
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-
-                    await Task.Run(() => adapter.Fill(dataTable));
-
-                    return dataTable;
-                }
-            }
-        }
-        public async Task DeductStockAsync(int productId, int quantity)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                // 1. Get current product
-                var product = await GetByIdAsync(productId);
-                if (product == null)
-                    throw new Exception($"Product with ID {productId} not found.");
-
-                // 2. Deduct quantity
-                product.Quantity -= quantity;
-                if (product.Quantity < 0)
-                    product.Quantity = 0; // Prevent negative stock
-
-                // 3. Recalculate stock status
-                product.StockStatusID = CalculateStockStatus(product.Quantity, product.LowStockLevel);
-
-                // 4. Update product
-                await UpdateAsync(product);
-            }
-
-        }
     }
 }

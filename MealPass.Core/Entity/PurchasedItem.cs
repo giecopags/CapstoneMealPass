@@ -13,5 +13,7 @@ namespace MealPass.Core.Entity
         public decimal UnitPrice { get; set; }
         public int QuantitySold { get; set; }
         public decimal Subtotal { get; set; }
+
+        public string Remarks { get; set; }
     }
 }

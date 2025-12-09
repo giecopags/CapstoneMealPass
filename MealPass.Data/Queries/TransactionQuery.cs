@@ -36,14 +36,16 @@ namespace MealPass.Data.Queries
                 ProductID,
                 QuantitySold,
                 UnitPrice,
-                Subtotal
+                Subtotal,
+                Remarks
             )
             VALUES (
                 @ReferenceID,
                 @ProductID,
                 @QuantitySold,
                 @UnitPrice,
-                @Subtotal
+                @Subtotal,
+                @Remarks    
             );
         ";
     }

@@ -25,6 +25,7 @@ namespace MealPass.Data.Queries
             p.ProductName,
             c.CategoryName,
             td.UnitPrice
+        HAVING SUM(td.QuantitySold) > 0
         ORDER BY 
             p.ProductName ASC, td.UnitPrice ASC;
     ";

@@ -1,10 +1,4 @@
-﻿using CapstoneMealPass.Helpers;
-using DevExpress.XtraEditors;
-using MealPass.Core.Entity;
-using MealPass.Core.GlobalSql;
-using MealPass.Data;
-using MealPass.Data.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapstoneMealPass.Helpers;
+using DevExpress.XtraEditors;
+using MealPass.Core.Entity;
+using MealPass.Core.GlobalSql;
+using MealPass.Core.Interface;
+using MealPass.Data;
+using MealPass.Data.Repositories;
 
 namespace CapstoneMealPass.Forms.Staff
 {
@@ -41,7 +42,6 @@ namespace CapstoneMealPass.Forms.Staff
         {
             try
             {
-                // Validate input
                 if (!decimal.TryParse(cashpaymentTE.Text, out decimal cashPaid))
                 {
                     MessageBox.Show("Please enter a valid cash amount.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -49,7 +49,6 @@ namespace CapstoneMealPass.Forms.Staff
                 }
 
                 decimal totalAmount = _transaction.GrandTotal;
-
                 if (cashPaid < totalAmount)
                 {
                     MessageBox.Show("Insufficient cash provided.", "Payment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -59,56 +58,102 @@ namespace CapstoneMealPass.Forms.Staff
                 decimal change = cashPaid - totalAmount;
                 changeLBL.Text = change.ToString("N2");
 
-                // Initialize repositories
-                string connectionString = SQLQuery.connectionString;
-                var transactionRepo = new TransactionRepository(connectionString);
-                var transactionDetailRepo = new TransactionDetailRepository(connectionString);
-                var productRepo = new ProductRepository();
+                var productRepo = new ProductRepository(); // implements IProductRepository
+                var transactionRepo = new TransactionRepository(SQLQuery.connectionString);
+                var transactionDetailRepo = new TransactionDetailRepository(SQLQuery.connectionString);
 
-                // Generate Reference ID
                 string refId = "C" + DateTime.Now.ToString("yyMMddHHmmss") + new Random().Next(1000, 9999);
 
-                // Create and insert master transaction
+                bool hasOOS = false;
+
+                foreach (DataRow row in _transaction.CartItems.Rows)
+                {
+                    int productId = Convert.ToInt32(row["ID"]);
+                    int quantityInCart = Convert.ToInt32(row["Quantity"]);
+
+                    // Get product info including CategoryID and current Quantity
+                    var product = await productRepo.GetByIdAsync(productId);
+
+                    int availableStock = product.Quantity;
+                    int categoryId = product.CategoryID;
+
+                    int completedQty = 0;
+                    int oosQty = 0;
+
+                    // Determine how many can be completed vs out-of-stock
+                    if (categoryId == 3) // Meals exempt
+                    {
+                        completedQty = Math.Min(quantityInCart, availableStock);
+                        oosQty = quantityInCart - completedQty;
+                    }
+                    else
+                    {
+                        if (quantityInCart > availableStock)
+                        {
+                            MessageBox.Show($"'{product.ProductName}' exceeds available stock ({availableStock}).", "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        completedQty = quantityInCart;
+                    }
+
+                    // Insert completed transactions
+                    if (completedQty > 0)
+                    {
+                        var detail = new TransactionDetail
+                        {
+                            ReferenceID = refId,
+                            ProductID = productId,
+                            QuantitySold = completedQty,
+                            UnitPrice = Convert.ToDecimal(row["Price"]),
+                            Subtotal = Convert.ToDecimal(row["Price"]) * completedQty,
+                            Remarks = "Completed"
+                        };
+
+                        await transactionDetailRepo.InsertTransactionDetailAsync(detail);
+                        await productRepo.DeductStockAsync(productId, completedQty);
+                    }
+
+                    // Insert out-of-stock transactions (Meals only)
+                    if (oosQty > 0)
+                    {
+                        var detail = new TransactionDetail
+                        {
+                            ReferenceID = refId,
+                            ProductID = productId,
+                            QuantitySold = oosQty,
+                            UnitPrice = Convert.ToDecimal(row["Price"]),
+                            Subtotal = Convert.ToDecimal(row["Price"]) * oosQty,
+                            Remarks = "Out of stock purchase"
+                        };
+
+                        await transactionDetailRepo.InsertTransactionDetailAsync(detail);
+                        hasOOS = true; // mark header as OOS
+                    }
+                }
+
+                // Insert master transaction
                 var transaction = new Transaction
                 {
                     ReferenceID = refId,
                     SaleDate = DateTime.Now,
-                    StudentID = null, // Cash transaction, no student
+                    StudentID = null,
                     Username = UserSession.Username,
                     TotalAmount = totalAmount,
-                    PaymentMethod = 1, // 1 = Cash
-                    Remarks = "Completed"
+                    PaymentMethod = 1, // Cash
+                    Remarks = hasOOS ? "Out of stock purchase" : "Completed"
                 };
 
                 await transactionRepo.InsertTransactionAsync(transaction);
 
-                // Insert transaction details and deduct stock
-                foreach (DataRow row in _transaction.CartItems.Rows)
-                {
-                    int productId = Convert.ToInt32(row["ID"]);
-                    int quantity = Convert.ToInt32(row["Quantity"]);
+                string message = hasOOS
+                    ? $"Transaction completed with OUT-OF-STOCK items!\nChange: ₱{change:N2}"
+                    : $"Transaction completed!\nChange: ₱{change:N2}";
 
-                    var detail = new TransactionDetail
-                    {
-                        ReferenceID = refId,
-                        ProductID = productId,
-                        QuantitySold = quantity,
-                        UnitPrice = Convert.ToDecimal(row["Price"]),
-                        Subtotal = Convert.ToDecimal(row["Total"])
-                    };
+                MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    await transactionDetailRepo.InsertTransactionDetailAsync(detail);
-                    await productRepo.DeductStockAsync(productId, quantity);
-                }
-
-                // Success Message
-                MessageBox.Show($"Transaction completed!\nChange: ₱{change:N2}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Clear cart and refresh POS
                 _transaction.CartItems.Clear();
                 _posControl.ReloadItems();
 
-                // Close all related forms
                 _paymentForm.Close();
                 this.Close();
             }

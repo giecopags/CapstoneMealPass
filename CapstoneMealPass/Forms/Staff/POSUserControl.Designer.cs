@@ -799,6 +799,8 @@
             this.StockStatus.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.StockStatus.AppearanceCell.Options.UseFont = true;
             this.StockStatus.AppearanceCell.Options.UseForeColor = true;
+            this.StockStatus.AppearanceCell.Options.UseTextOptions = true;
+            this.StockStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.StockStatus.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
             this.StockStatus.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.StockStatus.AppearanceHeader.Options.UseBackColor = true;

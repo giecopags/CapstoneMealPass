@@ -30,7 +30,8 @@ namespace MealPass.Data.Repositories
                     detail.ProductID,
                     detail.QuantitySold,
                     detail.UnitPrice,
-                    detail.Subtotal
+                    detail.Subtotal,
+                    detail.Remarks
                 });
             }
         }

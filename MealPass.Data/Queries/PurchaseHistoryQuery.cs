@@ -31,7 +31,8 @@ namespace MealPass.Data.Queries
                 c.CategoryName,
                 td.UnitPrice,
                 td.QuantitySold,
-                td.Subtotal
+                td.Subtotal,
+                td.Remarks
             FROM TransactionDetails td
             INNER JOIN pro.Products p ON p.ProductID = td.ProductID
             INNER JOIN pro.Category c ON c.CategoryID = p.CategoryID

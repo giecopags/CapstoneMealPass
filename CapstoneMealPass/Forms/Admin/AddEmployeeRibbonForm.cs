@@ -106,8 +106,21 @@ namespace CapstoneMealPass.Forms.Admin
             }
         }
 
-        private async Task addemployeeBTN_Click(object sender, EventArgs e)
+        private async void addemployeeBTN_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(firstnameTE.Text) ||
+               string.IsNullOrWhiteSpace(lastnameTE.Text) ||
+               positionRG.EditValue == null ||
+               genderRG.EditValue == null ||
+               string.IsNullOrWhiteSpace(usernameTE.Text) ||
+               string.IsNullOrWhiteSpace(passwordBE.Text) ||
+               birthdateDE.EditValue == null ||
+               civilstatusCBE.EditValue == null)
+            {
+                XtraMessageBox.Show("⚠ Please fill in all required fields before saving.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             var confirmResult = XtraMessageBox.Show("Do you want to save this account?", "Confirm Save", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirmResult != DialogResult.Yes)
                 return;
