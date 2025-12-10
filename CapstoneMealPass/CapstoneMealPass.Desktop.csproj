@@ -293,18 +293,6 @@
     <Compile Include="Forms\Admin\SalesUserControl.Designer.cs">
       <DependentUpon>SalesUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\SelectMonthXtraForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Admin\SelectMonthXtraForm.Designer.cs">
-      <DependentUpon>SelectMonthXtraForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Admin\SelectWeekXtraForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Admin\SelectWeekXtraForm.Designer.cs">
-      <DependentUpon>SelectWeekXtraForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Admin\TopUpHistoryUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -370,23 +358,11 @@
     <Compile Include="Reports\EmployeeLogsXtraReport.Designer.cs">
       <DependentUpon>EmployeeLogsXtraReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\MonthlySalesXtraReport.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\MonthlySalesXtraReport.Designer.cs">
-      <DependentUpon>MonthlySalesXtraReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reports\TopUpHistoryXtraReport.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\TopUpHistoryXtraReport.Designer.cs">
       <DependentUpon>TopUpHistoryXtraReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\WeeklySalesXtraReport.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\WeeklySalesXtraReport.Designer.cs">
-      <DependentUpon>WeeklySalesXtraReport.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\Admin\AddEmployeeRibbonForm.resx">
       <DependentUpon>AddEmployeeRibbonForm.cs</DependentUpon>
@@ -423,12 +399,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\SalesUserControl.resx">
       <DependentUpon>SalesUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin\SelectMonthXtraForm.resx">
-      <DependentUpon>SelectMonthXtraForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin\SelectWeekXtraForm.resx">
-      <DependentUpon>SelectWeekXtraForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\TopUpHistoryUserControl.resx">
       <DependentUpon>TopUpHistoryUserControl.cs</DependentUpon>
@@ -470,14 +440,8 @@
     <EmbeddedResource Include="Reports\EmployeeLogsXtraReport.resx">
       <DependentUpon>EmployeeLogsXtraReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\MonthlySalesXtraReport.resx">
-      <DependentUpon>MonthlySalesXtraReport.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\TopUpHistoryXtraReport.resx">
       <DependentUpon>TopUpHistoryXtraReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\WeeklySalesXtraReport.resx">
-      <DependentUpon>WeeklySalesXtraReport.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />

@@ -32,7 +32,7 @@
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel5 = new DevExpress.XtraEditors.SidePanel();
             this.datetimeLBL = new DevExpress.XtraEditors.LabelControl();
-            this.sidePanel7 = new DevExpress.XtraEditors.SidePanel();
+            this.logout = new DevExpress.XtraEditors.SidePanel();
             this.usernameLBL = new DevExpress.XtraEditors.LabelControl();
             this.sidePanel6 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
@@ -73,7 +73,7 @@
             this.sidePanel5.AllowResize = false;
             this.sidePanel5.BorderThickness = 0;
             this.sidePanel5.Controls.Add(this.datetimeLBL);
-            this.sidePanel5.Controls.Add(this.sidePanel7);
+            this.sidePanel5.Controls.Add(this.logout);
             this.sidePanel5.Controls.Add(this.usernameLBL);
             this.sidePanel5.Controls.Add(this.sidePanel6);
             this.sidePanel5.Dock = System.Windows.Forms.DockStyle.Right;
@@ -95,16 +95,17 @@
             this.datetimeLBL.TabIndex = 2;
             this.datetimeLBL.Text = "Date    /     Time";
             // 
-            // sidePanel7
+            // logout
             // 
-            this.sidePanel7.AllowResize = false;
-            this.sidePanel7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sidePanel7.BackgroundImage")));
-            this.sidePanel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.sidePanel7.Location = new System.Drawing.Point(186, 18);
-            this.sidePanel7.Name = "sidePanel7";
-            this.sidePanel7.Size = new System.Drawing.Size(30, 30);
-            this.sidePanel7.TabIndex = 1;
-            this.sidePanel7.Text = "sidePanel7";
+            this.logout.AllowResize = false;
+            this.logout.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logout.BackgroundImage")));
+            this.logout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.logout.Location = new System.Drawing.Point(186, 18);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(30, 30);
+            this.logout.TabIndex = 1;
+            this.logout.Text = "sidePanel7";
+            this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
             // usernameLBL
             // 
@@ -318,7 +319,7 @@
         private DevExpress.XtraEditors.SidePanel sidePanel1;
         private DevExpress.XtraEditors.SidePanel sidePanel5;
         private DevExpress.XtraEditors.LabelControl datetimeLBL;
-        private DevExpress.XtraEditors.SidePanel sidePanel7;
+        private DevExpress.XtraEditors.SidePanel logout;
         private DevExpress.XtraEditors.LabelControl usernameLBL;
         private DevExpress.XtraEditors.SidePanel sidePanel6;
         private DevExpress.XtraEditors.SidePanel sidePanel2;

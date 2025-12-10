@@ -27,68 +27,21 @@ namespace CapstoneMealPass.Forms.Admin
             _salesRepo = new SaleRepository(connectionString);
         }
 
-        private async void dateDE_EditValueChanged(object sender, EventArgs e)
+        private async Task LoadSalesByRangeAsync(DateTime from, DateTime to)
         {
-            if (dateDE.EditValue == null)
-            {
-                await LoadAllSalesAsync();
-                return;
-            }
+            var sales = await _salesRepo.GetSalesSummaryByDateTimeRangeAsync(from, to);
 
-            DateTime date = Convert.ToDateTime(dateDE.EditValue);
-            await LoadSalesByDateAsync(date);
+            gcSales.DataSource = sales.Select(x => new
+            {
+                x.ProductID,
+                x.ProductName,
+                x.CategoryName,
+                UnitPrice = x.UnitPrice.ToString("N2"),
+                x.ItemSold,
+                TotalAmount = x.TotalAmount.ToString("N2")
+            }).ToList();
         }
-
-        private async void SalesUserControl_Load(object sender, EventArgs e)
-        {
-            await LoadAllSalesAsync();
-        }
-
-        private async Task LoadAllSalesAsync()
-        {
-            try
-            {
-                var sales = await _salesRepo.GetAllSalesSummaryAsync();
-
-                gcSales.DataSource = sales.Select(x => new
-                {
-                    x.ProductID,
-                    x.ProductName,
-                    x.CategoryName,
-                    UnitPrice = x.UnitPrice.ToString("N2"),
-                    x.ItemSold,
-                    TotalAmount = x.TotalAmount.ToString("N2")
-                }).ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to load sales summary: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private async Task LoadSalesByDateAsync(DateTime date)
-        {
-            try
-            {
-                var sales = await _salesRepo.GetSalesSummaryByDateAsync(date);
-
-                gcSales.DataSource = sales.Select(x => new
-                {
-                    x.ProductID,
-                    x.ProductName,
-                    x.CategoryName,
-                    UnitPrice = x.UnitPrice.ToString("N2"),
-                    x.ItemSold,
-                    TotalAmount = x.TotalAmount.ToString("N2")
-                }).ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to load filtered sales: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+      
         private void findTE_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
             gvSales.ApplyFindFilter(e.NewValue as string);
@@ -96,24 +49,20 @@ namespace CapstoneMealPass.Forms.Admin
 
         private void printBTN_Click(object sender, EventArgs e)
         {
-            if (dateDE.EditValue == null)
-            {
-                MessageBox.Show("Please select a date before printing the daily sales report.",
-                    "No Date Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
                 return;
-            }
 
-            DateTime selectedDate = Convert.ToDateTime(dateDE.EditValue);
+            DateTime from = Convert.ToDateTime(fromDateDE.EditValue).Date;
+            DateTime to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
 
-            Reports.DailySalesXtraReport report = new Reports.DailySalesXtraReport();
+            var report = new Reports.DailySalesXtraReport();
 
             using (var connection = new SqlConnection(SQLQuery.connectionString))
             {
-                string query = SaleQuery.GetSalesSummaryByDate;
-          
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (var command = new SqlCommand(SaleQuery.GetSalesSummaryByDateTimeRange, connection))
                 {
-                    command.Parameters.AddWithValue("@Date", selectedDate.Date);
+                    command.Parameters.AddWithValue("@FromDateTime", from);
+                    command.Parameters.AddWithValue("@ToDateTime", to);
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
@@ -122,16 +71,57 @@ namespace CapstoneMealPass.Forms.Admin
 
                         report.DataSource = dt;
 
-                        report.xrLabel3.Text = selectedDate.ToString("MMMM dd, yyyy");
+                        if (from.Date == to.Date.Date)
+                            report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
+                        else
+                            report.xrLabel3.Text = $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
+
                         report.CreateDocument();
-                        ReportPrintTool tool = new ReportPrintTool(report);
-                        tool.ShowPreviewDialog();
+                        new ReportPrintTool(report).ShowPreviewDialog();
                     }
                 }
             }
         }
 
-    }
+        private async void filterBTN_Click(object sender, EventArgs e)
+        {
+            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
+            {
+                MessageBox.Show("Please select both From and To dates.", "Invalid Date Range",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            DateTime from = Convert.ToDateTime(fromDateDE.EditValue).Date; 
+            DateTime to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
+
+            await LoadSalesByRangeAsync(from, to);
+        }
+
+        public async Task LoadSalesTodayAsync()
+        {
+            DateTime from = DateTime.Today;
+            DateTime to = DateTime.Today.AddDays(1).AddSeconds(-1); 
+
+            var sales = await _salesRepo.GetSalesSummaryByDateTimeRangeAsync(from, to);
+
+            gcSales.DataSource = sales.Select(x => new
+            {
+                x.ProductID,
+                x.ProductName,
+                x.CategoryName,
+                UnitPrice = x.UnitPrice.ToString("N2"),
+                x.ItemSold,
+                TotalAmount = x.TotalAmount.ToString("N2")
+            }).ToList();
+        }
+
+        private async void SalesUserControl_Load(object sender, EventArgs e)
+        {
+            await LoadSalesTodayAsync();
+        }
+    }
 }
+
+
 

@@ -44,5 +44,19 @@ namespace MealPass.Data.Repositories
                 return result.ToList();
             }
         }
+
+        public async Task<List<SalesSummary>> GetSalesSummaryByDateTimeRangeAsync(DateTime from, DateTime to)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var result = await connection.QueryAsync<SalesSummary>(
+                    SaleQuery.GetSalesSummaryByDateTimeRange,
+                    new { FromDateTime = from, ToDateTime = to }
+                );
+
+                return result.ToList();
+            }
+        }
+
     }
 }
