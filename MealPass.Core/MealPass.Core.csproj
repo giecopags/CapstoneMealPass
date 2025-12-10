@@ -60,8 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\Balance.cs" />
+    <Compile Include="Entity\BestSeller.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Employee.cs" />
+    <Compile Include="Entity\MonthlySummary.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Entity\ProductLogs.cs" />
     <Compile Include="Entity\PurchasedItem.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="Entity\TransactionDetail.cs" />
     <Compile Include="GlobalSql\SQLQuery.cs" />
     <Compile Include="Interface\IBalanceRepository.cs" />
+    <Compile Include="Interface\IDashboardRepository.cs" />
     <Compile Include="Interface\IProductRepository.cs" />
     <Compile Include="Interface\IPurchaseHistoryRepository.cs" />
     <Compile Include="Interface\ISaleRepository.cs" />

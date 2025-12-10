@@ -247,6 +247,7 @@
             this.dashboardACE.Name = "dashboardACE";
             this.dashboardACE.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.dashboardACE.Text = "Dashboard";
+            this.dashboardACE.Click += new System.EventHandler(this.dashboardACE_Click);
             // 
             // sidePanel3
             // 

@@ -103,5 +103,10 @@ namespace CapstoneMealPass.Forms.Admin
 
             }
         }
+
+        private async void dashboardACE_Click(object sender, EventArgs e)
+        {
+            await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.DashboardUserControl());
+        }
     }
 }

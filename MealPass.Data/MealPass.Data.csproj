@@ -183,6 +183,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\BalanceQuery.cs" />
+    <Compile Include="Queries\DashboardQuery.cs" />
     <Compile Include="Queries\EmployeeQuery.cs" />
     <Compile Include="Queries\ProductQuery.cs" />
     <Compile Include="Queries\PurchaseHistoryQuery.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Queries\TopUpLogQuery.cs" />
     <Compile Include="Queries\TransactionQuery.cs" />
     <Compile Include="Repositories\BalanceRepository.cs" />
+    <Compile Include="Repositories\DashboardRepository.cs" />
     <Compile Include="Repositories\GlobalLogger.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\PurchaseHistoryRepository.cs" />
