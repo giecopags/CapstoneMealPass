@@ -29,7 +29,6 @@ namespace CapstoneMealPass.Forms.Admin
         private void addemployeeBTN_Click(object sender, EventArgs e)
         {
             FormHelper.DisplayForm(new Admin.AddEmployeeRibbonForm());
-
         }
 
         private DataTable FilterAllEmployees()

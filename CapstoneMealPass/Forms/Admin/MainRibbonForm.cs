@@ -91,5 +91,10 @@ namespace CapstoneMealPass.Forms.Admin
         {
             FormHelper.DisplayForm(new Admin.SelectMonthXtraForm());
         }
+
+        private async void dashboardACE_Click(object sender, EventArgs e)
+        {
+            await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.DashboardUserControl());
+        }
     }
 }
