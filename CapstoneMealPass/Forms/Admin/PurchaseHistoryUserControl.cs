@@ -31,70 +31,43 @@ namespace CapstoneMealPass.Forms.Admin
 
         private async void PurchaseHistoryUserControl_Load(object sender, EventArgs e)
         {
-            await LoadPurchaseHistoryAsync();
+            await LoadPurchaseHistoryTodayAsync();
         }
 
-        private async Task LoadPurchaseHistoryAsync()
+        public async Task LoadPurchaseHistoryTodayAsync()
         {
-            try
-            {
-                var purchases = await _purchaseRepo.GetAllPurchaseHistoryAsync();
+            DateTime today = DateTime.Today;
 
-                // Format values for display
-                var formatted = purchases.Select(x => new
-                {
-                    x.ReferenceID,
-                    x.Username,
-                    x.StudentID,
-                    SaleDate = x.SaleDate.ToString("dd/MM/yy hh:mm tt"),
-                    TotalAmount = x.TotalAmount.ToString("N2"),
-                    PaymentMethod = x.PaymentMethod == 1 ? "Cash" : "MealPass"
-                }).ToList();
+            var purchases = await _purchaseRepo.GetPurchaseHistoryByDateAsync(today);
 
-                purchasehistoryGC.DataSource = formatted;
-            }
-            catch (Exception ex)
+            var formatted = purchases.Select(x => new
             {
-                MessageBox.Show("Failed to load purchase history: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                x.ReferenceID,
+                x.Username,
+                x.StudentID,
+                SaleDate = x.SaleDate.ToString("dd/MM/yy hh:mm tt"),
+                TotalAmount = x.TotalAmount.ToString("N2"),
+                PaymentMethod = x.PaymentMethod == 1 ? "Cash" : "MealPass"
+            }).ToList();
+
+            purchasehistoryGC.DataSource = formatted;
         }
 
-        private async void dateDE_EditValueChanged(object sender, EventArgs e)
+        private async Task LoadPurchaseHistoryByRangeAsync(DateTime from, DateTime to)
         {
-            if (dateDE.EditValue == null)
+            DateTime toInclusive = to.Date.AddDays(1).AddTicks(-1);
+
+            var purchases = await _purchaseRepo.GetPurchaseHistoryByDateRangeAsync(from, toInclusive);
+
+            purchasehistoryGC.DataSource = purchases.Select(x => new
             {
-                await LoadPurchaseHistoryAsync();
-                return;
-            }
-
-            DateTime selectedDate = Convert.ToDateTime(dateDE.EditValue);
-            await LoadPurchaseHistoryByDateAsync(selectedDate);
-        }
-
-        private async Task LoadPurchaseHistoryByDateAsync(DateTime date)
-        {
-            try
-            {
-                var purchases = await _purchaseRepo.GetPurchaseHistoryByDateAsync(date);
-
-                var formatted = purchases.Select(x => new
-                {
-                    x.ReferenceID,
-                    x.Username,
-                    x.StudentID,
-                    SaleDate = x.SaleDate.ToString("dd/MM/yy hh:mm tt"),
-                    TotalAmount = x.TotalAmount.ToString("N2"),
-                    PaymentMethod = x.PaymentMethod == 1 ? "Cash" : "MealPass"
-                }).ToList();
-
-                purchasehistoryGC.DataSource = formatted;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to load filtered purchase history: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                x.ReferenceID,
+                x.Username,
+                x.StudentID,
+                SaleDate = x.SaleDate.ToString("dd/MM/yy hh:mm tt"),
+                TotalAmount = x.TotalAmount.ToString("N2"),
+                PaymentMethod = x.PaymentMethod == 1 ? "Cash" : "MealPass"
+            }).ToList();
         }
 
         private async void purchasehistoryGV_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -140,6 +113,38 @@ namespace CapstoneMealPass.Forms.Admin
         private void findTE_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
             purchasehistoryGV.ApplyFindFilter(e.NewValue as string);
+        }
+
+        private async void filterBTN_Click(object sender, EventArgs e)
+        {
+            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
+            {
+                MessageBox.Show("Please select both From and To dates.", "Invalid Date Range",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DateTime from;
+            DateTime to;
+
+            bool isFromValid = DateTime.TryParse(fromDateDE.EditValue.ToString(), out from);
+            bool isToValid = DateTime.TryParse(toDateDE.EditValue.ToString(), out to);
+
+            if (!isFromValid || !isToValid)
+            {
+                MessageBox.Show("Selected dates are invalid. Please select valid dates.", "Invalid Date Range",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (from > to)
+            {
+                MessageBox.Show("The 'From' date cannot be after the 'To' date.", "Invalid Date Range",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            await LoadPurchaseHistoryByRangeAsync(from, to);
         }
     }
 }

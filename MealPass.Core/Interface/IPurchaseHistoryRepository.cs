@@ -14,5 +14,8 @@ namespace MealPass.Core.Interface
         Task<List<PurchaseHistory>> GetPurchaseHistoryByDateAsync(DateTime date);
 
         Task<List<PurchasedItem>> GetPurchasedItemsByReferenceIDAsync(string referenceID);
+
+        Task<List<PurchaseHistory>> GetPurchaseHistoryByDateRangeAsync(DateTime from, DateTime to);
+
     }
 }

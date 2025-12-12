@@ -57,5 +57,21 @@ namespace MealPass.Data.Repositories
                 return result.ToList();
             }
         }
+
+        public async Task<List<PurchaseHistory>> GetPurchaseHistoryByDateRangeAsync(DateTime from, DateTime to)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            { 
+                DateTime toInclusive = to.Date.AddDays(1).AddTicks(-1);
+
+                var result = await connection.QueryAsync<PurchaseHistory>(
+                    PurchaseHistoryQuery.GetPurchaseHistoryByDateRange,
+                    new { FromDate = from, ToDate = toInclusive }
+                );
+
+                return result.ToList();
+            }
+
+        }
     }
 }

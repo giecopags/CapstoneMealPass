@@ -26,7 +26,7 @@ namespace CapstoneMealPass.Forms.Admin
             usernameLBL.Text = UserSession.Username;
 
             Timer timer = new Timer();
-            timer.Interval = 1000; // 1 second
+            timer.Interval = 1000;
             timer.Tick += Timer_Tick;
             timer.Start();
         }

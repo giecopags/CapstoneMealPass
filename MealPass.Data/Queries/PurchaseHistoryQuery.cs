@@ -39,5 +39,18 @@ namespace MealPass.Data.Queries
             WHERE td.ReferenceID = @ReferenceID
             ORDER BY p.ProductName ASC;
 ";
+
+        public const string GetPurchaseHistoryByDateRange = @"
+            SELECT 
+                ReferenceID,
+                Username,
+                StudentID,
+                SaleDate,
+                TotalAmount,
+                PaymentMethod
+            FROM Transactions
+            WHERE SaleDate BETWEEN @FromDate AND @ToDate
+            ORDER BY SaleDate DESC";
+
     }
 }
