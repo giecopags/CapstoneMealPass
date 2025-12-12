@@ -75,6 +75,9 @@ namespace MealPass.Web.Controllers
                 .OrderByDescending(t => t.TopUpDate)
                 .ToList();
 
+            var balance = _context.Balance.FirstOrDefault(b => b.StudentID == studentID);
+            ViewBag.IsLocked = balance != null && balance.IsLocked == 1;
+
             return View(history);
         }
 
@@ -121,6 +124,24 @@ namespace MealPass.Web.Controllers
 
             return Json(details);
         }
+
+        [HttpPost]
+        public IActionResult ToggleAccountLock(bool isLocked)
+        {
+            var studentID = HttpContext.Session.GetString("StudentID");
+            if (string.IsNullOrEmpty(studentID))
+                return RedirectToAction("Login");
+
+            var balance = _context.Balance.FirstOrDefault(b => b.StudentID == studentID);
+            if (balance != null)
+            {
+                balance.IsLocked = isLocked ? 1 : 0;
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("TopUpHistory");
+        }
+
 
         [HttpGet]
         public IActionResult Logout()

@@ -4,6 +4,10 @@
 
 @model IEnumerable<Transactions>
 
+<button id="scrollTopBtn" class="scroll-top-btn d-none">
+    ↑
+</button>
+
 <!-- BALANCE DASHBOARD -->
 <div class="row mb-4">
     <!-- Current Balance Card -->
@@ -31,51 +35,56 @@
 
 
 <!-- DATE FILTER -->
-<div class="row mb-3">
-    <div class="col-md-12 d-flex align-items-center">
-        <label for="filterDate" class="mr-2 font-weight-bold">Filter by Date:</label>
-        <input type="date" id="filterDate" class="form-control w-auto">
-        <button id="clearDateFilter" class="btn btn-secondary ml-2">Clear</button>
+<div class="row mb-3 align-items-center">
+    <div class="col-12 col-md-2 mb-2 mb-md-0">
+        <label for="filterDate" class="font-weight-bold">Filter by Date:</label>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2 mb-md-0">
+        <input type="date" id="filterDate" class="form-control" style="width: 100%;">
+    </div>
+
+    <div class="col-12 col-md-2">
+        <button id="clearDateFilter" class="btn btn-secondary w-100 w-md-auto">Clear</button>
     </div>
 </div>
 
-<!-- PURCHASE HISTORY TABLE -->
-<div class="row">
-    <div class="col-md-12 mb-4">
-        <div class="card shadow-sm rounded border-light">
-            <div class="card-body">
-                <h4 class="mb-3">Purchase History</h4>
-                <div class="table-responsive">
-                    <table class="table table-hover table-bordered" id="transactionTable">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Reference ID</th>
-                                <th>Date</th>
-                                <th>Employee</th>
-                                <th>Payment Method</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody id="transactionTableBody">
-                            @foreach (var item in Model)
-                            {
-                                <tr data-ref="@item.ReferenceID" data-date="@item.SaleDate.ToString("yyyy-MM-dd")" style="cursor:pointer;">
-                                    <td>@item.ReferenceID</td>
-                                    <td>@item.SaleDate.ToString("MMMM dd, yyyy hh:mm tt")</td>
-                                    <td>@item.Username</td>
-                                    <td>@(item.PaymentMethod ? "Cash" : "MealPass")</td>
-                                    <td>₱@item.TotalAmount.ToString("N2")</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+<!-- PURCHASE HISTORY – CARD VIEW -->
+<div id="transactionCardContainer" class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-sm-6 col-12 mb-3">
+            <div class="modern-card transaction-card"
+                 data-ref="@item.ReferenceID"
+                 data-date="@item.SaleDate.ToString("yyyy-MM-dd")">
+
+                <div class="card-title-main">@item.ReferenceID</div>
+
+                <div>
+                    <div class="card-mini-label">Date</div>
+                    <div class="card-mini-value">@item.SaleDate.ToString("MMMM dd, yyyy hh:mm tt")</div>
+                </div>
+
+                <div>
+                    <div class="card-mini-label">Employee</div>
+                    <div class="card-mini-value">@item.Username</div>
+                </div>
+
+                <div>
+                    <div class="card-mini-label">Payment Method</div>
+                    <div class="card-mini-value">@(item.PaymentMethod ? "Cash" : "MealPass")</div>
+                </div>
+
+                <div class="card-amount">
+                    ₱@item.TotalAmount.ToString("N2")
                 </div>
             </div>
         </div>
-    </div>
+    }
 </div>
 
-<!-- TRANSACTION DETAILS TABLE -->
+
+<!-- TRANSACTION DETAILS – CARD VIEW -->
 <div class="row">
     <div class="col-md-12">
         <div class="card shadow-sm rounded border-light">
@@ -86,25 +95,15 @@
                     <p class="text-muted">Select a transaction to display details.</p>
                 </div>
 
-                <div class="table-responsive d-none" id="detailsTableWrapper">
-                    <table class="table table-hover table-bordered" id="detailsTable">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Product</th>
-                                <th>Qty</th>
-                                <th>Price</th>
-                                <th>Subtotal</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                <!-- CARD VIEW CONTAINER -->
+                <div id="detailsCardContainer" class="d-none">
+                </div>
 
-                    <div class="text-right mt-3 border-top pt-2">
-                        <h5 style="font-weight:700; font-size:1.2rem;">
-                            Grand Total:
-                            <span id="grandTotalDisplay" style="color:#1b7d4f;">₱0.00</span>
-                        </h5>
-                    </div>
+                <div class="text-right mt-4 border-top pt-2 d-none" id="grandTotalWrapper">
+                    <h5 class="font-weight-bold" style="font-size: 1.3rem;">
+                        Grand Total:
+                        <span id="grandTotalDisplay" style="color:#1b7d4f;">₱0.00</span>
+                    </h5>
                 </div>
             </div>
         </div>
@@ -112,68 +111,120 @@
 </div>
 
 <script>
-    // Show transaction details
-    function bindTransactionRows() {
-        document.querySelectorAll("#transactionTable tbody tr").forEach(row => {
-            row.addEventListener("click", function () {
+     // Bind click events to transaction cards
+       function bindTransactionCards() {
+        document.querySelectorAll(".transaction-card").forEach(card => {
+            card.addEventListener("click", function () {
                 let referenceId = this.getAttribute("data-ref");
 
                 fetch(`/MealPass/GetTransactionDetails?referenceId=${referenceId}`)
                     .then(res => res.json())
                     .then(data => {
-                        let tbody = document.querySelector("#detailsTable tbody");
-                        tbody.innerHTML = "";
+                        let container = document.getElementById("detailsCardContainer");
+                        container.innerHTML = "";
                         let grandTotal = 0;
 
                         data.forEach(item => {
                             grandTotal += item.subtotal;
-                            tbody.innerHTML += `
-                                <tr>
-                                    <td>${item.productName}</td>
-                                    <td>${item.quantitySold}</td>
-                                    <td>₱${item.unitPrice.toFixed(2)}</td>
-                                    <td>₱${item.subtotal.toFixed(2)}</td>
-                                </tr>`;
+
+                            container.innerHTML += `
+                                <div class="detail-card">
+                                    <div class="detail-card-title">${item.productName}</div>
+
+                                    <div class="row mt-2">
+                                        <div class="col-6">
+                                            <div class="detail-label">Qty</div>
+                                            <div class="detail-value">${item.quantitySold}</div>
+                                        </div>
+
+                                        <div class="col-6 text-right">
+                                            <div class="detail-label">Price</div>
+                                            <div class="detail-value">₱${item.unitPrice.toFixed(2)}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                        <div class="col-12 text-right">
+                                            <div class="detail-label">Subtotal</div>
+                                            <div class="amount">₱${item.subtotal.toFixed(2)}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
                         });
 
                         document.getElementById("grandTotalDisplay").innerText =
                             "₱" + grandTotal.toFixed(2);
 
-                        document.getElementById("detailsTableWrapper").classList.remove("d-none");
+                        document.getElementById("detailsCardContainer").classList.remove("d-none");
                         document.getElementById("detailsSection").classList.add("d-none");
+                        document.getElementById("grandTotalWrapper").classList.remove("d-none");
+                        document.getElementById("scrollTopBtn").classList.remove("d-none");
+
+                        document.getElementById("detailsCardContainer").scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
                     })
                     .catch(err => console.error("Error fetching transaction details:", err));
             });
         });
     }
+    bindTransactionCards();
+</script>
 
-    bindTransactionRows();
+<script>
+    const filterInput = document.getElementById("filterDate");
+    const clearBtn = document.getElementById("clearDateFilter");
 
-    // Filter transactions by date
-    const filterDateInput = document.getElementById("filterDate");
-    filterDateInput.addEventListener("change", function () {
-        const selectedDate = this.value;
-        document.querySelectorAll("#transactionTable tbody tr").forEach(row => {
-            const rowDate = row.getAttribute("data-date");
-            row.style.display = (!selectedDate || rowDate === selectedDate) ? "" : "none";
+    function clearTransactionDetails() {
+        document.getElementById("detailsCardContainer").classList.add("d-none");
+        document.getElementById("detailsCardContainer").innerHTML = "";
+        document.getElementById("detailsSection").classList.remove("d-none");
+        document.getElementById("grandTotalWrapper").classList.add("d-none");
+        document.getElementById("scrollTopBtn").classList.add("d-none");
+
+    }
+
+    filterInput.addEventListener("change", function () {
+        let selectedDate = this.value; // yyyy-MM-dd
+        let cards = document.querySelectorAll(".transaction-card");
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            let cardDate = card.getAttribute("data-date");
+
+            if (!selectedDate || cardDate === selectedDate) {
+                card.parentElement.style.display = "";
+                visibleCount++;
+            } else {
+                card.parentElement.style.display = "none";
+            }
         });
 
-        // Clear transaction details when filtering
-        document.getElementById("detailsTableWrapper").classList.add("d-none");
-        document.getElementById("detailsSection").classList.remove("d-none");
-        document.getElementById("grandTotalDisplay").innerText = "₱0.00";
+        if (visibleCount === 0) {
+            clearTransactionDetails();
+        }
     });
 
-    // Clear filter and reset everything
-    document.getElementById("clearDateFilter").addEventListener("click", function() {
-        filterDateInput.value = "";
-        document.querySelectorAll("#transactionTable tbody tr").forEach(row => {
-            row.style.display = "";
+    clearBtn.addEventListener("click", function () {
+        filterInput.value = "";
+        let cards = document.querySelectorAll(".transaction-card");
+
+        cards.forEach(card => {
+            card.parentElement.style.display = "";
         });
 
-        document.getElementById("detailsTableWrapper").classList.add("d-none");
-        document.getElementById("detailsSection").classList.remove("d-none");
-        document.querySelector("#detailsTable tbody").innerHTML = "";
-        document.getElementById("grandTotalDisplay").innerText = "₱0.00";
+        clearTransactionDetails();
+    });
+
+        document.getElementById("scrollTopBtn").addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     });
 </script>
+
+
