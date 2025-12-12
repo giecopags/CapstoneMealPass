@@ -34,63 +34,44 @@ namespace CapstoneMealPass.Forms.Admin
 
         private async void TopUpHistoryUserControl_Load(object sender, EventArgs e)
         {
-            await LoadTopUpLogsAsync();
+            await LoadTopUpHistoryTodayAsync();
         }
 
-        private async Task LoadTopUpLogsAsync()
+        private async Task LoadTopUpLogsByRangeAsync(DateTime from, DateTime to)
         {
-            try
-            {
-                var logs = await _logRepo.LoadTopUpLogsAsync();
-                gcTopUp.DataSource = logs;
+            DateTime toInclusive = to.Date.AddDays(1).AddTicks(-1);
 
-                gvTopUp.Columns["Amount"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                gvTopUp.Columns["Amount"].DisplayFormat.FormatString = "N2";
+            var logs = await _logRepo.LoadTopUpLogsByDateRangeAsync(from, toInclusive);
 
-                gvTopUp.BestFitColumns();
-            }
-            catch (Exception ex)
+            gcTopUp.DataSource = logs.Select(x => new
             {
-                MessageBox.Show("Failed to load top-up logs: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                x.TopUpID,
+                x.StudentID,
+                x.Username,
+                Amount = x.Amount.ToString("N2"),
+                TopUpDate = x.TopUpDate.ToString("MM/dd/yyyy hh:mm tt"),
+                x.Status
+            }).ToList();
+
+            gvTopUp.BestFitColumns();
         }
-
-        private async void dateDE_EditValueChanged(object sender, EventArgs e)
+        public async Task LoadTopUpHistoryTodayAsync()
         {
-            if (dateDE.EditValue == null)
+            DateTime today = DateTime.Today;
+
+            var logs = await _logRepo.LoadTopUpLogsByDateAsync(today);
+
+            var formatted = logs.Select(x => new
             {
-                await LoadTopUpLogsAsync(); // Load all logs if cleared
-                return;
-            }
+                x.TopUpID,
+                x.StudentID,
+                x.Username,
+                Amount = x.Amount.ToString("N2"),
+                TopUpDate = x.TopUpDate.ToString("dd/MM/yy hh:mm tt"),
+                x.Status
+            }).ToList();
 
-            DateTime selectedDate = Convert.ToDateTime(dateDE.EditValue);
-            await LoadTopUpLogsByDateAsync(selectedDate);
-        }
-
-        private async Task LoadTopUpLogsByDateAsync(DateTime date)
-        {
-            try
-            {
-                var logs = await _logRepo.LoadTopUpLogsByDateAsync(date);
-
-                var formatted = logs.Select(x => new
-                {
-                    x.TopUpID,
-                    x.StudentID,
-                    x.Username,
-                    Amount = x.Amount.ToString("N2"),
-                    TopUpDate = x.TopUpDate.ToString("dd/MM/yy hh:mm tt"),
-                    x.Status
-                }).ToList();
-
-                gcTopUp.DataSource = formatted;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to load filtered top-up logs: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            gcTopUp.DataSource = formatted;
         }
 
         private void findTE_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
@@ -100,24 +81,26 @@ namespace CapstoneMealPass.Forms.Admin
 
         private void printBTN_Click(object sender, EventArgs e)
         {
-            if (dateDE.EditValue == null)
+            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
             {
-                MessageBox.Show("Please select a date before printing the report.",
-                    "No Date Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a date range before printing.",
+                    "No Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            DateTime selectedDate = Convert.ToDateTime(dateDE.EditValue);
+            DateTime from = Convert.ToDateTime(fromDateDE.EditValue).Date;
+            DateTime to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
 
             Reports.TopUpHistoryXtraReport report = new Reports.TopUpHistoryXtraReport();
 
             using (var connection = new SqlConnection(SQLQuery.connectionString))
             {
-                string query = TopUpLogQuery.GetTopUpLogsByDate;
+                string query = TopUpLogQuery.GetTopUpLogsByDateRange;
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@Date", selectedDate.Date);
+                    command.Parameters.AddWithValue("@FromDate", from);
+                    command.Parameters.AddWithValue("@ToDate", to);
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
@@ -126,13 +109,45 @@ namespace CapstoneMealPass.Forms.Admin
 
                         report.DataSource = dt;
 
-                        report.xrLabel3.Text = selectedDate.ToString("MMMM dd, yyyy");
+                        if (from.Date == to.Date.Date)
+                            report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
+                        else
+                            report.xrLabel3.Text = $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
+
                         report.CreateDocument();
-                        ReportPrintTool tool = new ReportPrintTool(report);
-                        tool.ShowPreviewDialog();
+                        new ReportPrintTool(report).ShowPreviewDialog();
                     }
                 }
             }
+        }
+
+        private async void filterBTN_Click(object sender, EventArgs e)
+        {
+            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
+            {
+                MessageBox.Show("Please select both dates.", "Invalid Date Range",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            bool isFromValid = DateTime.TryParse(fromDateDE.EditValue.ToString(), out DateTime from);
+            bool isToValid = DateTime.TryParse(toDateDE.EditValue.ToString(), out DateTime to);
+
+            if (!isFromValid || !isToValid)
+            {
+                MessageBox.Show("Selected dates are invalid. Please select valid dates.", "Invalid Date Range",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (from > to)
+            {
+                MessageBox.Show("'From' date cannot be after 'To' date.", "Invalid Date Range",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            await LoadTopUpLogsByRangeAsync(from, to);
         }
     }
 }

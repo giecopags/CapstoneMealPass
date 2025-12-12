@@ -68,5 +68,17 @@ namespace MealPass.Data.Repositories
                 return result.ToList();
             }
         }
+
+        public async Task<List<TopUpLog>> LoadTopUpLogsByDateRangeAsync(DateTime from, DateTime to)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                var result = await conn.QueryAsync<TopUpLog>(
+                    TopUpLogQuery.GetTopUpLogsByDateRange,
+                    new { FromDate = from, ToDate = to });
+
+                return result.ToList();
+            }
+        }
     }
 }

@@ -45,5 +45,20 @@ namespace MealPass.Data.Queries
             FROM TopUpLogs
             WHERE CAST(TopUpDate AS DATE) = @Date
             ORDER BY TopUpDate DESC";
+
+        public const string GetTopUpLogsByDateRange = @"
+            SELECT 
+                TopUpID,
+                StudentID,
+                Username,
+                Amount,
+                PreviousBalance,
+                NewBalance,
+                TopUpDate,
+                Status
+            FROM TopUpLogs
+            WHERE TopUpDate BETWEEN @FromDate AND @ToDate
+            ORDER BY TopUpDate DESC";
+
     }
 }

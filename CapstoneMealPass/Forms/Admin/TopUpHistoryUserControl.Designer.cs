@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TopUpHistoryUserControl));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TopUpHistoryUserControl));
             this.sidePanel3 = new DevExpress.XtraEditors.SidePanel();
-            this.dateDE = new DevExpress.XtraEditors.DateEdit();
+            this.toDateDE = new DevExpress.XtraEditors.DateEdit();
             this.sidePanel10 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel5 = new DevExpress.XtraEditors.SidePanel();
             this.findTE = new DevExpress.XtraEditors.TextEdit();
@@ -59,8 +59,11 @@
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel4 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel6 = new DevExpress.XtraEditors.SidePanel();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).BeginInit();
+            this.sidePanel12 = new DevExpress.XtraEditors.SidePanel();
+            this.fromDateDE = new DevExpress.XtraEditors.DateEdit();
+            this.filterBTN = new DevExpress.XtraEditors.SimpleButton();
+            ((System.ComponentModel.ISupportInitialize)(this.toDateDE.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toDateDE.Properties.CalendarTimeProperties)).BeginInit();
             this.sidePanel10.SuspendLayout();
             this.sidePanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.findTE.Properties)).BeginInit();
@@ -71,6 +74,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonDelete2)).BeginInit();
             this.sidePanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fromDateDE.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fromDateDE.Properties.CalendarTimeProperties)).BeginInit();
             this.SuspendLayout();
             // 
             // sidePanel3
@@ -87,36 +92,38 @@
             this.sidePanel3.TabIndex = 51;
             this.sidePanel3.Text = "sidePanel3";
             // 
-            // dateDE
+            // toDateDE
             // 
-            this.dateDE.EditValue = null;
-            this.dateDE.Location = new System.Drawing.Point(82, 23);
-            this.dateDE.Name = "dateDE";
-            this.dateDE.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.dateDE.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateDE.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dateDE.Properties.Appearance.Options.UseBackColor = true;
-            this.dateDE.Properties.Appearance.Options.UseFont = true;
-            this.dateDE.Properties.Appearance.Options.UseForeColor = true;
-            this.dateDE.Properties.AutoHeight = false;
-            this.dateDE.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.toDateDE.EditValue = null;
+            this.toDateDE.Location = new System.Drawing.Point(194, 24);
+            this.toDateDE.Name = "toDateDE";
+            this.toDateDE.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.toDateDE.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toDateDE.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.toDateDE.Properties.Appearance.Options.UseBackColor = true;
+            this.toDateDE.Properties.Appearance.Options.UseFont = true;
+            this.toDateDE.Properties.Appearance.Options.UseForeColor = true;
+            this.toDateDE.Properties.AutoHeight = false;
+            this.toDateDE.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateDE.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.toDateDE.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateDE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.dateDE.Size = new System.Drawing.Size(206, 23);
-            this.dateDE.TabIndex = 30;
-            this.dateDE.EditValueChanged += new System.EventHandler(this.dateDE_EditValueChanged);
+            this.toDateDE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.toDateDE.Size = new System.Drawing.Size(119, 23);
+            this.toDateDE.TabIndex = 30;
             // 
             // sidePanel10
             // 
             this.sidePanel10.AllowResize = false;
             this.sidePanel10.BorderThickness = 0;
-            this.sidePanel10.Controls.Add(this.dateDE);
+            this.sidePanel10.Controls.Add(this.filterBTN);
+            this.sidePanel10.Controls.Add(this.sidePanel12);
+            this.sidePanel10.Controls.Add(this.fromDateDE);
+            this.sidePanel10.Controls.Add(this.toDateDE);
             this.sidePanel10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sidePanel10.Location = new System.Drawing.Point(640, 12);
+            this.sidePanel10.Location = new System.Drawing.Point(565, 12);
             this.sidePanel10.Name = "sidePanel10";
-            this.sidePanel10.Size = new System.Drawing.Size(294, 55);
+            this.sidePanel10.Size = new System.Drawing.Size(369, 55);
             this.sidePanel10.TabIndex = 31;
             this.sidePanel10.Text = "sidePanel10";
             // 
@@ -311,7 +318,7 @@
             this.SaleID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.SaleID.Visible = true;
             this.SaleID.VisibleIndex = 0;
-            this.SaleID.Width = 55;
+            this.SaleID.Width = 112;
             // 
             // StudentID
             // 
@@ -338,8 +345,6 @@
             this.StudentID.OptionsColumn.AllowEdit = false;
             this.StudentID.OptionsColumn.AllowFocus = false;
             this.StudentID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
-            this.StudentID.Visible = true;
-            this.StudentID.VisibleIndex = 1;
             this.StudentID.Width = 215;
             // 
             // Username
@@ -368,8 +373,8 @@
             this.Username.OptionsColumn.AllowFocus = false;
             this.Username.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Username.Visible = true;
-            this.Username.VisibleIndex = 4;
-            this.Username.Width = 138;
+            this.Username.VisibleIndex = 3;
+            this.Username.Width = 360;
             // 
             // TopUpDate
             // 
@@ -397,8 +402,8 @@
             this.TopUpDate.OptionsColumn.AllowFocus = false;
             this.TopUpDate.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.TopUpDate.Visible = true;
-            this.TopUpDate.VisibleIndex = 2;
-            this.TopUpDate.Width = 283;
+            this.TopUpDate.VisibleIndex = 1;
+            this.TopUpDate.Width = 394;
             // 
             // TopUpAmount
             // 
@@ -426,8 +431,8 @@
             this.TopUpAmount.OptionsColumn.AllowFocus = false;
             this.TopUpAmount.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.TopUpAmount.Visible = true;
-            this.TopUpAmount.VisibleIndex = 3;
-            this.TopUpAmount.Width = 138;
+            this.TopUpAmount.VisibleIndex = 2;
+            this.TopUpAmount.Width = 301;
             // 
             // Status
             // 
@@ -455,8 +460,8 @@
             this.Status.OptionsColumn.AllowFocus = false;
             this.Status.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Status.Visible = true;
-            this.Status.VisibleIndex = 5;
-            this.Status.Width = 149;
+            this.Status.VisibleIndex = 4;
+            this.Status.Width = 396;
             // 
             // repositoryItemPictureEdit1
             // 
@@ -522,6 +527,48 @@
             this.sidePanel6.TabIndex = 55;
             this.sidePanel6.Text = "sidePanel6";
             // 
+            // sidePanel12
+            // 
+            this.sidePanel12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sidePanel12.BackgroundImage")));
+            this.sidePanel12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.sidePanel12.Location = new System.Drawing.Point(160, 21);
+            this.sidePanel12.Name = "sidePanel12";
+            this.sidePanel12.Size = new System.Drawing.Size(29, 29);
+            this.sidePanel12.TabIndex = 34;
+            this.sidePanel12.Text = "sidePanel12";
+            // 
+            // fromDateDE
+            // 
+            this.fromDateDE.EditValue = null;
+            this.fromDateDE.Location = new System.Drawing.Point(35, 24);
+            this.fromDateDE.Name = "fromDateDE";
+            this.fromDateDE.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.fromDateDE.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fromDateDE.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.fromDateDE.Properties.Appearance.Options.UseBackColor = true;
+            this.fromDateDE.Properties.Appearance.Options.UseFont = true;
+            this.fromDateDE.Properties.Appearance.Options.UseForeColor = true;
+            this.fromDateDE.Properties.AutoHeight = false;
+            this.fromDateDE.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.fromDateDE.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.fromDateDE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.fromDateDE.Size = new System.Drawing.Size(119, 23);
+            this.fromDateDE.TabIndex = 33;
+            // 
+            // filterBTN
+            // 
+            this.filterBTN.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("filterBTN.ImageOptions.SvgImage")));
+            this.filterBTN.ImageOptions.SvgImageSize = new System.Drawing.Size(29, 29);
+            this.filterBTN.Location = new System.Drawing.Point(317, 20);
+            this.filterBTN.Name = "filterBTN";
+            this.filterBTN.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.filterBTN.Size = new System.Drawing.Size(37, 30);
+            this.filterBTN.TabIndex = 35;
+            this.filterBTN.Text = "simpleButton1";
+            this.filterBTN.Click += new System.EventHandler(this.filterBTN_Click);
+            // 
             // TopUpHistoryUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -534,8 +581,8 @@
             this.Name = "TopUpHistoryUserControl";
             this.Size = new System.Drawing.Size(1076, 590);
             this.Load += new System.EventHandler(this.TopUpHistoryUserControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toDateDE.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toDateDE.Properties)).EndInit();
             this.sidePanel10.ResumeLayout(false);
             this.sidePanel5.ResumeLayout(false);
             this.sidePanel5.PerformLayout();
@@ -547,6 +594,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonDelete2)).EndInit();
             this.sidePanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fromDateDE.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fromDateDE.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -554,7 +603,7 @@
         #endregion
 
         private DevExpress.XtraEditors.SidePanel sidePanel3;
-        private DevExpress.XtraEditors.DateEdit dateDE;
+        private DevExpress.XtraEditors.DateEdit toDateDE;
         private DevExpress.XtraEditors.SidePanel sidePanel10;
         private DevExpress.XtraEditors.SidePanel sidePanel5;
         private DevExpress.XtraEditors.SidePanel sidePanel9;
@@ -578,5 +627,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn Username;
         private DevExpress.XtraGrid.Columns.GridColumn Status;
         private DevExpress.XtraEditors.TextEdit findTE;
+        private DevExpress.XtraEditors.SidePanel sidePanel12;
+        private DevExpress.XtraEditors.DateEdit fromDateDE;
+        private DevExpress.XtraEditors.SimpleButton filterBTN;
     }
 }

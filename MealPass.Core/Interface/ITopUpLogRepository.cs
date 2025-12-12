@@ -15,5 +15,8 @@ namespace MealPass.Core.Interface
         Task<DataTable> LoadTopUpLogsAsync();
 
         Task<List<TopUpLog>> LoadTopUpLogsByDateAsync(DateTime date);
+        
+        Task<List<TopUpLog>> LoadTopUpLogsByDateRangeAsync(DateTime from, DateTime toInclusive);
+
     }
 }

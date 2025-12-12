@@ -92,10 +92,26 @@ namespace CapstoneMealPass.Forms.Admin
                 return;
             }
 
-            DateTime from = Convert.ToDateTime(fromDateDE.EditValue).Date; 
-            DateTime to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
+            bool isFromValid = DateTime.TryParse(fromDateDE.EditValue.ToString(), out DateTime from);
+            bool isToValid = DateTime.TryParse(toDateDE.EditValue.ToString(), out DateTime to);
 
-            await LoadSalesByRangeAsync(from, to);
+            if (!isFromValid || !isToValid)
+            {
+                MessageBox.Show("Selected dates are invalid. Please select valid dates.", "Invalid Date Range",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (from > to)
+            {
+                MessageBox.Show("'From' date cannot be after 'To' date.", "Invalid Date Range",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DateTime toInclusive = to.Date.AddDays(1).AddTicks(-1);
+
+            await LoadSalesByRangeAsync(from, toInclusive);
         }
 
         public async Task LoadSalesTodayAsync()
