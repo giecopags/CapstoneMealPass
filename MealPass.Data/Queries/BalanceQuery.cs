@@ -26,5 +26,10 @@ namespace MealPass.Data.Queries
             UPDATE Balance
             SET StudentBalance = StudentBalance - @Amount
             WHERE StudentID = @StudentID";
+
+        public const string CheckIfLocked = @"
+            SELECT IsLocked 
+            FROM Balance
+            WHERE StudentID = @StudentID";
     }
 }

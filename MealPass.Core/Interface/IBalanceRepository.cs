@@ -14,5 +14,6 @@ namespace MealPass.Core.Interface
         Task InsertBalanceAsync(string studentId, decimal initialBalance);
         Task AddBalanceAsync(Balance balance);
         Task DeductBalanceAsync(string studentId, decimal amount);
+        Task<bool> IsAccountLockedAsync(string studentId);
     }
 }

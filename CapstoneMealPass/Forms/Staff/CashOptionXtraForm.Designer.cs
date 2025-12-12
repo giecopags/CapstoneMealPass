@@ -84,7 +84,7 @@
             this.confirmBTN.Location = new System.Drawing.Point(32, 164);
             this.confirmBTN.Name = "confirmBTN";
             this.confirmBTN.Size = new System.Drawing.Size(204, 31);
-            this.confirmBTN.TabIndex = 14;
+            this.confirmBTN.TabIndex = 2;
             this.confirmBTN.Text = "Confirm Purchase";
             this.confirmBTN.Click += new System.EventHandler(this.confirmBTN_Click);
             // 
@@ -126,7 +126,7 @@
             this.cashpaymentTE.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
             this.cashpaymentTE.Properties.MaskSettings.Set("mask", "n");
             this.cashpaymentTE.Size = new System.Drawing.Size(289, 28);
-            this.cashpaymentTE.TabIndex = 11;
+            this.cashpaymentTE.TabIndex = 1;
             this.cashpaymentTE.EditValueChanged += new System.EventHandler(this.cashpaymentTE_EditValueChanged);
             // 
             // CashOptionXtraForm

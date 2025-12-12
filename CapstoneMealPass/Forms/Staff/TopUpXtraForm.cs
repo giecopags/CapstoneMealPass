@@ -73,6 +73,21 @@ namespace CapstoneMealPass.Forms.Staff
 
             try
             {
+                // Check if account is LOCKED
+                bool isLocked = await _topUpService.IsAccountLockedAsync(_currentStudentId);
+
+                if (isLocked)
+                {
+                    MessageBox.Show(
+                        "This student's account is currently LOCKED and cannot receive top-ups.\n" +
+                        "Please contact the administrator.",
+                        "Account Locked",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Stop);
+
+                    return; // Stop further processing
+                }
+
                 decimal previousBalance = 0m;
                 if (decimal.TryParse(accountbalanceLBL.Text, out decimal parsedBal))
                     previousBalance = parsedBal;
@@ -194,6 +209,18 @@ namespace CapstoneMealPass.Forms.Staff
                     MessageBox.Show($"Error loading student info: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }));
             }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // ESC → Close form
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true; // mark as handled
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

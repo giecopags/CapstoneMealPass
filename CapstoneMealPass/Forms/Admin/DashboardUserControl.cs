@@ -32,6 +32,7 @@ namespace CapstoneMealPass.Forms.Admin
         private async void DashboardUserControl_Load(object sender, EventArgs e)
         {
             dateDE.EditValue = DateTime.Now;
+            await LoadStockCountersAsync();
             await LoadChartAsync();
             await LoadBestSellerChart(DateTime.Now.Month, DateTime.Now.Year);
         }
@@ -87,6 +88,23 @@ namespace CapstoneMealPass.Forms.Admin
             DateTime dt = Convert.ToDateTime(dateDE.EditValue);
 
             await LoadBestSellerChart(dt.Month, dt.Year);
+        }
+
+        private async Task LoadStockCountersAsync()
+        {
+            try
+            {
+                int lowStock = await _dashboardRepo.GetLowStockCountAsync();
+                int outOfStock = await _dashboardRepo.GetOutOfStockCountAsync();
+
+                lcLowStock.Text = lowStock.ToString();
+                lcOutOfStock.Text = outOfStock.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load stock counters: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

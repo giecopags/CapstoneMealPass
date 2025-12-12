@@ -55,5 +55,17 @@ namespace MealPass.Data.Queries
             GROUP BY p.ProductName
             ORDER BY TotalQuantitySold DESC;
         ";
+
+        public const string GetLowStockCount = @"
+            SELECT COUNT(*) 
+            FROM pro.Products
+            WHERE Quantity <= LowStockLevel AND Quantity > 0;
+        ";
+
+            public const string GetOutOfStockCount = @"
+            SELECT COUNT(*) 
+            FROM pro.Products
+            WHERE Quantity = 0;
+        ";
     }
 }
