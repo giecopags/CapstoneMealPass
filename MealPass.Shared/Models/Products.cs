@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MealPass.Web.Models
+namespace MealPass.Shared.Models
 {
     [Table("Products", Schema = "pro")]
     public class Products

@@ -1,17 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MealPass.Web.Models;
-using System.Linq;
-using BCrypt.Net;
+using MealPass.Shared.Models;
+using System.Net.Http.Json;
+using Student = MealPass.Shared.Models.Student;
+using TopUpLogs = MealPass.Shared.Models.TopUpLogs;
+using Balance = MealPass.Shared.Models.Balance;
+using Transactions = MealPass.Shared.Models.Transactions;
+using TransactionDetails = MealPass.Shared.Models.TransactionDetails;
 
 namespace MealPass.Web.Controllers
 {
-    public class MealPass : Controller
+    public class MealPassController : Controller
     {
-        private readonly MealPassDBContext _context;
-
-        public MealPass(MealPassDBContext context)
+        private readonly HttpClient _httpClient;
+        public MealPassController(IHttpClientFactory httpClientFactory)
         {
-            _context = context;
+            _httpClient = httpClientFactory.CreateClient("MealPassAPI");
         }
 
         [HttpGet]
@@ -21,7 +25,7 @@ namespace MealPass.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(string studentID, string password)
+        public async Task<IActionResult> Login(string studentID, string password)
         {
             if (string.IsNullOrEmpty(studentID) || string.IsNullOrEmpty(password))
             {
@@ -29,14 +33,16 @@ namespace MealPass.Web.Controllers
                 return View();
             }
 
-            var student = _context.Students
-                .FirstOrDefault(s => s.StudentID == studentID.Trim());
+            // Call API to get student
+            var response = await _httpClient.GetAsync($"students/{studentID.Trim()}");
 
-            if (student == null)
+            if (!response.IsSuccessStatusCode)
             {
                 ViewBag.Error = "StudentID not found";
                 return View();
             }
+
+            var student = await response.Content.ReadFromJsonAsync<Student>();
 
             bool isPasswordValid = BCrypt.Net.BCrypt.Verify(password, student.Password);
 
@@ -62,92 +68,90 @@ namespace MealPass.Web.Controllers
             return View();
         }
 
-        public IActionResult TopUpHistory() 
+        public async Task<IActionResult> TopUpHistory() 
         {
             var studentID = HttpContext.Session.GetString("StudentID");
-            if (studentID == null)
-            {
-                return RedirectToAction("Login");
-            }
+            if (studentID == null) return RedirectToAction("Login");
 
-            var history = _context.TopUpLogs
-                .Where(t => t.StudentID == studentID)
-                .OrderByDescending(t => t.TopUpDate)
-                .ToList();
+            var history = await _httpClient.GetFromJsonAsync<List<TopUpLogs>>($"topuplogs/{studentID}");
 
-            var balance = _context.Balance.FirstOrDefault(b => b.StudentID == studentID);
+            var balance = await _httpClient.GetFromJsonAsync<Balance>($"balance/{studentID}");
             ViewBag.IsLocked = balance != null && balance.IsLocked == 1;
 
             return View(history);
         }
 
-        public IActionResult PurchaseHistory()
+        public async Task<IActionResult> PurchaseHistory()
         {
             var studentID = HttpContext.Session.GetString("StudentID");
-            if (studentID == null)
-                return RedirectToAction("Login");
+            if (studentID == null) return RedirectToAction("Login");
 
-            var transactions = _context.Transactions
-                .Where(t => t.StudentID == studentID)
-                .OrderByDescending(t => t.SaleDate)
-                .ToList();
+            var transactions = await _httpClient.GetFromJsonAsync<List<Transactions>>($"transactions/{studentID}");
+            var balance = await _httpClient.GetFromJsonAsync<Balance>($"balance/{studentID}");
 
-            var currentBalance = _context.Balance
-                .Where(b => b.StudentID == studentID)
-                .Select(b => b.StudentBalance)
-                .FirstOrDefault();
+            var topUpLogs = await _httpClient.GetFromJsonAsync<List<TopUpLogs>>($"topuplogs/{studentID}");
+            var totalToppedUp = topUpLogs.Sum(t => t.Amount);
 
-            var totalToppedUp = _context.TopUpLogs
-                .Where(t => t.StudentID == studentID)
-                .Sum(t => t.Amount);
-
-            ViewBag.CurrentBalance = currentBalance;
+            ViewBag.CurrentBalance = balance?.StudentBalance ?? 0;
             ViewBag.TotalToppedUp = totalToppedUp;
 
             return View(transactions);
         }
 
-        public JsonResult GetTransactionDetails(string referenceId)
+        public async Task<JsonResult> GetTransactionDetails(string referenceId)
         {
-            if (string.IsNullOrEmpty(referenceId))
-                return Json(new { });
+            if (string.IsNullOrEmpty(referenceId)) return Json(new { });
 
-            var details = _context.TransactionDetails
-             .Where(d => d.ReferenceID == referenceId)
-             .Select(d => new
-             {
-                 productName = d.Product.ProductName,
-                 quantitySold = d.QuantitySold,
-                 unitPrice = d.UnitPrice,
-                 subtotal = d.Subtotal
-             }).ToList();
+            var details = await _httpClient.GetFromJsonAsync<List<TransactionDetails>>($"transactions/details/{referenceId}");
 
             return Json(details);
         }
 
+        //[HttpPost]
+        //public async Task<JsonResult> ToggleAccountLock([FromBody] int isLocked)
+        //{
+        //    var studentID = HttpContext.Session.GetString("StudentID");
+        //    if (string.IsNullOrEmpty(studentID))
+        //        return Json(new { success = false, message = "Not logged in" });
+
+        //    var response = await _httpClient.PostAsJsonAsync($"Balance/togglelock/{studentID}", new { IsLocked = isLocked });
+        //    var data = await response.Content.ReadFromJsonAsync<ToggleLockRequest>();
+
+        //    if (data == null)
+        //        return Json(new { success = false, message = "Failed to toggle lock" });
+
+        //    return Json(new
+        //    {
+        //        success = true,
+        //        isLocked = data.IsLocked
+        //    });
+        //}
+
         [HttpPost]
-        public IActionResult ToggleAccountLock(bool isLocked)
+        public async Task<JsonResult> ToggleAccountLock([FromBody] int isLocked)
         {
             var studentID = HttpContext.Session.GetString("StudentID");
             if (string.IsNullOrEmpty(studentID))
-                return RedirectToAction("Login");
+                return Json(new { success = false, message = "Not logged in" });
 
-            var balance = _context.Balance.FirstOrDefault(b => b.StudentID == studentID);
-            if (balance != null)
-            {
-                balance.IsLocked = isLocked ? 1 : 0;
-                _context.SaveChanges();
-            }
+            // Call the API
+            var response = await _httpClient.PostAsJsonAsync(
+                $"Balance/togglelock/{studentID}",
+                new { IsLocked = isLocked } // matches your API payload
+            );
 
-            return RedirectToAction("TopUpHistory");
+            var data = await response.Content.ReadFromJsonAsync<ToggleLockRequest>();
+
+            if (data == null)
+                return Json(new { success = false, message = "Failed to toggle lock" });
+
+            return Json(new { success = true, isLocked = data.IsLocked });
         }
-
 
         [HttpGet]
         public IActionResult Logout()
-        {  
+        {
             HttpContext.Session.Clear();
-
             return RedirectToAction("Login");
         }
 
