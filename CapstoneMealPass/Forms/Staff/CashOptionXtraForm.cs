@@ -182,5 +182,17 @@ namespace CapstoneMealPass.Forms.Staff
         {
             UpdateChangeLabel();
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // ESC → Close form
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true; // mark as handled
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

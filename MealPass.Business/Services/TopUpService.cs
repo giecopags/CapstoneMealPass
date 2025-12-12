@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MealPass.Core.Entity;
+using MealPass.Core.Interface;
+using MealPass.Data.Queries;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MealPass.Core.Entity;
-using MealPass.Core.Interface;
 
 namespace MealPass.Business.Services
 {
@@ -65,6 +67,11 @@ namespace MealPass.Business.Services
             decimal newBalance = balance.StudentBalance + amount;
             await _balanceRepository.UpdateBalanceAsync(studentId, newBalance);
             return true;
+        }
+
+        public async Task<bool> IsAccountLockedAsync(string studentId)
+        {
+            return await _balanceRepository.IsAccountLockedAsync(studentId);
         }
     }
 }

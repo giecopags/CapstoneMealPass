@@ -76,5 +76,18 @@ namespace MealPass.Data.Repositories
                 );
             }
         }
+
+        public async Task<bool> IsAccountLockedAsync(string studentId)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                var result = await conn.ExecuteScalarAsync<int>(
+                    BalanceQuery.CheckIfLocked,
+                    new { StudentID = studentId }
+                );
+
+                return result == 1;
+            }
+        }
     }
 }

@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(POSUserControl));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             this.sidePanel5 = new DevExpress.XtraEditors.SidePanel();
             this.cartGC = new DevExpress.XtraGrid.GridControl();
             this.cartGV = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -135,6 +135,7 @@
             this.cartGV.Name = "cartGV";
             this.cartGV.OptionsView.ShowGroupPanel = false;
             this.cartGV.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.cartGV_CellValueChanged);
+            this.cartGV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cartGV_KeyDown);
             // 
             // No
             // 
@@ -284,9 +285,9 @@
             // 
             this.repositoryItemCancelBTN.AllowFocused = false;
             this.repositoryItemCancelBTN.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
             this.repositoryItemCancelBTN.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemCancelBTN.Name = "repositoryItemCancelBTN";
             this.repositoryItemCancelBTN.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemCancelBTN.Click += new System.EventHandler(this.repositoryItemCancelBTN_Click);
@@ -530,6 +531,7 @@
             this.findTE.Size = new System.Drawing.Size(190, 28);
             this.findTE.TabIndex = 4;
             this.findTE.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.findTE_EditValueChanging);
+            this.findTE.KeyDown += new System.Windows.Forms.KeyEventHandler(this.findTE_KeyDown);
             // 
             // labelControl1
             // 
@@ -678,6 +680,7 @@
             this.productsGV.Name = "productsGV";
             this.productsGV.OptionsView.EnableAppearanceEvenRow = true;
             this.productsGV.OptionsView.ShowGroupPanel = false;
+            this.productsGV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.productsGV_KeyDown);
             // 
             // ID
             // 

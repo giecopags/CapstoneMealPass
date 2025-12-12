@@ -40,5 +40,17 @@ namespace CapstoneMealPass.Forms.Staff
         {
             FormHelper.DisplayForm(new Staff.TopUpXtraForm());
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // ESC → Close form
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true; // mark as handled
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

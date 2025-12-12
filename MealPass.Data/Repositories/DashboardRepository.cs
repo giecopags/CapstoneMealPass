@@ -67,5 +67,21 @@ namespace MealPass.Data.Repositories
                 return data.ToList();
             }
         }
+
+        public async Task<int> GetLowStockCountAsync()
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                return await conn.ExecuteScalarAsync<int>(DashboardQuery.GetLowStockCount);
+            }
+        }
+
+        public async Task<int> GetOutOfStockCountAsync()
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                return await conn.ExecuteScalarAsync<int>(DashboardQuery.GetOutOfStockCount);
+            }
+        }
     }
 }

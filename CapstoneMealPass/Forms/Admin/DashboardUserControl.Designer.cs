@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraCharts.XYDiagram xyDiagram5 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series7 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView5 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.Series series8 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView6 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.XYDiagram xyDiagram6 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series9 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView3 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView1 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView2 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView1 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.sidePanel14 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
@@ -54,6 +54,7 @@
             this.ccTotalSale = new DevExpress.XtraCharts.ChartControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.sidePanel16 = new DevExpress.XtraEditors.SidePanel();
+            this.dateDE = new DevExpress.XtraEditors.DateEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.ccBestSeller = new DevExpress.XtraCharts.ChartControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
@@ -68,7 +69,6 @@
             this.sidePanel6 = new DevExpress.XtraEditors.SidePanel();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.dateDE = new DevExpress.XtraEditors.DateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.sidePanel2.SuspendLayout();
@@ -78,23 +78,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ccTotalSale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView2)).BeginInit();
             this.sidePanel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ccBestSeller)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.sidePanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl2
@@ -298,28 +298,28 @@
             // 
             // ccTotalSale
             // 
-            xyDiagram5.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram5.AxisY.VisibleInPanesSerializable = "-1";
-            this.ccTotalSale.Diagram = xyDiagram5;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.ccTotalSale.Diagram = xyDiagram1;
             this.ccTotalSale.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ccTotalSale.Legend.LegendID = -1;
             this.ccTotalSale.Location = new System.Drawing.Point(0, 322);
             this.ccTotalSale.Name = "ccTotalSale";
-            series7.ArgumentDataMember = "Month";
-            series7.Name = "Total Sale";
-            series7.SeriesID = 0;
-            series7.ValueDataMembersSerializable = "TotalSale";
-            lineSeriesView5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            series7.View = lineSeriesView5;
-            series8.ArgumentDataMember = "Month";
-            series8.Name = "Total TopUp";
-            series8.SeriesID = 0;
-            series8.ValueDataMembersSerializable = "TotalTopUp";
-            lineSeriesView6.Color = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
-            series8.View = lineSeriesView6;
+            series1.ArgumentDataMember = "Month";
+            series1.Name = "Total Sale";
+            series1.SeriesID = 0;
+            series1.ValueDataMembersSerializable = "TotalSale";
+            lineSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            series1.View = lineSeriesView1;
+            series2.ArgumentDataMember = "Month";
+            series2.Name = "Total TopUp";
+            series2.SeriesID = 0;
+            series2.ValueDataMembersSerializable = "TotalTopUp";
+            lineSeriesView2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(150)))), ((int)(((byte)(70)))));
+            series2.View = lineSeriesView2;
             this.ccTotalSale.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series7,
-        series8};
+        series1,
+        series2};
             this.ccTotalSale.Size = new System.Drawing.Size(703, 280);
             this.ccTotalSale.TabIndex = 105;
             // 
@@ -349,6 +349,29 @@
             this.sidePanel16.TabIndex = 86;
             this.sidePanel16.Text = "sidePanel16";
             // 
+            // dateDE
+            // 
+            this.dateDE.EditValue = null;
+            this.dateDE.Location = new System.Drawing.Point(160, 18);
+            this.dateDE.Name = "dateDE";
+            this.dateDE.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateDE.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateDE.Properties.DisplayFormat.FormatString = "";
+            this.dateDE.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateDE.Properties.EditFormat.FormatString = "";
+            this.dateDE.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateDE.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered;
+            this.dateDE.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.dateDE.Properties.MaskSettings.Set("mask", "Y");
+            this.dateDE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.dateDE.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
+            this.dateDE.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
+            this.dateDE.Size = new System.Drawing.Size(187, 28);
+            this.dateDE.TabIndex = 84;
+            this.dateDE.EditValueChanged += new System.EventHandler(this.dateDE_EditValueChanged);
+            // 
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -368,21 +391,21 @@
             // 
             // ccBestSeller
             // 
-            xyDiagram6.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram6.AxisY.VisibleInPanesSerializable = "-1";
-            this.ccBestSeller.Diagram = xyDiagram6;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.ccBestSeller.Diagram = xyDiagram2;
             this.ccBestSeller.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ccBestSeller.Legend.LegendID = -1;
             this.ccBestSeller.Location = new System.Drawing.Point(0, 0);
             this.ccBestSeller.Name = "ccBestSeller";
-            series9.ArgumentDataMember = "ProductName";
-            series9.Name = "Series 1";
-            series9.SeriesID = 0;
-            series9.ValueDataMembersSerializable = "TotalQuantitySold";
-            sideBySideBarSeriesView3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
-            series9.View = sideBySideBarSeriesView3;
+            series3.ArgumentDataMember = "ProductName";
+            series3.Name = "Products";
+            series3.SeriesID = 0;
+            series3.ValueDataMembersSerializable = "TotalQuantitySold";
+            sideBySideBarSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(80)))));
+            series3.View = sideBySideBarSeriesView1;
             this.ccBestSeller.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series9};
+        series3};
             this.ccBestSeller.Size = new System.Drawing.Size(356, 537);
             this.ccBestSeller.TabIndex = 87;
             // 
@@ -532,29 +555,6 @@
             this.labelControl1.TabIndex = 96;
             this.labelControl1.Text = "Dashboard";
             // 
-            // dateDE
-            // 
-            this.dateDE.EditValue = null;
-            this.dateDE.Location = new System.Drawing.Point(160, 18);
-            this.dateDE.Name = "dateDE";
-            this.dateDE.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateDE.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateDE.Properties.DisplayFormat.FormatString = "";
-            this.dateDE.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateDE.Properties.EditFormat.FormatString = "";
-            this.dateDE.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateDE.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered;
-            this.dateDE.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.dateDE.Properties.MaskSettings.Set("mask", "Y");
-            this.dateDE.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.dateDE.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
-            this.dateDE.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
-            this.dateDE.Size = new System.Drawing.Size(187, 28);
-            this.dateDE.TabIndex = 84;
-            this.dateDE.EditValueChanged += new System.EventHandler(this.dateDE_EditValueChanged);
-            // 
             // DashboardUserControl
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
@@ -586,17 +586,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ccTotalSale)).EndInit();
             this.sidePanel16.ResumeLayout(false);
             this.sidePanel16.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ccBestSeller)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
@@ -604,8 +606,6 @@
             this.panelControl1.ResumeLayout(false);
             this.sidePanel1.ResumeLayout(false);
             this.sidePanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDE.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

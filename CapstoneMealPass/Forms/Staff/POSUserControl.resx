@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="editorButtonImageOptions1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAAzFJREFUWEft1t9L3XUcx/FHbqMIIhiyVWwXGUa1utBaRytr0A/Y1XYXu2jBNtP5
+        wQAADsEBuJFr7QAAAzFJREFUWEft1t9L3XUcx/FHbqMIIhiyVWwXGUa1utBaRytr0A/Y1XYXu2jBNtP5
         +7ebXaRD2s1uKnH9wmI/qNRRLhguRjCiH6IbbhNN86BTNE0RR/sD4msKX74cKvJoEOcJh/fh8/p+P5/n
         93y+5/P5kCJFihQp/t/UkPEVr85TuUDtIjW3yD/Krjzujl6/bnTw4jRtM3w/y3dzXJ7n2wUuLfLNLbp/
         58vblOWRHr1/zcjhzglOTNI7Rc80P/6N5IXbdHYv3brGxNg0xofj9E9wJSR5eYbOWdrn+GKejgSSXd1L
@@ -138,6 +138,15 @@
         AAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="sidePanel15.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="sidePanel14.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="sidePanel12.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="sidePanel15.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

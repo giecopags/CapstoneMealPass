@@ -74,5 +74,32 @@ namespace CapstoneMealPass.Forms.Staff
                 loginForm.Show();
             }
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // First, delegate to POSUserControl if it's loaded
+            if (mainSPanel.Controls.OfType<Staff.POSUserControl>().FirstOrDefault() is Staff.POSUserControl posUC)
+            {
+                if (posUC.HandleShortcut(keyData))
+                    return true;
+            }
+
+            // Form-level shortcuts
+            switch (keyData)
+            {
+                case Keys.F1:
+                    // Open TopUp form
+                    topupACE_Click(this, EventArgs.Empty);
+                    return true;
+
+                case Keys.F2:
+                    // Load POS user control
+                    posACE_Click(this, EventArgs.Empty);
+                    return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
     }
 }

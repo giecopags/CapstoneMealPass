@@ -5,6 +5,7 @@ using DevExpress.XtraGauges.Core.Primitive;
 using MealPass.Business.Services;
 using MealPass.Core.Entity;
 using MealPass.Core.GlobalSql;
+using MealPass.Core.Interface;
 using MealPass.Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace CapstoneMealPass.Forms.Staff
         private RFIDReaderService _rfidService;
         private readonly PaymentOptionXtraForm _paymentForm;
         private readonly POSUserControl _posControl;
+        private readonly IBalanceRepository _balanceRepo;
 
         private string _scannedRFID;
         private string _studentId;
@@ -46,6 +48,7 @@ namespace CapstoneMealPass.Forms.Staff
 
         private async void confirmBTN_Click(object sender, EventArgs e)
         {
+
             try
             {
                 // Validate scan
@@ -65,6 +68,22 @@ namespace CapstoneMealPass.Forms.Staff
                 }
 
                 decimal totalAmount = _transaction.GrandTotal;
+
+                // NEW: Check if student account is locked
+                var balanceRepo = new BalanceRepository(SQLQuery.connectionString);
+                bool isLocked = await balanceRepo.IsAccountLockedAsync(_studentId);
+
+                if (isLocked)
+                {
+                    MessageBox.Show(
+                        "This student's account is currently LOCKED and cannot be used for purchases.\n" +
+                        "Please contact an administrator.",
+                        "Account Locked",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Stop);
+
+                    return; // Stop transaction
+                }
 
                 // Check sufficient balance
                 if (_studentBalance < totalAmount)
@@ -114,7 +133,7 @@ namespace CapstoneMealPass.Forms.Staff
                 var productRepo = new ProductRepository(); // implements IProductRepository
                 var transactionRepo = new TransactionRepository(SQLQuery.connectionString);
                 var transactionDetailRepo = new TransactionDetailRepository(SQLQuery.connectionString);
-                var balanceRepo = new BalanceRepository(SQLQuery.connectionString);
+                //var balanceRepo = new BalanceRepository(SQLQuery.connectionString);
 
                 // Generate ReferenceID
                 string refId = "R" + DateTime.Now.ToString("yyMMddHHmmss") + _studentId.Substring(_studentId.Length - 4);
@@ -385,5 +404,16 @@ namespace CapstoneMealPass.Forms.Staff
             }
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // ESC → Close form
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true; // mark as handled
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

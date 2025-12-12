@@ -51,7 +51,7 @@
             this.topupamountTE.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
             this.topupamountTE.Properties.MaskSettings.Set("mask", "n");
             this.topupamountTE.Size = new System.Drawing.Size(289, 28);
-            this.topupamountTE.TabIndex = 18;
+            this.topupamountTE.TabIndex = 1;
             // 
             // accountbalanceLBL
             // 
@@ -85,7 +85,7 @@
             this.confirmBTN.Location = new System.Drawing.Point(33, 223);
             this.confirmBTN.Name = "confirmBTN";
             this.confirmBTN.Size = new System.Drawing.Size(204, 31);
-            this.confirmBTN.TabIndex = 15;
+            this.confirmBTN.TabIndex = 2;
             this.confirmBTN.Text = "Confirm Top-Up";
             this.confirmBTN.Click += new System.EventHandler(this.confirmBTN_Click);
             // 

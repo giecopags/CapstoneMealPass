@@ -22,6 +22,9 @@ namespace CapstoneMealPass.Forms.Staff
         {
             InitializeComponent();
             Cancel.ColumnEdit = repositoryItemCancelBTN;
+            findTE.KeyDown += findTE_KeyDown;
+            productsGV.KeyDown += productsGV_KeyDown;
+            cartGV.KeyDown += cartGV_KeyDown;
             this.Load += PosUC_LoadAsync;
         }
 
@@ -31,6 +34,13 @@ namespace CapstoneMealPass.Forms.Staff
 
             productsGV.Columns["Price"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             productsGV.Columns["Price"].DisplayFormat.FormatString = "N2";
+
+            productsGV.OptionsBehavior.Editable = false;
+            productsGV.OptionsSelection.EnableAppearanceFocusedRow = true;
+            productsGV.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
+            productsGV.OptionsSelection.MultiSelect = false;
+            productsGV.OptionsBehavior.FocusLeaveOnTab = true;
+            productsGV.OptionsSelection.EnableAppearanceFocusedCell = true;
         }
 
         private async Task LoadSnacksAsync()
@@ -312,6 +322,176 @@ namespace CapstoneMealPass.Forms.Staff
             }
 
             return true;
+        }
+
+        private void FocusProductGrid()
+        {
+            productsGC.Focus();
+            productsGV.Focus();
+
+            if (productsGV.RowCount > 0)
+            {
+                productsGV.FocusedRowHandle = 0;         
+                productsGV.SelectRow(0);                 
+            }
+        }
+
+        private void FocusCartGridAndEditQty()
+        {
+            try
+            {
+                if (cartGC == null || cartGV == null)
+                    return;
+
+                // Move focus to the Cart GridControl
+                cartGC.Focus();
+
+                // If there are no items, stop
+                if (cartGV.RowCount == 0)
+                    return;
+
+                // Select the first visible row if nothing is selected
+                if (cartGV.FocusedRowHandle < 0)
+                {
+                    int firstVisible = cartGV.GetVisibleRowHandle(0);
+                    cartGV.FocusedRowHandle = firstVisible;
+                }
+
+                // Focus the Quantity column
+                cartGV.FocusedColumn = cartGV.Columns["Quantity"];
+
+                // Make sure the row is visible
+                cartGV.MakeRowVisible(cartGV.FocusedRowHandle);
+
+                // Open the SpinEdit editor
+                cartGV.ShowEditor();
+            }
+            catch { }
+        }
+
+        public bool HandleShortcut(Keys keyData)
+        {
+            // CTRL + F → focus search
+            if (keyData == (Keys.Control | Keys.F))
+            {
+                findTE.Focus();
+                findTE.SelectAll();
+                return true;
+            }
+
+            // ENTER → Add to cart
+            if (keyData == Keys.Enter)
+            {
+                if (productsGV.FocusedRowHandle >= 0)
+                {
+                    addtocartBTN_Click(null, null);
+                    return true;
+                }
+            }
+
+            // DOWN ARROW → move from search to product list
+            if (keyData == Keys.Down)
+            {
+                if (findTE.Focused)
+                {
+                    FocusProductGrid();
+                    return true;
+                }
+            }
+
+            if (keyData == (Keys.Control | Keys.C))
+            {
+                FocusCartGridAndEditQty();
+                return true;
+            }
+
+            // BACKSPACE → delete product from cart
+            if (keyData == Keys.Back && cartGV.FocusedRowHandle >= 0)
+            {
+                if (cartGV != null && cartGV.FocusedRowHandle >= 0)
+                {
+                    // Confirm deletion (optional)
+                    DialogResult result = MessageBox.Show(
+                        "Delete selected product from cart?",
+                        "Confirm Delete",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (result == DialogResult.Yes)
+                    {
+                        cartGV.DeleteRow(cartGV.FocusedRowHandle);
+                    }
+                }
+                return true;
+            }
+
+            // CTRL + 1 → Snacks
+            if (keyData == (Keys.Control | Keys.D1))
+            {
+                snacksBTN_Click(null, null);
+                return true;
+            }
+
+            // CTRL + 2 → Meals
+            if (keyData == (Keys.Control | Keys.D2))
+            {
+                mealsBTN_Click(null, null);
+                return true;
+            }
+
+            // CTRL + 3 → Drinks
+            if (keyData == (Keys.Control | Keys.D3))
+            {
+                drinksBTN_Click(null, null);
+                return true;
+            }
+
+            // CTRL + 4 → All Products
+            if (keyData == (Keys.Control | Keys.D4))
+            {
+                allBTN_Click(null, null);
+                return true;
+            }
+
+            // CTRL + ENTER → Confirm checkout
+            if (keyData == (Keys.Control | Keys.Enter))
+            {
+                confirmBTN_Click(null, null);
+                return true;
+            }
+
+
+            return false;
+        }
+
+        private void findTE_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                FocusProductGrid();
+            }
+        }
+
+        private void productsGV_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                addtocartBTN_Click(this, EventArgs.Empty);
+            }
+        }
+
+        private void cartGV_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+
+                cartGV.FocusedColumn = cartGV.Columns["Quantity"];
+                cartGV.ShowEditor();
+            }
         }
     }
 }

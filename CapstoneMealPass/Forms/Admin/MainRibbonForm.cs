@@ -19,6 +19,7 @@ namespace CapstoneMealPass.Forms.Admin
 {
     public partial class MainRibbonForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        private Staff.POSUserControl posUserControlInstance;
         public MainRibbonForm()
         {
             InitializeComponent();
@@ -69,7 +70,8 @@ namespace CapstoneMealPass.Forms.Admin
 
         private async void posACE_Click(object sender, EventArgs e)
         {
-            await FormHelper.LoadUserControlAsync(mainSPanel, () => new Staff.POSUserControl());
+            posUserControlInstance = new Staff.POSUserControl();
+            await FormHelper.LoadUserControlAsync(mainSPanel, () => posUserControlInstance);
         }
 
         private void topupACE_Click(object sender, EventArgs e)
@@ -99,14 +101,38 @@ namespace CapstoneMealPass.Forms.Admin
 
                 var loginForm = new LoginForm();
                 loginForm.Show();
-
-
             }
         }
 
         private async void dashboardACE_Click(object sender, EventArgs e)
         {
             await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.DashboardUserControl());
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Delegate shortcut handling to the POS User Control
+            if (posUserControlInstance != null)
+            {
+                if (posUserControlInstance.HandleShortcut(keyData))
+                    return true;
+            }
+
+            // Shortcut for TopUp (F1)
+            if (keyData == Keys.F1)
+            {
+                topupACE_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            // Shortcut for POS (F2)
+            if (keyData == Keys.F2)
+            {
+                posACE_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

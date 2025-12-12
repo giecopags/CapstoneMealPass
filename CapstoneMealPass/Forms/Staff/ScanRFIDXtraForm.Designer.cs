@@ -99,7 +99,7 @@
             this.confirmBTN.Location = new System.Drawing.Point(29, 206);
             this.confirmBTN.Name = "confirmBTN";
             this.confirmBTN.Size = new System.Drawing.Size(204, 31);
-            this.confirmBTN.TabIndex = 16;
+            this.confirmBTN.TabIndex = 1;
             this.confirmBTN.Text = "Confirm Purchase";
             this.confirmBTN.Click += new System.EventHandler(this.confirmBTN_Click);
             // 

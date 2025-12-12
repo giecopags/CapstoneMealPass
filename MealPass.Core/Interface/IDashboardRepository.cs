@@ -12,5 +12,8 @@ namespace MealPass.Core.Interface
         Task<List<MonthlySummary>> GetMonthlySummaryAsync();
         Task<List<BestSeller>> GetTopBestSellersThisMonthAsync();
         Task<List<BestSeller>> GetTopBestSellersByMonthAsync(int month, int year);
+
+        Task<int> GetLowStockCountAsync();
+        Task<int> GetOutOfStockCountAsync();
     }
 }
