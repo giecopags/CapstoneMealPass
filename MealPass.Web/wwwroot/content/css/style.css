@@ -3467,11 +3467,253 @@ pre {
     .table-responsive-xl > .table-bordered {
       border: 0; } }
 
+.detail-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.detail-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+}
+
+.detail-card-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+}
+
+.detail-label {
+    font-size: 0.85rem;
+    color: #6c757d;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.detail-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.amount {
+    color: #1b7d4f;
+    font-weight: 700;
+    font-size: 1.15rem;
+}
+
+@media (max-width: 576px) {
+    .detail-card {
+        padding: 14px;
+    }
+
+    .detail-card-title {
+        font-size: 1rem;
+    }
+}
+/* UNIVERSAL MODERN CARD DESIGN (Purchase + Details) */
+.modern-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #eaeaea;
+}
+
+.modern-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+}
+
+.card-title-main {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+}
+
+.card-mini-label {
+    font-size: 0.8rem;
+    color: #6c757d;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.card-mini-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.card-amount {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1b7d4f;
+    margin-top: 10px;
+}
+
+@media (max-width: 576px) {
+    .modern-card {
+        padding: 14px;
+    }
+
+    .card-title-main {
+        font-size: 1rem;
+    }
+}
+
+.scroll-top-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #1b7d4f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.25);
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    z-index: 9999;
+}
+
+    .scroll-top-btn:hover {
+        background: #145c3c;
+        transform: scale(1.08);
+    }
+
+.wallet-card {
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+    .wallet-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    }
+
+.wallet-card-header {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.wallet-card-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.wallet-card-label {
+    font-size: 0.75rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.wallet-card-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #212529;
+}
+
+.text-dark-green {
+    color: #006400 !important;
+}
+
+/* Scroll to top button */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #006400;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.25);
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    z-index: 9999;
+}
+
+    .scroll-top-btn:hover {
+        background: #004d00;
+        transform: scale(1.08);
+    }
+
+.badge-dark-green {
+    background-color: #006400;
+    color: white;
+    font-weight: 600;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 28px;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+input:checked + .slider {
+    background-color: #006400; /* dark green */
+}
+
+    input:checked + .slider:before {
+        transform: translateX(22px);
+    }
 .table-responsive {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; }
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
   .table-responsive > .table-bordered {
     border: 0; }
 
@@ -4235,6 +4477,7 @@ fieldset:disabled a.btn {
     .show > .btn-dark.dropdown-toggle:focus {
       -webkit-box-shadow: 0 0 0 0.2rem rgba(38, 58, 85, 0.5);
       box-shadow: 0 0 0 0.2rem rgba(38, 58, 85, 0.5); }
+
 
 .btn-outline-primary {
   color: #0062ff;

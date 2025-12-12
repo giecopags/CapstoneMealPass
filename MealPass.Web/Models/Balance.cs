@@ -8,5 +8,7 @@ namespace MealPass.Web.Models
         public string StudentID { get; set; }
 
         public decimal StudentBalance { get; set; }
+
+        public int IsLocked { get; set; }
     }
 }
