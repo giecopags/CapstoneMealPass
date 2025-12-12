@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MealPass.Web.Models
+namespace MealPass.Shared.Models
 {
     public class Balance
     {

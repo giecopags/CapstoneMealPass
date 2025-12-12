@@ -5,8 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<MealPassDBContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddHttpClient("MealPassAPI", client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7266/api/"); // replace with your API URL
+});
+
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>

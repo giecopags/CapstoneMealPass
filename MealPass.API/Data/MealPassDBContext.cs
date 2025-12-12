@@ -1,21 +1,18 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using MealPass.Shared.Models;
 
-
-namespace MealPass.Web.Models
+namespace MealPass.API.Data
 {
-    public class MealPassDBContext : DbContext
+    public class MealPassDBContext:DbContext
     {
-        public MealPassDBContext(DbContextOptions<MealPassDBContext> options) : base(options) { }
+        public MealPassDBContext(DbContextOptions<MealPassDBContext> options)
+           : base(options) { }
 
         public DbSet<Student> Students { get; set; }
         public DbSet<TopUpLogs> TopUpLogs { get; set; }
         public DbSet<Transactions> Transactions { get; set; }
-
         public DbSet<TransactionDetails> TransactionDetails { get; set; }
-
-        public DbSet<Products> Products { get; set; } 
-
+        public DbSet<Products> Products { get; set; }
         public DbSet<Balance> Balance { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MealPass.Web.Models
+namespace MealPass.Shared.Models
 {
     public class TransactionDetails
     {
@@ -9,6 +9,7 @@ namespace MealPass.Web.Models
         public string ReferenceID { get; set; }
         public int ProductID { get; set; }
 
+        public string ProductName { get; set; }
         public int QuantitySold { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal Subtotal { get; set; }
