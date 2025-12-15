@@ -405,8 +405,8 @@ namespace CapstoneMealPass.Forms.Staff
                 return true;
             }
 
-            // BACKSPACE → delete product from cart
-            if (keyData == Keys.Back && cartGV.FocusedRowHandle >= 0)
+            // CTRL + D → delete product from cart
+            if (keyData == (Keys.Control | Keys.D) && cartGV.FocusedRowHandle >= 0)
             {
                 if (cartGV != null && cartGV.FocusedRowHandle >= 0)
                 {
@@ -421,9 +421,16 @@ namespace CapstoneMealPass.Forms.Staff
                     if (result == DialogResult.Yes)
                     {
                         cartGV.DeleteRow(cartGV.FocusedRowHandle);
+
+                        // Get the DataTable from the grid's DataSource
+                        if (cartGC.DataSource is DataTable cartTable)
+                        {
+                            UpdateTotalAmount(cartTable);
+                        }
+
+                        cartGV.RefreshData();
                     }
                 }
-                return true;
             }
 
             // CTRL + 1 → Snacks
