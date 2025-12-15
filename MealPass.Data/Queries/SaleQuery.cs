@@ -58,6 +58,7 @@ namespace MealPass.Data.Queries
             p.ProductName,
             c.CategoryName,
             td.UnitPrice,
+            td.Remarks,
             SUM(td.QuantitySold) AS ItemSold,
             SUM(td.Subtotal) AS TotalAmount
         FROM pro.Products p
@@ -69,7 +70,8 @@ namespace MealPass.Data.Queries
             p.ProductID,
             p.ProductName,
             c.CategoryName,
-            td.UnitPrice
+            td.UnitPrice,
+            td.Remarks
         HAVING SUM(td.QuantitySold) > 0
         ORDER BY 
             p.ProductName ASC, td.UnitPrice ASC;

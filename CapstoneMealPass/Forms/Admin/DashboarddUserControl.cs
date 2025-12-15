@@ -1,8 +1,4 @@
-﻿using Dapper;
-using DevExpress.XtraEditors;
-using MealPass.Core.Interface;
-using MealPass.Data.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,25 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using DevExpress.XtraEditors;
 using MealPass.Core.GlobalSql;
+using MealPass.Core.Interface;
+using MealPass.Data.Repositories;
 
 namespace CapstoneMealPass.Forms.Admin
 {
-    public partial class DashboardUserControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class DashboarddUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         private readonly IDashboardRepository _dashboardRepo;
-        public DashboardUserControl()
+        public DashboarddUserControl()
         {
             InitializeComponent();
 
             _dashboardRepo = new DashboardRepository(SQLQuery.connectionString);
 
-            this.Load += DashboardUserControl_Load;
+            this.Load += DashboarddUserControl_Load;
             dateDE.EditValueChanged += dateDE_EditValueChanged;
         }
 
-        private async void DashboardUserControl_Load(object sender, EventArgs e)
+        private async void DashboarddUserControl_Load(object sender, EventArgs e)
         {
             dateDE.EditValue = DateTime.Now;
             await LoadStockCountersAsync();
@@ -80,16 +78,6 @@ namespace CapstoneMealPass.Forms.Admin
             }
         }
 
-        private async void dateDE_EditValueChanged(object sender, EventArgs e)
-        {
-            if (dateDE.EditValue == null)
-                return;
-
-            DateTime dt = Convert.ToDateTime(dateDE.EditValue);
-
-            await LoadBestSellerChart(dt.Month, dt.Year);
-        }
-
         private async Task LoadStockCountersAsync()
         {
             try
@@ -105,6 +93,16 @@ namespace CapstoneMealPass.Forms.Admin
                 MessageBox.Show("Failed to load stock counters: " + ex.Message,
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private async void dateDE_EditValueChanged(object sender, EventArgs e)
+        {
+            if (dateDE.EditValue == null)
+                return;
+
+            DateTime dt = Convert.ToDateTime(dateDE.EditValue);
+
+            await LoadBestSellerChart(dt.Month, dt.Year);
         }
     }
 }

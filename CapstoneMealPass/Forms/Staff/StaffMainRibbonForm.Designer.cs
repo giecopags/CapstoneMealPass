@@ -332,6 +332,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement q;
         private DevExpress.XtraBars.Navigation.AccordionControlElement purchasehistoryACE;
         private DevExpress.XtraBars.Navigation.AccordionControlElement topuphistoryACE;
-        private DevExpress.XtraEditors.SidePanel mainSPanel;
+        public DevExpress.XtraEditors.SidePanel mainSPanel;
     }
 }

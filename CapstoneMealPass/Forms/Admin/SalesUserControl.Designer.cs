@@ -58,6 +58,7 @@
             this.ProductID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gvSales = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcSales = new DevExpress.XtraGrid.GridControl();
             this.sidePanel4 = new DevExpress.XtraEditors.SidePanel();
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
@@ -344,8 +345,8 @@
             this.TotalAmount.OptionsColumn.AllowFocus = false;
             this.TotalAmount.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.TotalAmount.Visible = true;
-            this.TotalAmount.VisibleIndex = 5;
-            this.TotalAmount.Width = 290;
+            this.TotalAmount.VisibleIndex = 6;
+            this.TotalAmount.Width = 179;
             // 
             // ItemsSold
             // 
@@ -374,7 +375,7 @@
             this.ItemsSold.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.ItemsSold.Visible = true;
             this.ItemsSold.VisibleIndex = 4;
-            this.ItemsSold.Width = 314;
+            this.ItemsSold.Width = 179;
             // 
             // Price
             // 
@@ -403,7 +404,7 @@
             this.Price.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.Price.Visible = true;
             this.Price.VisibleIndex = 3;
-            this.Price.Width = 199;
+            this.Price.Width = 198;
             // 
             // CategoryName
             // 
@@ -432,7 +433,7 @@
             this.CategoryName.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.CategoryName.Visible = true;
             this.CategoryName.VisibleIndex = 2;
-            this.CategoryName.Width = 215;
+            this.CategoryName.Width = 214;
             // 
             // ProductID
             // 
@@ -461,7 +462,7 @@
             this.ProductID.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.ProductID.Visible = true;
             this.ProductID.VisibleIndex = 0;
-            this.ProductID.Width = 66;
+            this.ProductID.Width = 63;
             // 
             // gvSales
             // 
@@ -471,7 +472,8 @@
             this.CategoryName,
             this.Price,
             this.ItemsSold,
-            this.TotalAmount});
+            this.TotalAmount,
+            this.gridColumn1});
             this.gvSales.DetailHeight = 284;
             this.gvSales.GridControl = this.gcSales;
             this.gvSales.Name = "gvSales";
@@ -505,7 +507,31 @@
             this.ProductName.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 1;
-            this.ProductName.Width = 475;
+            this.ProductName.Width = 407;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.gridColumn1.AppearanceCell.Options.UseBackColor = true;
+            this.gridColumn1.AppearanceCell.Options.UseFont = true;
+            this.gridColumn1.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn1.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(21)))));
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.Options.UseBackColor = true;
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn1.Caption = "Remarks";
+            this.gridColumn1.FieldName = "Remarks";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.AllowFocus = false;
+            this.gridColumn1.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 5;
+            this.gridColumn1.Width = 323;
             // 
             // gcSales
             // 
@@ -647,5 +673,6 @@
         private DevExpress.XtraEditors.SidePanel sidePanel12;
         private DevExpress.XtraEditors.DateEdit fromDateDE;
         private DevExpress.XtraEditors.SimpleButton filterBTN;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

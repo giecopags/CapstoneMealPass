@@ -1,7 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using MealPass.Core.Interface;
-using MealPass.Data.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,8 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using MealPass.Core.GlobalSql;
 using MealPass.Core.Interface;
+using MealPass.Core.Interface;
+using MealPass.Data.Repositories;
 
 namespace CapstoneMealPass.Forms.Admin
 {
@@ -145,6 +146,69 @@ namespace CapstoneMealPass.Forms.Admin
             }
 
             await LoadPurchaseHistoryByRangeAsync(from, to);
+        }
+
+        private async void printBTN_Click(object sender, EventArgs e)
+        {
+            Form parentForm = this.FindForm();
+
+            DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(
+                parentForm,
+                typeof(SplashScreen),
+                true,
+                true
+            );
+
+            await Task.Run(() =>
+            {
+                var report = new Reports.PurchaseHistoryXtraReport();
+
+                DataTable dt = new DataTable();
+                foreach (DevExpress.XtraGrid.Columns.GridColumn column in purchasehistoryGV.Columns)
+                {
+                    dt.Columns.Add(column.FieldName);
+                }
+
+                for (int i = 0; i < purchasehistoryGV.RowCount; i++)
+                {
+                    DataRow row = dt.NewRow();
+                    foreach (DevExpress.XtraGrid.Columns.GridColumn column in purchasehistoryGV.Columns)
+                    {
+                        row[column.FieldName] = purchasehistoryGV.GetRowCellValue(i, column);
+                    }
+                    dt.Rows.Add(row);
+                }
+
+                report.DataSource = dt;
+
+                DateTime from, to;
+
+                if (fromDateDE.EditValue != null && toDateDE.EditValue != null)
+                {
+                    from = Convert.ToDateTime(fromDateDE.EditValue).Date;
+                    to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
+
+                    report.xrLabel3.Text = from.Date == to.Date
+                        ? from.ToString("MMMM dd, yyyy")
+                        : $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
+                }
+                else
+                {
+                    from = DateTime.Today;
+                    to = DateTime.Today.AddDays(1).AddSeconds(-1);
+                    report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
+                }
+
+                report.CreateDocument();
+
+                parentForm.Invoke(new Action(() =>
+                {
+                    new DevExpress.XtraReports.UI.ReportPrintTool(report).ShowPreviewDialog();
+                }));
+            });
+
+            if (DevExpress.XtraSplashScreen.SplashScreenManager.Default.IsSplashFormVisible)
+                DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
         }
     }
 }

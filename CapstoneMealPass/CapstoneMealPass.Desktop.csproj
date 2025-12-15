@@ -233,11 +233,11 @@
     <Compile Include="Forms\Admin\AddProductRibbonForm.Designer.cs">
       <DependentUpon>AddProductRibbonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\DashboardUserControl.cs">
+    <Compile Include="Forms\Admin\DashboarddUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\DashboardUserControl.Designer.cs">
-      <DependentUpon>DashboardUserControl.cs</DependentUpon>
+    <Compile Include="Forms\Admin\DashboarddUserControl.Designer.cs">
+      <DependentUpon>DashboarddUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Admin\EditEmployeeRibbonForm.cs">
       <SubType>Form</SubType>
@@ -292,6 +292,12 @@
     </Compile>
     <Compile Include="Forms\Admin\SalesUserControl.Designer.cs">
       <DependentUpon>SalesUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Admin\TopUpHistoryUserControl.cs">
       <SubType>UserControl</SubType>
@@ -358,6 +364,12 @@
     <Compile Include="Reports\EmployeeLogsXtraReport.Designer.cs">
       <DependentUpon>EmployeeLogsXtraReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\PurchaseHistoryXtraReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PurchaseHistoryXtraReport.Designer.cs">
+      <DependentUpon>PurchaseHistoryXtraReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\TopUpHistoryXtraReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -370,8 +382,8 @@
     <EmbeddedResource Include="Forms\Admin\AddProductRibbonForm.resx">
       <DependentUpon>AddProductRibbonForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin\DashboardUserControl.resx">
-      <DependentUpon>DashboardUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Admin\DashboarddUserControl.resx">
+      <DependentUpon>DashboarddUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\EditEmployeeRibbonForm.resx">
       <DependentUpon>EditEmployeeRibbonForm.cs</DependentUpon>
@@ -399,6 +411,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\SalesUserControl.resx">
       <DependentUpon>SalesUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\TopUpHistoryUserControl.resx">
       <DependentUpon>TopUpHistoryUserControl.cs</DependentUpon>
@@ -439,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\EmployeeLogsXtraReport.resx">
       <DependentUpon>EmployeeLogsXtraReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PurchaseHistoryXtraReport.resx">
+      <DependentUpon>PurchaseHistoryXtraReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\TopUpHistoryXtraReport.resx">
       <DependentUpon>TopUpHistoryXtraReport.cs</DependentUpon>

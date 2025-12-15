@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraSplashScreen;
 using MealPass.Core.GlobalSql;
 using MealPass.Core.Interface;
 using MealPass.Data.Queries;
@@ -38,6 +39,7 @@ namespace CapstoneMealPass.Forms.Admin
                 x.CategoryName,
                 UnitPrice = x.UnitPrice.ToString("N2"),
                 x.ItemSold,
+                x.Remarks,
                 TotalAmount = x.TotalAmount.ToString("N2")
             }).ToList();
         }
@@ -47,7 +49,7 @@ namespace CapstoneMealPass.Forms.Admin
             gvSales.ApplyFindFilter(e.NewValue as string);
         }
 
-        private void printBTN_Click(object sender, EventArgs e)
+        private async void printBTN_Click(object sender, EventArgs e)
         {
             if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
                 return;
@@ -55,10 +57,20 @@ namespace CapstoneMealPass.Forms.Admin
             DateTime from = Convert.ToDateTime(fromDateDE.EditValue).Date;
             DateTime to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
 
-            var report = new Reports.DailySalesXtraReport();
+            Form parentForm = this.FindForm();
 
-            using (var connection = new SqlConnection(SQLQuery.connectionString))
+            SplashScreenManager.ShowForm(
+                parentForm,
+                typeof(SplashScreen),
+                true,
+                true
+            );
+
+            await Task.Run(() =>
             {
+                var report = new Reports.DailySalesXtraReport();
+
+                using (var connection = new SqlConnection(SQLQuery.connectionString))
                 using (var command = new SqlCommand(SaleQuery.GetSalesSummaryByDateTimeRange, connection))
                 {
                     command.Parameters.AddWithValue("@FromDateTime", from);
@@ -71,16 +83,23 @@ namespace CapstoneMealPass.Forms.Admin
 
                         report.DataSource = dt;
 
-                        if (from.Date == to.Date.Date)
+                        if (from.Date == to.Date)
                             report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
                         else
                             report.xrLabel3.Text = $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
 
                         report.CreateDocument();
-                        new ReportPrintTool(report).ShowPreviewDialog();
+
+                        this.Invoke(new Action(() =>
+                        {
+                            new ReportPrintTool(report).ShowPreviewDialog();
+                        }));
                     }
                 }
-            }
+            });
+
+            if (SplashScreenManager.Default.IsSplashFormVisible)
+                SplashScreenManager.CloseForm();
         }
 
         private async void filterBTN_Click(object sender, EventArgs e)
@@ -128,6 +147,7 @@ namespace CapstoneMealPass.Forms.Admin
                 x.CategoryName,
                 UnitPrice = x.UnitPrice.ToString("N2"),
                 x.ItemSold,
+                x.Remarks,
                 TotalAmount = x.TotalAmount.ToString("N2")
             }).ToList();
         }

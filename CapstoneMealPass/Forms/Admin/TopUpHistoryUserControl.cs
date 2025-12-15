@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraSplashScreen;
 using MealPass.Core.Entity;
 using MealPass.Core.GlobalSql;
 using MealPass.Core.Interface;
@@ -79,7 +80,7 @@ namespace CapstoneMealPass.Forms.Admin
             gvTopUp.ApplyFindFilter(e.NewValue as string);
         }
 
-        private void printBTN_Click(object sender, EventArgs e)
+        private async void printBTN_Click(object sender, EventArgs e)
         {
             if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
             {
@@ -91,34 +92,50 @@ namespace CapstoneMealPass.Forms.Admin
             DateTime from = Convert.ToDateTime(fromDateDE.EditValue).Date;
             DateTime to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
 
-            Reports.TopUpHistoryXtraReport report = new Reports.TopUpHistoryXtraReport();
+            Form parentForm = this.FindForm();
 
-            using (var connection = new SqlConnection(SQLQuery.connectionString))
+            SplashScreenManager.ShowForm(
+                parentForm,
+                typeof(SplashScreen),
+                true,
+                true
+            );
+
+            await Task.Run(() =>
             {
-                string query = TopUpLogQuery.GetTopUpLogsByDateRange;
+                Reports.TopUpHistoryXtraReport report = new Reports.TopUpHistoryXtraReport();
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (var connection = new SqlConnection(SQLQuery.connectionString))
                 {
-                    command.Parameters.AddWithValue("@FromDate", from);
-                    command.Parameters.AddWithValue("@ToDate", to);
+                    string query = TopUpLogQuery.GetTopUpLogsByDateRange;
 
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
+                        command.Parameters.AddWithValue("@FromDate", from);
+                        command.Parameters.AddWithValue("@ToDate", to);
 
-                        report.DataSource = dt;
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
 
-                        if (from.Date == to.Date.Date)
-                            report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
-                        else
-                            report.xrLabel3.Text = $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
+                            report.DataSource = dt;
 
-                        report.CreateDocument();
-                        new ReportPrintTool(report).ShowPreviewDialog();
+                            if (from.Date == to.Date.Date)
+                                report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
+                            else
+                                report.xrLabel3.Text = $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
+
+                            report.CreateDocument();
+                            new ReportPrintTool(report).ShowPreviewDialog();
+                        }
                     }
                 }
-            }
+
+            });
+
+            if (SplashScreenManager.Default.IsSplashFormVisible)
+                SplashScreenManager.CloseForm();
         }
 
         private async void filterBTN_Click(object sender, EventArgs e)

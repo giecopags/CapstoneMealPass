@@ -26,11 +26,10 @@ namespace CapstoneMealPass.Helpers
         }
 
         public static async Task LoadUserControl(SidePanel targetPanel, Func<UserControl> controlFactory)
-        {
-            // Run heavy work in the background if needed (not the control creation itself!)
-            await Task.Yield(); // ensures async without blocking
+        {    
+            await Task.Yield(); 
 
-            var controlToLoad = controlFactory(); // construct control on UI thread
+            var controlToLoad = controlFactory(); 
 
             targetPanel.Controls.Clear();
             controlToLoad.Dock = DockStyle.Fill;
