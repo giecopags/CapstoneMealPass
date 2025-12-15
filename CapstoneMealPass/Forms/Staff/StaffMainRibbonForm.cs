@@ -17,6 +17,7 @@ namespace CapstoneMealPass.Forms.Staff
         public StaffMainRibbonForm()
         {
             InitializeComponent();
+            this.KeyPreview = true;
             datetimeLBL.Text = DateTime.Now.ToString("F");
             usernameLBL.Text = UserSession.Username;
 

@@ -81,15 +81,26 @@ namespace CapstoneMealPass.Forms.Admin
 
         private void printBTN_Click(object sender, EventArgs e)
         {
-            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
-            {
-                MessageBox.Show("Please select a date range before printing.",
-                    "No Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            DateTime from, to;
 
-            DateTime from = Convert.ToDateTime(fromDateDE.EditValue).Date;
-            DateTime to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
+            if (fromDateDE.EditValue == null && toDateDE.EditValue == null)
+            {
+                // Both null → use DateTime.Now consistently
+                DateTime now = DateTime.Now;
+                from = now.Date;
+                to = now.Date.AddDays(1).AddSeconds(-1);
+            }
+            else
+            {
+                // Handle individually if only one is null
+                from = fromDateDE.EditValue == null
+                    ? DateTime.Now.Date
+                    : Convert.ToDateTime(fromDateDE.EditValue).Date;
+
+                to = toDateDE.EditValue == null
+                    ? DateTime.Now.Date.AddDays(1).AddSeconds(-1)
+                    : Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
+            }
 
             Reports.TopUpHistoryXtraReport report = new Reports.TopUpHistoryXtraReport();
 
@@ -119,6 +130,7 @@ namespace CapstoneMealPass.Forms.Admin
                     }
                 }
             }
+
         }
 
         private async void filterBTN_Click(object sender, EventArgs e)
@@ -148,6 +160,19 @@ namespace CapstoneMealPass.Forms.Admin
             }
 
             await LoadTopUpLogsByRangeAsync(from, to);
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Check if Ctrl+P is pressed
+            if (keyData == (Keys.Control | Keys.P))
+            {
+                // Call your existing print method
+                printBTN_Click(this, EventArgs.Empty);
+                return true; // Indicate that the key was handled
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
