@@ -180,5 +180,17 @@ namespace CapstoneMealPass.Forms.Admin
 
             await LoadTopUpLogsByRangeAsync(from, to);
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Check if Ctrl+P is pressed
+            if (keyData == (Keys.Control | Keys.P))
+            {
+                // Call your existing print method
+                printBTN_Click(this, EventArgs.Empty);
+                return true; // Indicate that the key was handled
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }
