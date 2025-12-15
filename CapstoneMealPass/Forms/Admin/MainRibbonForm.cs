@@ -106,7 +106,7 @@ namespace CapstoneMealPass.Forms.Admin
 
         private async void dashboardACE_Click(object sender, EventArgs e)
         {
-            await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.DashboardUserControl());
+            await FormHelper.LoadUserControlAsync(mainSPanel, () => new Admin.DashboarddUserControl());
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

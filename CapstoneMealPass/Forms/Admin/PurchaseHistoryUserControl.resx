@@ -117,12 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="sidePanel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="sidePanel6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="printBTN.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAs1JREFUWEft18vLTWscB3CRy0RuE4fkEK+JEiMc+bmdARMMEDEwMaEomaC+6riU
+        oVLI5ZjqGEiUS30T+RckIUIkJSly6auf1qvd1157rX15z2h/6qm96/l9n9/7vGut/axhw/r6+oZORIwC
+        sALALpKHJB2RdBjAAQA7AMz3mv8FgAFJpyS9V7Vn2XxETPScnouIcSRPSvruXdTwgeSeiBjuuT1Bcpmk
+        F75qB+5HxDTP7wrJNZI++0pdeBIR032djpBcIumTrwBgvM9Nkq43m9/Ew4iY5PVtyQBJLz05VTR4i+Qx
+        r2niqte3heRpTxxU1WB+Jnnc6xyAtZ5RC4A5kr554KCKBu8B+DOHpEteax50dGdLOutJjQBM8Jok6T+f
+        WwXAOs9pKSLGSProQY3KdjAixgNY1jhInvB6c9lzWgKw1BOauCuJNccjLzbvvIeWAOz1hMJNdCmvTw9N
+        AKZ4H6Uk/eMBCcBKn1tXRMwEsA3AJs9NABZ6Tak8kXhAypOLz60LwJa8LABs9NwEYI3XlGqxgz8bJLld
+        0nlJF2qOcwDWZ22LBld7H6VIHvSAVJz9ZhVfX0l6WnO8zmdqPppaNPiX91EKwGYPSHkN5rVSfF7sdWUA
+        rCpqZgPY4LmprZsEwEwPSM0aLE7OZbYXc6oafOM9VGr27CoaXFR8/tmgpDNNnnuD40TOAfB3UTNQ8i++
+        6OtXIrnPU0hu8h2UlO8iflMMjv05p2EHB0ju9Nx2LpdfImJsPuEt60txc3TUYHEi9wPIbV+7NpK7LeyX
+        dv7qhgZ/09WbX0SMKH5zf0PyrN8RZUhe9PpE8qiv2baI+EPSYw/vgSu5Ab5eRyJiRvHA7ZVrETHa1+lK
+        REwuTsvd+ErySESM9PyeIZm/Ms995RruAJjneUMidwDAVkk3Kt6X30r6t507vufy9QDADAALACzP0ziA
+        uQCm+ty+vr4h8AMQRkrtIbR4FwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="filterBTN.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -143,11 +156,10 @@
         PC9nPg0KPC9zdmc+Cw==
 </value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="sidePanel12.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAAAqlJREFUWEftmE2ojUEYx69wRxizoLky09NF0ljYPrOg7kL53NCUrQWKLJ6SsrNg
+        vAAADrwBlbxySQAAAqlJREFUWEftmE2ojUEYx69wRxizoLky09NF0ljYPrOg7kL53NCUrQWKLJ6SsrNg
         YWdD1F3YKIXEgixISlY2Uu5OvpJCcq9yr49o6r2a+5j73jnveU8Wzq/+q/M8/+ffvGfemXMGBvr06fMf
         I6xcobzZD4QXgPAqEN4FwgdAeBMIL+rgjitvNvC+nqO8WQ+El4DwGxD+KtAj5c1W7tM6wspFQHgOCL9n
         QpTovrByNfdtBWHlEBA+zgztVB90cJu4f1cIK1cB4fPMsKaa1MFt4XMaIaxcAoRPMkO61biw0vF5HQOE
@@ -161,22 +173,4 @@
         JdJ/GX4A4bt4QujgDgorFe//JyhvYuhBYeU8/lmfPn16xG9cWZQpOPrbLQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="sidePanel5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="sidePanel4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="sidePanel3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="sidePanel2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="sidePanel9.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="sidePanel10.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>

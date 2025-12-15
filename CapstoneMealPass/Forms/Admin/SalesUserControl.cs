@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraSplashScreen;
 using MealPass.Core.GlobalSql;
 using MealPass.Core.Interface;
 using MealPass.Data.Queries;
@@ -38,6 +39,7 @@ namespace CapstoneMealPass.Forms.Admin
                 x.CategoryName,
                 UnitPrice = x.UnitPrice.ToString("N2"),
                 x.ItemSold,
+                x.Remarks,
                 TotalAmount = x.TotalAmount.ToString("N2")
             }).ToList();
         }
@@ -47,33 +49,28 @@ namespace CapstoneMealPass.Forms.Admin
             gvSales.ApplyFindFilter(e.NewValue as string);
         }
 
-        private void printBTN_Click(object sender, EventArgs e)
+        private async void printBTN_Click(object sender, EventArgs e)
         {
-            DateTime from, to;
+            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
+                return;
 
-            if (fromDateDE.EditValue == null && toDateDE.EditValue == null)
+            DateTime from = Convert.ToDateTime(fromDateDE.EditValue).Date;
+            DateTime to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
+
+            Form parentForm = this.FindForm();
+
+            SplashScreenManager.ShowForm(
+                parentForm,
+                typeof(SplashScreen),
+                true,
+                true
+            );
+
+            await Task.Run(() =>
             {
-                // Both null → use DateTime.Now for both
-                DateTime now = DateTime.Now;
-                from = now.Date;
-                to = now.Date.AddDays(1).AddSeconds(-1);
-            }
-            else
-            {
-                // Handle individually if only one is null
-                from = fromDateDE.EditValue == null
-                    ? DateTime.Now.Date
-                    : Convert.ToDateTime(fromDateDE.EditValue).Date;
+                var report = new Reports.DailySalesXtraReport();
 
-                to = toDateDE.EditValue == null
-                    ? DateTime.Now.Date.AddDays(1).AddSeconds(-1)
-                    : Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
-            }
-
-            var report = new Reports.DailySalesXtraReport();
-
-            using (var connection = new SqlConnection(SQLQuery.connectionString))
-            {
+                using (var connection = new SqlConnection(SQLQuery.connectionString))
                 using (var command = new SqlCommand(SaleQuery.GetSalesSummaryByDateTimeRange, connection))
                 {
                     command.Parameters.AddWithValue("@FromDateTime", from);
@@ -86,17 +83,23 @@ namespace CapstoneMealPass.Forms.Admin
 
                         report.DataSource = dt;
 
-                        if (from.Date == to.Date.Date)
+                        if (from.Date == to.Date)
                             report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
                         else
                             report.xrLabel3.Text = $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
 
                         report.CreateDocument();
-                        new ReportPrintTool(report).ShowPreviewDialog();
+
+                        this.Invoke(new Action(() =>
+                        {
+                            new ReportPrintTool(report).ShowPreviewDialog();
+                        }));
                     }
                 }
-            }
+            });
 
+            if (SplashScreenManager.Default.IsSplashFormVisible)
+                SplashScreenManager.CloseForm();
         }
 
         private async void filterBTN_Click(object sender, EventArgs e)
@@ -144,6 +147,7 @@ namespace CapstoneMealPass.Forms.Admin
                 x.CategoryName,
                 UnitPrice = x.UnitPrice.ToString("N2"),
                 x.ItemSold,
+                x.Remarks,
                 TotalAmount = x.TotalAmount.ToString("N2")
             }).ToList();
         }
@@ -152,22 +156,5 @@ namespace CapstoneMealPass.Forms.Admin
         {
             await LoadSalesTodayAsync();
         }
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            // Check if Ctrl+P is pressed
-            if (keyData == (Keys.Control | Keys.P))
-            {
-                // Call your existing print method
-                printBTN_Click(this, EventArgs.Empty);
-                return true; // Indicate that the key was handled
-            }
-
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-
     }
 }
-
-
-

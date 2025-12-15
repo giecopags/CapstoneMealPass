@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraSplashScreen;
 using MealPass.Core.Entity;
 using MealPass.Core.GlobalSql;
 using MealPass.Core.Interface;
@@ -79,58 +80,62 @@ namespace CapstoneMealPass.Forms.Admin
             gvTopUp.ApplyFindFilter(e.NewValue as string);
         }
 
-        private void printBTN_Click(object sender, EventArgs e)
+        private async void printBTN_Click(object sender, EventArgs e)
         {
-            DateTime from, to;
-
-            if (fromDateDE.EditValue == null && toDateDE.EditValue == null)
+            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
             {
-                // Both null → use DateTime.Now consistently
-                DateTime now = DateTime.Now;
-                from = now.Date;
-                to = now.Date.AddDays(1).AddSeconds(-1);
-            }
-            else
-            {
-                // Handle individually if only one is null
-                from = fromDateDE.EditValue == null
-                    ? DateTime.Now.Date
-                    : Convert.ToDateTime(fromDateDE.EditValue).Date;
-
-                to = toDateDE.EditValue == null
-                    ? DateTime.Now.Date.AddDays(1).AddSeconds(-1)
-                    : Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
+                MessageBox.Show("Please select a date range before printing.",
+                    "No Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            Reports.TopUpHistoryXtraReport report = new Reports.TopUpHistoryXtraReport();
+            DateTime from = Convert.ToDateTime(fromDateDE.EditValue).Date;
+            DateTime to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
 
-            using (var connection = new SqlConnection(SQLQuery.connectionString))
+            Form parentForm = this.FindForm();
+
+            SplashScreenManager.ShowForm(
+                parentForm,
+                typeof(SplashScreen),
+                true,
+                true
+            );
+
+            await Task.Run(() =>
             {
-                string query = TopUpLogQuery.GetTopUpLogsByDateRange;
+                Reports.TopUpHistoryXtraReport report = new Reports.TopUpHistoryXtraReport();
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (var connection = new SqlConnection(SQLQuery.connectionString))
                 {
-                    command.Parameters.AddWithValue("@FromDate", from);
-                    command.Parameters.AddWithValue("@ToDate", to);
+                    string query = TopUpLogQuery.GetTopUpLogsByDateRange;
 
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
+                        command.Parameters.AddWithValue("@FromDate", from);
+                        command.Parameters.AddWithValue("@ToDate", to);
 
-                        report.DataSource = dt;
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
 
-                        if (from.Date == to.Date.Date)
-                            report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
-                        else
-                            report.xrLabel3.Text = $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
+                            report.DataSource = dt;
 
-                        report.CreateDocument();
-                        new ReportPrintTool(report).ShowPreviewDialog();
+                            if (from.Date == to.Date.Date)
+                                report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
+                            else
+                                report.xrLabel3.Text = $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
+
+                            report.CreateDocument();
+                            new ReportPrintTool(report).ShowPreviewDialog();
+                        }
                     }
                 }
-            }
 
+            });
+
+            if (SplashScreenManager.Default.IsSplashFormVisible)
+                SplashScreenManager.CloseForm();
         }
 
         private async void filterBTN_Click(object sender, EventArgs e)
@@ -160,19 +165,6 @@ namespace CapstoneMealPass.Forms.Admin
             }
 
             await LoadTopUpLogsByRangeAsync(from, to);
-        }
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            // Check if Ctrl+P is pressed
-            if (keyData == (Keys.Control | Keys.P))
-            {
-                // Call your existing print method
-                printBTN_Click(this, EventArgs.Empty);
-                return true; // Indicate that the key was handled
-            }
-
-            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

@@ -389,10 +389,10 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement productsACE;
         private DevExpress.XtraBars.Navigation.AccordionControlElement dashboardACE;
         private DevExpress.XtraEditors.SidePanel sidePanel3;
-        private DevExpress.XtraEditors.SidePanel mainSPanel;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraEditors.SidePanel sidePanel1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement topupACE;
         private DevExpress.XtraBars.Navigation.AccordionControlElement salesreportACE;
+        public DevExpress.XtraEditors.SidePanel mainSPanel;
     }
 }

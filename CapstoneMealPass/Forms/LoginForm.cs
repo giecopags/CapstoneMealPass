@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapstoneMealPass.Helpers;
 using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
+using DevExpress.XtraWaitForm;
 using MealPass.Core.GlobalSql;
 using MealPass.Data.Repositories;
-using System.Data.SqlClient;
 using static DevExpress.Xpo.Helpers.CommandChannelHelper;
 
 
@@ -41,6 +43,7 @@ namespace CapstoneMealPass.Forms
         {
             string username = usernameTE.Text.Trim();
             string password = passwordTE.Text;
+            Forms.Admin.MainRibbonForm mainForm = null;
 
             using (SqlConnection connection = new SqlConnection(SQLQuery.connectionString))
             {
@@ -90,21 +93,27 @@ namespace CapstoneMealPass.Forms
 
                             this.Hide();
 
-                            Form nextForm;
-
                             if (roleID == 1)
                             {
-                                nextForm = new Forms.Admin.MainRibbonForm();
+                                mainForm = new Forms.Admin.MainRibbonForm();
+                                mainForm.FormClosed += (s, args) => Application.Exit();
+                                mainForm.Show();
+
+                                await FormHelper.LoadUserControlAsync(
+                                    mainForm.mainSPanel,
+                                    () => new Forms.Admin.DashboarddUserControl()
+                                );
                             }
                             else
                             {
-                                nextForm = new Staff.StaffMainRibbonForm();
+                                var staffForm = new Staff.StaffMainRibbonForm();
+                                staffForm.FormClosed += (s, args) => Application.Exit();
+                                staffForm.Show();
+
+                                await FormHelper.LoadUserControlAsync(
+                                  staffForm.mainSPanel,
+                                  () => new Staff.POSUserControl());
                             }
-
-                            nextForm.FormClosed += (s, args) => Application.Exit();
-
-                            nextForm.Show();
-
                         }
                         else
                         {
