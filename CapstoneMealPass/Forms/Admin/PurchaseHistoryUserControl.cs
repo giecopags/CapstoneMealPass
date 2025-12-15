@@ -118,25 +118,22 @@ namespace CapstoneMealPass.Forms.Admin
 
         private async void filterBTN_Click(object sender, EventArgs e)
         {
-            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
+            DateTime from, to;
+
+            if (fromDateDE.EditValue == null && toDateDE.EditValue != null)
             {
-                MessageBox.Show("Please select both From and To dates.", "Invalid Date Range",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a 'From' date when 'To' date is selected.",
+                                "Invalid Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            DateTime from;
-            DateTime to;
+            from = fromDateDE.EditValue == null
+                ? DateTime.Today
+                : Convert.ToDateTime(fromDateDE.EditValue).Date;
 
-            bool isFromValid = DateTime.TryParse(fromDateDE.EditValue.ToString(), out from);
-            bool isToValid = DateTime.TryParse(toDateDE.EditValue.ToString(), out to);
-
-            if (!isFromValid || !isToValid)
-            {
-                MessageBox.Show("Selected dates are invalid. Please select valid dates.", "Invalid Date Range",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            to = toDateDE.EditValue == null
+                ? DateTime.Today.AddDays(1).AddSeconds(-1)
+                : Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
 
             if (from > to)
             {
@@ -150,6 +147,42 @@ namespace CapstoneMealPass.Forms.Admin
 
         private async void printBTN_Click(object sender, EventArgs e)
         {
+            DateTime from, to;
+
+            if (fromDateDE.EditValue == null && toDateDE.EditValue != null)
+            {
+                MessageBox.Show("Please select a 'From' date when 'To' date is selected.",
+                                "Invalid Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (fromDateDE.EditValue == null)
+                from = DateTime.Today;
+            else if (!DateTime.TryParse(fromDateDE.EditValue.ToString(), out from))
+            {
+                MessageBox.Show("Selected 'From' date is invalid.", "Invalid Date",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            from = from.Date;
+
+            if (toDateDE.EditValue == null)
+                to = DateTime.Today.AddDays(1).AddSeconds(-1);
+            else if (!DateTime.TryParse(toDateDE.EditValue.ToString(), out to))
+            {
+                MessageBox.Show("Selected 'To' date is invalid.", "Invalid Date",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            to = to.Date.AddDays(1).AddSeconds(-1);
+
+            if (from > to)
+            {
+                MessageBox.Show("The 'From' date cannot be after the 'To' date.", "Invalid Date Range",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             Form parentForm = this.FindForm();
 
             DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(
@@ -165,39 +198,21 @@ namespace CapstoneMealPass.Forms.Admin
 
                 DataTable dt = new DataTable();
                 foreach (DevExpress.XtraGrid.Columns.GridColumn column in purchasehistoryGV.Columns)
-                {
                     dt.Columns.Add(column.FieldName);
-                }
 
                 for (int i = 0; i < purchasehistoryGV.RowCount; i++)
                 {
                     DataRow row = dt.NewRow();
                     foreach (DevExpress.XtraGrid.Columns.GridColumn column in purchasehistoryGV.Columns)
-                    {
                         row[column.FieldName] = purchasehistoryGV.GetRowCellValue(i, column);
-                    }
                     dt.Rows.Add(row);
                 }
 
                 report.DataSource = dt;
 
-                DateTime from, to;
-
-                if (fromDateDE.EditValue != null && toDateDE.EditValue != null)
-                {
-                    from = Convert.ToDateTime(fromDateDE.EditValue).Date;
-                    to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
-
-                    report.xrLabel3.Text = from.Date == to.Date
-                        ? from.ToString("MMMM dd, yyyy")
-                        : $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
-                }
-                else
-                {
-                    from = DateTime.Today;
-                    to = DateTime.Today.AddDays(1).AddSeconds(-1);
-                    report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
-                }
+                report.xrLabel3.Text = from.Date == to.Date
+                    ? from.ToString("MMMM dd, yyyy")
+                    : $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
 
                 report.CreateDocument();
 

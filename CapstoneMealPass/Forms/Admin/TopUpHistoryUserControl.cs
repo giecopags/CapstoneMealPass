@@ -82,15 +82,30 @@ namespace CapstoneMealPass.Forms.Admin
 
         private async void printBTN_Click(object sender, EventArgs e)
         {
-            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
+            DateTime from, to;
+
+            if (fromDateDE.EditValue == null && toDateDE.EditValue != null)
             {
-                MessageBox.Show("Please select a date range before printing.",
-                    "No Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a 'From' date when 'To' date is selected.",
+                                "Invalid Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            DateTime from = Convert.ToDateTime(fromDateDE.EditValue).Date;
-            DateTime to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
+            if (fromDateDE.EditValue == null && toDateDE.EditValue == null)
+            {
+                from = DateTime.Today;
+                to = DateTime.Today.AddDays(1).AddSeconds(-1);
+            }
+            else
+            {
+                from = fromDateDE.EditValue == null
+                    ? DateTime.Today
+                    : Convert.ToDateTime(fromDateDE.EditValue).Date;
+
+                to = toDateDE.EditValue == null
+                    ? DateTime.Today.AddDays(1).AddSeconds(-1)
+                    : Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
+            }
 
             Form parentForm = this.FindForm();
 
@@ -106,32 +121,31 @@ namespace CapstoneMealPass.Forms.Admin
                 Reports.TopUpHistoryXtraReport report = new Reports.TopUpHistoryXtraReport();
 
                 using (var connection = new SqlConnection(SQLQuery.connectionString))
+                using (var command = new SqlCommand(TopUpLogQuery.GetTopUpLogsByDateRange, connection))
                 {
-                    string query = TopUpLogQuery.GetTopUpLogsByDateRange;
+                    command.Parameters.AddWithValue("@FromDate", from);
+                    command.Parameters.AddWithValue("@ToDate", to);
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
-                        command.Parameters.AddWithValue("@FromDate", from);
-                        command.Parameters.AddWithValue("@ToDate", to);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
 
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        report.DataSource = dt;
+
+                        if (from.Date == to.Date)
+                            report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
+                        else
+                            report.xrLabel3.Text = $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
+
+                        report.CreateDocument();
+
+                        this.Invoke(new Action(() =>
                         {
-                            DataTable dt = new DataTable();
-                            adapter.Fill(dt);
-
-                            report.DataSource = dt;
-
-                            if (from.Date == to.Date.Date)
-                                report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
-                            else
-                                report.xrLabel3.Text = $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
-
-                            report.CreateDocument();
                             new ReportPrintTool(report).ShowPreviewDialog();
-                        }
+                        }));
                     }
                 }
-
             });
 
             if (SplashScreenManager.Default.IsSplashFormVisible)
@@ -140,22 +154,22 @@ namespace CapstoneMealPass.Forms.Admin
 
         private async void filterBTN_Click(object sender, EventArgs e)
         {
-            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
+            DateTime from, to;
+
+            if (fromDateDE.EditValue == null && toDateDE.EditValue != null)
             {
-                MessageBox.Show("Please select both dates.", "Invalid Date Range",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a 'From' date when 'To' date is selected.",
+                                "Invalid Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            bool isFromValid = DateTime.TryParse(fromDateDE.EditValue.ToString(), out DateTime from);
-            bool isToValid = DateTime.TryParse(toDateDE.EditValue.ToString(), out DateTime to);
+            from = fromDateDE.EditValue == null
+                ? DateTime.Today
+                : Convert.ToDateTime(fromDateDE.EditValue).Date;
 
-            if (!isFromValid || !isToValid)
-            {
-                MessageBox.Show("Selected dates are invalid. Please select valid dates.", "Invalid Date Range",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            to = toDateDE.EditValue == null
+                ? DateTime.Today.AddDays(1).AddSeconds(-1)
+                : Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
 
             if (from > to)
             {
