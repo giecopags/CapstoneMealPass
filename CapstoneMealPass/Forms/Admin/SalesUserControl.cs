@@ -51,11 +51,31 @@ namespace CapstoneMealPass.Forms.Admin
 
         private async void printBTN_Click(object sender, EventArgs e)
         {
-            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
+            if (fromDateDE.EditValue == null && toDateDE.EditValue != null)
+            {
+                MessageBox.Show("Please select a 'From' date when 'To' date is selected.",
+                                "Invalid Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
 
-            DateTime from = Convert.ToDateTime(fromDateDE.EditValue).Date;
-            DateTime to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
+            DateTime from, to;
+
+            if (fromDateDE.EditValue == null && toDateDE.EditValue == null)
+            {
+                DateTime now = DateTime.Now;
+                from = now.Date;
+                to = now.Date.AddDays(1).AddSeconds(-1);
+            }
+            else
+            {
+                from = fromDateDE.EditValue == null
+                    ? DateTime.Now.Date
+                    : Convert.ToDateTime(fromDateDE.EditValue).Date;
+
+                to = toDateDE.EditValue == null
+                    ? DateTime.Now.Date.AddDays(1).AddSeconds(-1)
+                    : Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
+            }
 
             Form parentForm = this.FindForm();
 
@@ -104,22 +124,20 @@ namespace CapstoneMealPass.Forms.Admin
 
         private async void filterBTN_Click(object sender, EventArgs e)
         {
-            if (fromDateDE.EditValue == null || toDateDE.EditValue == null)
+            DateTime from, to;
+            if (fromDateDE.EditValue == null && toDateDE.EditValue != null)
             {
-                MessageBox.Show("Please select both From and To dates.", "Invalid Date Range",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a 'From' date when 'To' date is selected.",
+                                "Invalid Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            from = fromDateDE.EditValue == null
+                ? DateTime.Today
+                : Convert.ToDateTime(fromDateDE.EditValue).Date;
 
-            bool isFromValid = DateTime.TryParse(fromDateDE.EditValue.ToString(), out DateTime from);
-            bool isToValid = DateTime.TryParse(toDateDE.EditValue.ToString(), out DateTime to);
-
-            if (!isFromValid || !isToValid)
-            {
-                MessageBox.Show("Selected dates are invalid. Please select valid dates.", "Invalid Date Range",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            to = toDateDE.EditValue == null
+                ? DateTime.Today.AddDays(1).AddSeconds(-1) 
+                : Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
 
             if (from > to)
             {
@@ -128,9 +146,7 @@ namespace CapstoneMealPass.Forms.Admin
                 return;
             }
 
-            DateTime toInclusive = to.Date.AddDays(1).AddTicks(-1);
-
-            await LoadSalesByRangeAsync(from, toInclusive);
+            await LoadSalesByRangeAsync(from, to);
         }
 
         public async Task LoadSalesTodayAsync()

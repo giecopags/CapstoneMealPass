@@ -67,6 +67,43 @@ namespace CapstoneMealPass.Forms.Admin
         private async void printBTN_Click(object sender, EventArgs e)
         {
             Form parentForm = this.FindForm();
+            DateTime from, to;
+
+            if (fromDateDE.EditValue == null && toDateDE.EditValue != null)
+            {
+                MessageBox.Show("Please select a 'From' date when 'To' date is selected.",
+                                "Invalid Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+
+            if (fromDateDE.EditValue == null)
+                from = System.DateTime.Today;
+            else if (!System.DateTime.TryParse(fromDateDE.EditValue.ToString(), out from))
+            {
+                MessageBox.Show("Selected 'From' date is invalid.", "Invalid Date",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            from = from.Date;
+
+            // Parse To date
+            if (toDateDE.EditValue == null)
+                to = System.DateTime.Today.AddDays(1).AddSeconds(-1);
+            else if (!System.DateTime.TryParse(toDateDE.EditValue.ToString(), out to))
+            {
+                MessageBox.Show("Selected 'To' date is invalid.", "Invalid Date",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+            to = to.Date.AddDays(1).AddSeconds(-1);
+
+            // Validate range
+            if (from > to)
+            {
+                MessageBox.Show("'From' date cannot be after 'To' date.", "Invalid Date Range",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
 
             SplashScreenManager.ShowForm(
                 parentForm,
@@ -80,23 +117,10 @@ namespace CapstoneMealPass.Forms.Admin
                 var report = new Reports.EmployeeLogsXtraReport();
                 DataTable dt = gcEmployeeLogs.DataSource as DataTable;
                 report.DataSource = dt;
-                DateTime from, to;
 
-                if (fromDateDE.EditValue != null && toDateDE.EditValue != null)
-                {
-                    from = Convert.ToDateTime(fromDateDE.EditValue).Date;
-                    to = Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
-
-                    report.xrLabel3.Text = from.Date == to.Date
-                        ? from.ToString("MMMM dd, yyyy")
-                        : $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
-                }
-                else
-                {
-                    from = System.DateTime.Today;
-                    to = System.DateTime.Today.AddDays(1).AddSeconds(-1);
-                    report.xrLabel3.Text = from.ToString("MMMM dd, yyyy");
-                }
+                report.xrLabel3.Text = from.Date == to.Date
+                    ? from.ToString("MMMM dd, yyyy")
+                    : $"{from:MMMM dd, yyyy} - {to:MMMM dd, yyyy}";
 
                 report.CreateDocument();
 
@@ -112,8 +136,22 @@ namespace CapstoneMealPass.Forms.Admin
 
         private async void filterBTN_Click(object sender, EventArgs e)
         {
-            DateTime from = fromDateDE.EditValue == null ? System.DateTime.Today : Convert.ToDateTime(fromDateDE.EditValue).Date;
-            DateTime to = toDateDE.EditValue == null ? System.DateTime.Today : Convert.ToDateTime(toDateDE.EditValue).Date;
+            DateTime from, to;
+
+            if (fromDateDE.EditValue == null && toDateDE.EditValue != null)
+            {
+                MessageBox.Show("Please select a 'From' date when 'To' date is selected.",
+                                "Invalid Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            from = fromDateDE.EditValue == null
+                ? System.DateTime.Today
+                : Convert.ToDateTime(fromDateDE.EditValue).Date;
+
+            to = toDateDE.EditValue == null
+                ? System.DateTime.Today.AddDays(1).AddSeconds(-1)
+                : Convert.ToDateTime(toDateDE.EditValue).Date.AddDays(1).AddSeconds(-1);
 
             if (from > to)
             {
