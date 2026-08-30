@@ -324,6 +324,12 @@
     <Compile Include="Forms\Staff\CashOptionXtraForm.Designer.cs">
       <DependentUpon>CashOptionXtraForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Staff\PayLaterOptionXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Staff\PayLaterOptionXtraForm.Designer.cs">
+      <DependentUpon>PayLaterOptionXtraForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Staff\PaymentOptionXtraForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -430,6 +436,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Staff\CashOptionXtraForm.resx">
       <DependentUpon>CashOptionXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Staff\PayLaterOptionXtraForm.resx">
+      <DependentUpon>PayLaterOptionXtraForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Staff\PaymentOptionXtraForm.resx">
       <DependentUpon>PaymentOptionXtraForm.cs</DependentUpon>
