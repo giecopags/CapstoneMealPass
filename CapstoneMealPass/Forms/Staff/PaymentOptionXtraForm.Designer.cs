@@ -33,6 +33,7 @@
             this.cashBTN = new DevExpress.XtraEditors.SimpleButton();
             this.mealpassBTN = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.payLaterBTN = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
             // topupBTN
@@ -89,11 +90,26 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Green;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(122, 27);
+            this.labelControl1.Location = new System.Drawing.Point(200, 26);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(212, 19);
             this.labelControl1.TabIndex = 16;
             this.labelControl1.Text = "How would you like to pay?";
+            // 
+            // payLaterBTN
+            // 
+            this.payLaterBTN.AppearanceHovered.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.payLaterBTN.AppearanceHovered.Options.UseBackColor = true;
+            this.payLaterBTN.AppearancePressed.BackColor = System.Drawing.Color.SeaGreen;
+            this.payLaterBTN.AppearancePressed.Options.UseBackColor = true;
+            this.payLaterBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.payLaterBTN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.payLaterBTN.Location = new System.Drawing.Point(451, 68);
+            this.payLaterBTN.Name = "payLaterBTN";
+            this.payLaterBTN.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.payLaterBTN.Size = new System.Drawing.Size(133, 169);
+            this.payLaterBTN.TabIndex = 20;
+            this.payLaterBTN.Text = "simpleButton2";
             // 
             // PaymentOptionXtraForm
             // 
@@ -101,7 +117,8 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 254);
+            this.ClientSize = new System.Drawing.Size(600, 254);
+            this.Controls.Add(this.payLaterBTN);
             this.Controls.Add(this.topupBTN);
             this.Controls.Add(this.cashBTN);
             this.Controls.Add(this.mealpassBTN);
@@ -124,5 +141,6 @@
         private DevExpress.XtraEditors.SimpleButton cashBTN;
         private DevExpress.XtraEditors.SimpleButton mealpassBTN;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.SimpleButton payLaterBTN;
     }
 }

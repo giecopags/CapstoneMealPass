@@ -50,6 +50,7 @@
             this.salesreportACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.topupACE = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
+            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sidePanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             this.sidePanel1.SuspendLayout();
@@ -295,6 +296,7 @@
             this.employeelistACE,
             this.employeelogsACE,
             this.salesreportACE,
+            this.accordionControlElement2,
             this.accordionControlElement5,
             this.posACE,
             this.topupACE});
@@ -349,6 +351,17 @@
             this.sidePanel1.TabIndex = 3;
             this.sidePanel1.Text = "sidePanel1";
             // 
+            // accordionControlElement2
+            // 
+            this.accordionControlElement2.Appearance.Default.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accordionControlElement2.Appearance.Default.Options.UseFont = true;
+            this.accordionControlElement2.HeaderIndent = 28;
+            this.accordionControlElement2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement2.ImageOptions.SvgImage")));
+            this.accordionControlElement2.ImageOptions.SvgImageSize = new System.Drawing.Size(35, 35);
+            this.accordionControlElement2.Name = "accordionControlElement2";
+            this.accordionControlElement2.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement2.Text = "Credit Transactions";
+            // 
             // MainRibbonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,5 +407,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement topupACE;
         private DevExpress.XtraBars.Navigation.AccordionControlElement salesreportACE;
         public DevExpress.XtraEditors.SidePanel mainSPanel;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
     }
 }
