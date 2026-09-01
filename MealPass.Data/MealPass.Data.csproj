@@ -188,6 +188,8 @@
     <Compile Include="Queries\ProductQuery.cs" />
     <Compile Include="Queries\PurchaseHistoryQuery.cs" />
     <Compile Include="Queries\SaleQuery.cs" />
+    <Compile Include="Queries\SBalanceQuery.cs" />
+    <Compile Include="Queries\StaffQuery.cs" />
     <Compile Include="Queries\StudentQuery.cs" />
     <Compile Include="Queries\TopUpLogQuery.cs" />
     <Compile Include="Queries\TransactionQuery.cs" />
@@ -197,6 +199,8 @@
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\PurchaseHistoryRepository.cs" />
     <Compile Include="Repositories\SaleRepository.cs" />
+    <Compile Include="Repositories\SBalanceRepository.cs" />
+    <Compile Include="Repositories\StaffRepository.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
     <Compile Include="Repositories\TopUpLogRepository.cs" />
     <Compile Include="Repositories\TransactionDetailRepository.cs" />

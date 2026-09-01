@@ -69,6 +69,8 @@
     <Compile Include="Entity\PurchasedItem.cs" />
     <Compile Include="Entity\PurchaseHistory.cs" />
     <Compile Include="Entity\SalesSummary.cs" />
+    <Compile Include="Entity\SBalance.cs" />
+    <Compile Include="Entity\Staff.cs" />
     <Compile Include="Entity\StockStatus.cs" />
     <Compile Include="Entity\Student.cs" />
     <Compile Include="Entity\TopUpLog.cs" />
@@ -81,6 +83,8 @@
     <Compile Include="Interface\IProductRepository.cs" />
     <Compile Include="Interface\IPurchaseHistoryRepository.cs" />
     <Compile Include="Interface\ISaleRepository.cs" />
+    <Compile Include="Interface\ISBalanceRepository.cs" />
+    <Compile Include="Interface\IStaffRepository.cs" />
     <Compile Include="Interface\IStudentRepository.cs" />
     <Compile Include="Interface\ITopUpLogRepository.cs" />
     <Compile Include="Interface\ITransactionDetailRepository.cs" />

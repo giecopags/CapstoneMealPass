@@ -102,7 +102,7 @@
             this.payLaterBTN.AppearanceHovered.Options.UseBackColor = true;
             this.payLaterBTN.AppearancePressed.BackColor = System.Drawing.Color.SeaGreen;
             this.payLaterBTN.AppearancePressed.Options.UseBackColor = true;
-            this.payLaterBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.payLaterBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("payLaterBTN.ImageOptions.Image")));
             this.payLaterBTN.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.payLaterBTN.Location = new System.Drawing.Point(451, 68);
             this.payLaterBTN.Name = "payLaterBTN";
@@ -110,6 +110,7 @@
             this.payLaterBTN.Size = new System.Drawing.Size(133, 169);
             this.payLaterBTN.TabIndex = 20;
             this.payLaterBTN.Text = "simpleButton2";
+            this.payLaterBTN.Click += new System.EventHandler(this.payLaterBTN_Click);
             // 
             // PaymentOptionXtraForm
             // 
