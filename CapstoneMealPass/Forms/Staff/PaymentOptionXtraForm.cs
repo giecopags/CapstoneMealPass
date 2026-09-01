@@ -52,5 +52,11 @@ namespace CapstoneMealPass.Forms.Staff
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        private void payLaterBTN_Click(object sender, EventArgs e)
+        {
+            var creditForm = new Staff.PayLaterOptionXtraForm(_transaction, this, _posControl);
+            FormHelper.DisplayForm(creditForm);
+        }
     }
 }

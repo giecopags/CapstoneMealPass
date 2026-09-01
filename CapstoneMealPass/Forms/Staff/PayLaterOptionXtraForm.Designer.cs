@@ -34,9 +34,9 @@
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.totalamountLBL = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.outstandingcreditLBL = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.newoutstandingcreditLBL = new DevExpress.XtraEditors.LabelControl();
             this.confirmBTN = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.staffidTE.Properties)).BeginInit();
@@ -98,17 +98,17 @@
             this.labelControl1.TabIndex = 24;
             this.labelControl1.Text = "Total Amount:";
             // 
-            // labelControl2
+            // outstandingcreditLBL
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(281, 121);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(32, 16);
-            this.labelControl2.TabIndex = 27;
-            this.labelControl2.Text = "00.00";
+            this.outstandingcreditLBL.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outstandingcreditLBL.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.outstandingcreditLBL.Appearance.Options.UseFont = true;
+            this.outstandingcreditLBL.Appearance.Options.UseForeColor = true;
+            this.outstandingcreditLBL.Location = new System.Drawing.Point(281, 121);
+            this.outstandingcreditLBL.Name = "outstandingcreditLBL";
+            this.outstandingcreditLBL.Size = new System.Drawing.Size(32, 16);
+            this.outstandingcreditLBL.TabIndex = 27;
+            this.outstandingcreditLBL.Text = "00.00";
             // 
             // labelControl3
             // 
@@ -122,17 +122,17 @@
             this.labelControl3.TabIndex = 26;
             this.labelControl3.Text = "Outstanding Credits:";
             // 
-            // labelControl4
+            // newoutstandingcreditLBL
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(281, 163);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(32, 16);
-            this.labelControl4.TabIndex = 29;
-            this.labelControl4.Text = "00.00";
+            this.newoutstandingcreditLBL.Appearance.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newoutstandingcreditLBL.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.newoutstandingcreditLBL.Appearance.Options.UseFont = true;
+            this.newoutstandingcreditLBL.Appearance.Options.UseForeColor = true;
+            this.newoutstandingcreditLBL.Location = new System.Drawing.Point(281, 163);
+            this.newoutstandingcreditLBL.Name = "newoutstandingcreditLBL";
+            this.newoutstandingcreditLBL.Size = new System.Drawing.Size(32, 16);
+            this.newoutstandingcreditLBL.TabIndex = 29;
+            this.newoutstandingcreditLBL.Text = "00.00";
             // 
             // confirmBTN
             // 
@@ -145,6 +145,7 @@
             this.confirmBTN.Size = new System.Drawing.Size(204, 31);
             this.confirmBTN.TabIndex = 30;
             this.confirmBTN.Text = "Confirm Purchase";
+            this.confirmBTN.Click += new System.EventHandler(this.confirmBTN_Click);
             // 
             // labelControl5
             // 
@@ -167,8 +168,8 @@
             this.ClientSize = new System.Drawing.Size(579, 264);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.confirmBTN);
-            this.Controls.Add(this.labelControl4);
-            this.Controls.Add(this.labelControl2);
+            this.Controls.Add(this.newoutstandingcreditLBL);
+            this.Controls.Add(this.outstandingcreditLBL);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.totalamountLBL);
             this.Controls.Add(this.labelControl1);
@@ -178,6 +179,7 @@
             this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("PayLaterOptionXtraForm.IconOptions.SvgImage")));
             this.Name = "PayLaterOptionXtraForm";
             this.Text = "Pay Later Option";
+            this.Load += new System.EventHandler(this.PayLaterOptionXtraForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.staffidTE.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -192,9 +194,9 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraEditors.LabelControl totalamountLBL;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl outstandingcreditLBL;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LabelControl newoutstandingcreditLBL;
         private DevExpress.XtraEditors.SimpleButton confirmBTN;
         private DevExpress.XtraEditors.LabelControl labelControl5;
     }
